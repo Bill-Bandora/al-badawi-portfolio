@@ -1,0 +1,9 @@
+{
+  "name": "Al-Badawi Software Development",
+  "short_name": "Al-Badawi",
+  "start_url": "/de/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f172a",
+  "lang": "de"
+}

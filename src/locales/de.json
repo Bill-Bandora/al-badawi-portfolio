@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Leistungen",
+    "projects": "Projekte",
+    "about": "Über mich",
+    "contact": "Kontakt",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "github": "GitHub öffnen",
+    "menu": "Menü",
+    "close": "Menü schließen"
+  },
+  "common": {
+    "skip": "Zum Inhalt springen",
+    "discussProject": "Projekt besprechen",
+    "viewProjects": "Projekte ansehen",
+    "requestProject": "Projekt anfragen",
+    "viewProject": "Projekt ansehen",
+    "landingPreparing": "Landingpage in Vorbereitung",
+    "copyEmail": "E-Mail kopieren",
+    "copied": "Kopiert",
+    "back": "Zurück",
+    "external": "Externer Link",
+    "all": "Alle",
+    "home": "Startseite"
+  },
+  "seo": {
+    "homeTitle": "Al-Badawi Software Development | Apps, Webanwendungen und MVPs",
+    "homeDescription": "Bilal Al-Badawi entwickelt mobile Apps, individuelle Webanwendungen, APIs und digitale MVPs für Gründer, Privatpersonen und kleine Unternehmen.",
+    "servicesTitle": "Leistungen | Al-Badawi Software Development",
+    "projectsTitle": "Projekte | Al-Badawi Software Development",
+    "aboutTitle": "Über Bilal Al-Badawi | Softwareentwicklung",
+    "contactTitle": "Kontakt | Projekt anfragen",
+    "legalTitle": "Rechtliches | Al-Badawi Software Development"
+  },
+  "home": {
+    "heroTitle": "Von der Idee zur funktionierenden Software.",
+    "heroText": "Al-Badawi Software Development entwickelt mobile Apps, individuelle Webanwendungen und digitale MVPs für Gründer, Privatpersonen und kleine Unternehmen.",
+    "terminal": ["App", "Web", "API", "MVP"],
+    "competencies": "Kernkompetenzen",
+    "trust": "Kompetenzfelder",
+    "featured": "Ausgewählte Projekte",
+    "process": "Arbeitsweise",
+    "aboutPreview": "Bilal Al-Badawi ist Fachinformatiker für Anwendungsentwicklung und entwickelt moderne Webanwendungen, mobile Apps und individuelle Softwarelösungen. Der Schwerpunkt liegt auf funktionalen MVPs, verständlichen Systemarchitekturen und wirtschaftlich sinnvollen Lösungen für konkrete Probleme.",
+    "ctaTitle": "Du hast eine App- oder Softwareidee?",
+    "ctaText": "Beschreibe kurz dein Vorhaben. Gemeinsam lässt sich klären, welcher technische Umfang sinnvoll ist und wie daraus ein testbarer MVP entstehen kann.",
+    "competencyItems": ["Mobile Apps", "Webanwendungen", "MVP-Entwicklung", "APIs und Backend", "Landingpages", "Automatisierung"],
+    "trustItems": ["Frontend- und Backend-Entwicklung", "API-Integrationen", "Datenbankmodellierung", "iOS-TestFlight-Erfahrung", "Softwarearchitektur", "Umsetzung von der Idee bis zum MVP"],
+    "processItems": ["Idee und Anforderungen", "Konzept und technischer Umfang", "Entwicklung des MVP", "Test und Optimierung", "Veröffentlichung und Weiterentwicklung"]
+  },
+  "services": {
+    "title": "Leistungen",
+    "intro": "Individuelle Softwareentwicklung mit klarem Fokus auf nutzbare Ergebnisse, verständliche Architektur und realistische MVPs.",
+    "items": [
+      { "title": "Mobile App-Entwicklung", "text": "iOS- und Android-Anwendungen mit React Native und Expo.", "uses": ["Prototypen", "MVPs", "App-Store-Vorbereitung"] },
+      { "title": "Individuelle Webanwendungen", "text": "Dashboards, Plattformen und interne browserbasierte Software.", "uses": ["Verwaltungssoftware", "Dashboards", "Unternehmenssoftware"] },
+      { "title": "MVP- und Prototypenentwicklung", "text": "Produktideen strukturieren und Kernfunktionen priorisieren.", "uses": ["Technischer Umfang", "Erste testbare Version", "Roadmap"] },
+      { "title": "Backend und API-Entwicklung", "text": "REST-APIs, Datenbanken, Authentifizierung und externe Schnittstellen.", "uses": ["Partner-APIs", "Datenmodelle", "Schnittstellen"] },
+      { "title": "Websites und Landingpages", "text": "Responsive Unternehmenswebsites und mehrsprachige Produktseiten.", "uses": ["Produktseiten", "SEO", "Mehrsprachigkeit"] },
+      { "title": "Automatisierung", "text": "Interne Werkzeuge und Verbindungen bestehender Systeme.", "uses": ["Datenverarbeitung", "Workflows", "Systemverbindungen"] }
+    ]
+  },
+  "projects": {
+    "title": "Projekte",
+    "intro": "Ausgewählte Softwareprojekte mit klarem Produktfokus und ohne künstliche Metriken.",
+    "problem": "Problem",
+    "solution": "Lösung",
+    "features": "Funktionen",
+    "technologies": "Technologien",
+    "role": "Rolle",
+    "filters": { "mobile": "Mobile Apps", "web": "Webanwendungen", "mvp": "MVP", "development": "In Entwicklung", "completed": "Abgeschlossen" }
+  },
+  "about": {
+    "title": "Bilal Al-Badawi",
+    "role": "Fachinformatiker für Anwendungsentwicklung mit Schwerpunkt auf modernen Webanwendungen, mobilen Apps, APIs, Datenbanken und MVP-Entwicklung.",
+    "text": "Ich entwickle individuelle Softwarelösungen, die konkrete Probleme verständlich und wirtschaftlich lösen. Wichtig sind klare Anforderungen, ein belastbarer technischer Umfang und eine Umsetzung, die früh testbar ist.",
+    "workflow": "Meine Arbeitsweise verbindet Produktverständnis, saubere Frontend- und Backend-Entwicklung und pragmatische Architekturentscheidungen.",
+    "tech": "Technologieübersicht"
+  },
+  "contact": {
+    "title": "Projekt anfragen",
+    "intro": "Beschreibe kurz dein Vorhaben. Ich melde mich mit einer ersten fachlichen Einschätzung.",
+    "mailtoInfo": "Nach erfolgreicher Prüfung wird dein lokales E-Mail-Programm geöffnet.",
+    "success": "Die Anfrage wurde vorbereitet.",
+    "send": "Anfrage senden",
+    "sending": "Wird gesendet",
+    "privacy": "Ich habe die Datenschutzhinweise gelesen.",
+    "fields": {
+      "name": "Name",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "projectType": "Projektart",
+      "timeline": "Gewünschter Zeitraum",
+      "budget": "Budgetrahmen",
+      "message": "Projektbeschreibung"
+    },
+    "errors": {
+      "required": "Dieses Feld ist erforderlich.",
+      "email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "privacy": "Bitte bestätige die Datenschutzhinweise.",
+      "message": "Bitte beschreibe dein Projekt mit mindestens 20 Zeichen."
+    },
+    "types": ["Mobile App", "Webanwendung", "Website oder Landingpage", "API oder Backend", "Automatisierung", "bestehende Software weiterentwickeln", "noch nicht sicher"],
+    "budgets": ["unter 1.000 €", "1.000-3.000 €", "3.000-7.500 €", "7.500-15.000 €", "über 15.000 €", "noch offen"]
+  },
+  "legal": {
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "placeholder": "Pflichtangabe noch ergänzen",
+    "privacyText": "Diese Website verwendet keine Analysewerkzeuge, Werbetracker, extern eingebetteten Social-Media-Widgets, Marketing-Cookies, YouTube-Einbettungen, Google Maps oder extern geladenen Schriftarten. Das Kontaktformular verarbeitet die eingegebenen Daten ausschließlich zur Bearbeitung der Anfrage."
+  },
+  "notFound": { "title": "Seite nicht gefunden", "text": "Die angeforderte Seite existiert nicht oder wurde verschoben." },
+  "footer": {
+    "text": "Al-Badawi Software Development ist der professionelle Webauftritt von Bilal Al-Badawi."
+  }
+}

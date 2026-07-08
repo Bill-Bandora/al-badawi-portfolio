@@ -1,0 +1,156 @@
+import { siteConfig } from '../config/site';
+import type { Project } from '../types/project';
+
+export const projects: Project[] = [
+  {
+    id: 'buynot',
+    slug: 'buynot',
+    title: 'BuyNot',
+    category: {
+      de: 'Mobile App / Behavioral Technology',
+      en: 'Mobile app / behavioral technology',
+      ar: 'تطبيق جوال / تقنية سلوكية',
+    },
+    status: {
+      de: 'iOS-Prototyp in Entwicklung',
+      en: 'iOS prototype in development',
+      ar: 'نموذج أولي لنظام iOS قيد التطوير',
+    },
+    shortDescription: {
+      de: 'Eine mobile Verhaltens- und Selbsthilfeanwendung, die Menschen dabei unterstützt, impulsive und unnötige Kaufentscheidungen zu reduzieren.',
+      en: 'A mobile behavioral self-help application that helps people reduce impulsive and unnecessary purchase decisions.',
+      ar: 'تطبيق سلوكي للمساعدة الذاتية يساعد المستخدمين على تقليل قرارات الشراء الاندفاعية وغير الضرورية.',
+    },
+    description: {
+      de: 'BuyNot ist kein Marktplatz. Die Anwendung bildet ausgewählte Schritte eines Einkaufs kontrolliert ab, damit Nutzer einen Impuls erkennen, unterbrechen und später reflektieren können.',
+      en: 'BuyNot is not a marketplace. It models selected shopping steps in a controlled way so users can recognize, interrupt, and later reflect on a purchase impulse.',
+      ar: 'BuyNot ليس سوقا إلكترونيا. يحاكي التطبيق خطوات محددة من عملية الشراء بشكل مضبوط لمساعدة المستخدم على ملاحظة الدافع وإيقافه ثم التفكير فيه لاحقا.',
+    },
+    problem: {
+      de: 'Impulsive Käufe entstehen häufig unter Stress, Frust, Langeweile oder durch kurzfristige Belohnungsimpulse. Klassische Shopping-Plattformen verstärken diese Mechanismen.',
+      en: 'Impulse purchases often arise from stress, frustration, boredom, or short-term reward loops. Classic shopping platforms often reinforce those mechanisms.',
+      ar: 'تظهر المشتريات الاندفاعية غالبا بسبب الضغط أو الإحباط أو الملل أو البحث عن مكافأة سريعة. منصات التسوق التقليدية قد تعزز هذه الآليات.',
+    },
+    solution: {
+      de: 'BuyNot simuliert Suche, Warenkorb und Checkout ohne echte Bestellung oder Zahlung. Ziel ist ein bewusster Stopp vor der Kaufentscheidung.',
+      en: 'BuyNot simulates search, cart, and checkout without real ordering or payment. The goal is a deliberate pause before a purchase decision.',
+      ar: 'يحاكي BuyNot البحث والسلة والدفع من دون طلب أو دفع حقيقي. الهدف هو خلق توقف واع قبل قرار الشراء.',
+    },
+    features: [
+      { de: 'Suche nach realen Produkten', en: 'Search for real products', ar: 'البحث عن منتجات حقيقية' },
+      { de: 'Anzeige realer Produktinformationen', en: 'Real product information', ar: 'عرض معلومات منتجات حقيقية' },
+      { de: 'Warenkorb und simulierter Checkout', en: 'Cart and simulated checkout', ar: 'سلة ومحاكاة للدفع' },
+      { de: 'Simulierte Bestellbestätigung und Lieferzeit', en: 'Simulated order confirmation and delivery time', ar: 'تأكيد طلب ومدة تسليم محاكيان' },
+      { de: 'Reflexion über Kaufimpulse', en: 'Reflection on purchase impulses', ar: 'تأمل دوافع الشراء' },
+    ],
+    technologies: ['React Native', 'Expo', 'TypeScript', 'NestJS', 'PostgreSQL', 'Prisma', 'Redis', 'Docker', 'Render', 'EAS Build', 'TestFlight'],
+    role: [
+      { de: 'Produktkonzeption', en: 'Product concept', ar: 'تصميم المنتج' },
+      { de: 'UX-Planung', en: 'UX planning', ar: 'تخطيط تجربة المستخدم' },
+      { de: 'Frontend- und Backend-Entwicklung', en: 'Frontend and backend development', ar: 'تطوير الواجهة والخلفية' },
+      { de: 'Deployment und technische Weiterentwicklung', en: 'Deployment and technical evolution', ar: 'النشر والتطوير التقني' },
+    ],
+    image: '/images/projects/buynot-preview.svg',
+    landingPageUrl: siteConfig.projectUrls.buynot,
+    landingPageLive: false,
+    filters: ['mobile', 'mvp', 'development'],
+  },
+  {
+    id: 'device-tracking',
+    slug: 'geraete-nachverfolgung',
+    title: 'Geräte-Nachverfolgung',
+    category: {
+      de: 'Webanwendung / interne Unternehmenssoftware',
+      en: 'Web application / internal business software',
+      ar: 'تطبيق ويب / برنامج داخلي للشركات',
+    },
+    status: { de: 'Abgeschlossener MVP', en: 'Completed MVP', ar: 'نموذج أولي مكتمل' },
+    shortDescription: {
+      de: 'Eine Webanwendung zur transparenten Nachverfolgung interner IT-Geräte über mehrere Bearbeitungsabteilungen.',
+      en: 'A web application for transparent tracking of internal IT devices across multiple processing departments.',
+      ar: 'تطبيق ويب لتتبع أجهزة تقنية المعلومات الداخلية بشفافية عبر عدة أقسام معالجة.',
+    },
+    description: {
+      de: 'Die Anwendung macht Standort, Status, verantwortliche Abteilung, zugewiesene Mitarbeiter und Änderungshistorie eines Geräts zentral nachvollziehbar.',
+      en: 'The application centralizes device location, status, responsible department, assigned staff, and immutable change history.',
+      ar: 'يوفر التطبيق عرضا مركزيا لموقع الجهاز وحالته والقسم المسؤول والموظفين المعينين وسجل التغييرات غير القابل للتعديل.',
+    },
+    problem: {
+      de: 'Gerätestandorte, Bearbeitungszustände und Zuständigkeiten waren zuvor nur schwer und mit hohem manuellem Aufwand nachvollziehbar.',
+      en: 'Device locations, processing states, and responsibilities were difficult to track and required significant manual effort.',
+      ar: 'كان تتبع مواقع الأجهزة وحالات المعالجة والمسؤوليات صعبا ويتطلب جهدا يدويا كبيرا.',
+    },
+    solution: {
+      de: 'Ein zentrales Dashboard verbindet Suche, Detailansicht, Statuswechsel, Abteilungswechsel und transaktionssichere Historie.',
+      en: 'A central dashboard combines search, detail views, status changes, department transfers, and transaction-safe history.',
+      ar: 'تجمع لوحة مركزية بين البحث وعرض التفاصيل وتغيير الحالة ونقل القسم وسجل آمن بالمعاملات.',
+    },
+    features: [
+      { de: 'Dashboard und Geräteübersicht', en: 'Dashboard and device overview', ar: 'لوحة معلومات ونظرة عامة على الأجهزة' },
+      { de: 'Suche nach Inventarnummer und Gerätedaten', en: 'Search by inventory number and device data', ar: 'البحث برقم الجرد وبيانات الجهاز' },
+      { de: 'Status- und Abteilungswechsel', en: 'Status and department changes', ar: 'تغيير الحالة والقسم' },
+      { de: 'Mitarbeiterzuweisung', en: 'Staff assignment', ar: 'تعيين الموظفين' },
+      { de: 'Unveränderbare Historieneinträge', en: 'Immutable history entries', ar: 'سجلات تاريخ غير قابلة للتعديل' },
+      { de: 'Fehlerbehandlung mit Rollback', en: 'Error handling with rollback', ar: 'معالجة الأخطاء مع التراجع' },
+    ],
+    technologies: ['React', 'Vite', 'JavaScript', 'Node.js', 'Express', 'MariaDB', 'REST API', 'Axios', 'Bootstrap'],
+    role: [
+      { de: 'Anforderungsanalyse', en: 'Requirements analysis', ar: 'تحليل المتطلبات' },
+      { de: 'Architektur und Datenbankmodellierung', en: 'Architecture and database modeling', ar: 'البنية ونمذجة قاعدة البيانات' },
+      { de: 'Frontend- und Backend-Entwicklung', en: 'Frontend and backend development', ar: 'تطوير الواجهة والخلفية' },
+      { de: 'Testplanung und technische Dokumentation', en: 'Test planning and technical documentation', ar: 'تخطيط الاختبارات والتوثيق التقني' },
+    ],
+    image: '/images/projects/device-tracking-preview.svg',
+    landingPageUrl: siteConfig.projectUrls.deviceTracking,
+    landingPageLive: false,
+    filters: ['web', 'mvp', 'completed'],
+  },
+  {
+    id: 'roommate',
+    slug: 'roommate-plus',
+    title: 'RoomMate+',
+    category: {
+      de: 'Mobile und Web-Anwendung / Haushaltsorganisation',
+      en: 'Mobile and web application / household organization',
+      ar: 'تطبيق جوال وويب / تنظيم السكن المشترك',
+    },
+    status: { de: 'In Entwicklung', en: 'In development', ar: 'قيد التطوير' },
+    shortDescription: {
+      de: 'Eine modular aufgebaute Anwendung zur Organisation gemeinsamer Haushalte und Wohngemeinschaften.',
+      en: 'A modular application for organizing shared households and flatshares.',
+      ar: 'تطبيق معياري لتنظيم المنازل المشتركة والسكن الجماعي.',
+    },
+    description: {
+      de: 'RoomMate+ bündelt geplante Haushaltsfunktionen in einer mobilen, erweiterbaren Oberfläche. Unfertige Funktionen werden bewusst als geplant, Konzept oder in Entwicklung gekennzeichnet.',
+      en: 'RoomMate+ bundles planned household functions into a mobile, extensible interface. Unfinished capabilities are clearly marked as planned, concept, or in development.',
+      ar: 'يجمع RoomMate+ وظائف منزلية مخططة في واجهة جوال قابلة للتوسع. يتم تمييز الوظائف غير المكتملة بوضوح كوظائف مخططة أو مفاهيم أو قيد التطوير.',
+    },
+    problem: {
+      de: 'Aufgaben, gemeinsame Ausgaben und wiederkehrende Haushaltsabläufe werden häufig über verschiedene Apps, Chats oder manuelle Listen organisiert.',
+      en: 'Tasks, shared expenses, and recurring household routines are often spread across different apps, chats, or manual lists.',
+      ar: 'غالبا ما تتوزع المهام والمصاريف المشتركة والروتينات المنزلية المتكررة بين تطبيقات ومحادثات وقوائم يدوية مختلفة.',
+    },
+    solution: {
+      de: 'Eine modulare Architektur verbindet Haushaltsgruppen, Aufgaben, Erinnerungen, Rollen und spätere Erweiterungen in einer mobile-first Anwendung.',
+      en: 'A modular architecture connects household groups, tasks, reminders, roles, and future extensions in a mobile-first application.',
+      ar: 'تربط بنية معيارية بين مجموعات المنزل والمهام والتذكيرات والأدوار والتوسعات اللاحقة في تطبيق يركز على الجوال.',
+    },
+    features: [
+      { de: 'Haushaltsgruppen - in Entwicklung', en: 'Household groups - in development', ar: 'مجموعات السكن - قيد التطوير' },
+      { de: 'Aufgabenverwaltung - in Entwicklung', en: 'Task management - in development', ar: 'إدارة المهام - قيد التطوير' },
+      { de: 'Putzplan und wiederkehrende Aufgaben - geplant', en: 'Cleaning plan and recurring tasks - planned', ar: 'جدول تنظيف ومهام متكررة - مخطط' },
+      { de: 'Einladungen per Code oder Link - Konzept', en: 'Invites by code or link - concept', ar: 'دعوات عبر رمز أو رابط - مفهوم' },
+      { de: 'Gemeinsame Ausgaben und Abrechnungen - geplant', en: 'Shared expenses and settlements - planned', ar: 'مصاريف وتسويات مشتركة - مخطط' },
+    ],
+    technologies: ['React Native', 'TypeScript', 'modular architecture', 'REST APIs', 'mobile-first UI'],
+    role: [
+      { de: 'Produktstruktur', en: 'Product structure', ar: 'هيكلة المنتج' },
+      { de: 'UX-Konzept', en: 'UX concept', ar: 'مفهوم تجربة المستخدم' },
+      { de: 'Modulare Komponentenarchitektur', en: 'Modular component architecture', ar: 'بنية مكونات معيارية' },
+    ],
+    image: '/images/projects/roommate-preview.svg',
+    landingPageUrl: siteConfig.projectUrls.roommate,
+    landingPageLive: false,
+    filters: ['mobile', 'web', 'mvp', 'development'],
+  },
+];

@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "github": "Open GitHub",
+    "menu": "Menu",
+    "close": "Close menu"
+  },
+  "common": {
+    "skip": "Skip to content",
+    "discussProject": "Discuss project",
+    "viewProjects": "View projects",
+    "requestProject": "Request project",
+    "viewProject": "View project",
+    "landingPreparing": "Landing page in preparation",
+    "copyEmail": "Copy email",
+    "copied": "Copied",
+    "back": "Back",
+    "external": "External link",
+    "all": "All",
+    "home": "Home"
+  },
+  "seo": {
+    "homeTitle": "Al-Badawi Software Development | Apps, web applications and MVPs",
+    "homeDescription": "Bilal Al-Badawi builds mobile apps, custom web applications, APIs and digital MVPs for founders, individuals and small businesses.",
+    "servicesTitle": "Services | Al-Badawi Software Development",
+    "projectsTitle": "Projects | Al-Badawi Software Development",
+    "aboutTitle": "About Bilal Al-Badawi | Software Development",
+    "contactTitle": "Contact | Request a project",
+    "legalTitle": "Legal | Al-Badawi Software Development"
+  },
+  "home": {
+    "heroTitle": "From idea to working software.",
+    "heroText": "Al-Badawi Software Development builds mobile apps, custom web applications and digital MVPs for founders, individuals and small businesses.",
+    "terminal": ["App", "Web", "API", "MVP"],
+    "competencies": "Core competencies",
+    "trust": "Competence areas",
+    "featured": "Selected projects",
+    "process": "Working process",
+    "aboutPreview": "Bilal Al-Badawi is an application development specialist building modern web applications, mobile apps and custom software. The focus is on functional MVPs, understandable architecture and economically sensible solutions for concrete problems.",
+    "ctaTitle": "Do you have an app or software idea?",
+    "ctaText": "Briefly describe your idea. Together we can clarify a sensible technical scope and turn it into a testable MVP.",
+    "competencyItems": ["Mobile apps", "Web applications", "MVP development", "APIs and backend", "Landing pages", "Automation"],
+    "trustItems": ["Frontend and backend development", "API integrations", "Database modeling", "iOS TestFlight experience", "Software architecture", "From idea to MVP"],
+    "processItems": ["Idea and requirements", "Concept and technical scope", "MVP development", "Testing and optimization", "Release and iteration"]
+  },
+  "services": {
+    "title": "Services",
+    "intro": "Custom software development focused on usable outcomes, clear architecture and realistic MVPs.",
+    "items": [
+      { "title": "Mobile app development", "text": "iOS and Android applications with React Native and Expo.", "uses": ["Prototypes", "MVPs", "App Store preparation"] },
+      { "title": "Custom web applications", "text": "Dashboards, platforms and internal browser-based software.", "uses": ["Admin tools", "Dashboards", "Business software"] },
+      { "title": "MVP and prototype development", "text": "Structure product ideas and prioritize core functions.", "uses": ["Technical scope", "First testable version", "Roadmap"] },
+      { "title": "Backend and API development", "text": "REST APIs, databases, authentication and external integrations.", "uses": ["Partner APIs", "Data models", "Interfaces"] },
+      { "title": "Websites and landing pages", "text": "Responsive business websites and multilingual product pages.", "uses": ["Product pages", "SEO", "Multilingual sites"] },
+      { "title": "Automation", "text": "Internal tools and connections between existing systems.", "uses": ["Data processing", "Workflows", "System links"] }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "Selected software projects with product focus and without artificial metrics.",
+    "problem": "Problem",
+    "solution": "Solution",
+    "features": "Features",
+    "technologies": "Technologies",
+    "role": "Role",
+    "filters": { "mobile": "Mobile apps", "web": "Web applications", "mvp": "MVP", "development": "In development", "completed": "Completed" }
+  },
+  "about": {
+    "title": "Bilal Al-Badawi",
+    "role": "Application development specialist focused on modern web applications, mobile apps, APIs, databases and MVP development.",
+    "text": "I build custom software solutions that solve concrete problems in an understandable and economically sensible way.",
+    "workflow": "My work combines product understanding, clean frontend and backend development, and pragmatic architecture decisions.",
+    "tech": "Technology overview"
+  },
+  "contact": {
+    "title": "Request a project",
+    "intro": "Briefly describe your project. I will respond with an initial technical assessment.",
+    "mailtoInfo": "After validation, your local email program will open.",
+    "success": "The request has been prepared.",
+    "send": "Send request",
+    "sending": "Sending",
+    "privacy": "I have read the privacy information.",
+    "fields": { "name": "Name", "email": "Email", "company": "Company", "projectType": "Project type", "timeline": "Desired timeline", "budget": "Budget range", "message": "Project description" },
+    "errors": { "required": "This field is required.", "email": "Please enter a valid email address.", "privacy": "Please confirm the privacy information.", "message": "Please describe your project in at least 20 characters." },
+    "types": ["Mobile app", "Web application", "Website or landing page", "API or backend", "Automation", "Extend existing software", "Not sure yet"],
+    "budgets": ["under EUR 1,000", "EUR 1,000-3,000", "EUR 3,000-7,500", "EUR 7,500-15,000", "over EUR 15,000", "open"]
+  },
+  "legal": {
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "placeholder": "Required information still needs to be added",
+    "privacyText": "This website does not use analytics tools, ad trackers, embedded social media widgets, marketing cookies, YouTube embeds, Google Maps or externally loaded fonts. The contact form processes submitted data only to handle the request."
+  },
+  "notFound": { "title": "Page not found", "text": "The requested page does not exist or has moved." },
+  "footer": { "text": "Al-Badawi Software Development is the professional web presence of Bilal Al-Badawi." }
+}

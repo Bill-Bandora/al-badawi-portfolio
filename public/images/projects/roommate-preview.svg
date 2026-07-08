@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">RoomMate+ Projektvorschau</title>
+  <desc id="desc">Haushalt, Aufgaben, Kalender und gemeinsame Organisation.</desc>
+  <rect width="960" height="600" fill="#ecfeff"/>
+  <path d="M180 300 480 110l300 190v210H180V300Z" fill="#0f172a"/>
+  <path d="M300 510V350h360v160" fill="#f8fafc"/>
+  <rect x="342" y="382" width="92" height="92" rx="12" fill="#cffafe"/>
+  <rect x="470" y="382" width="92" height="92" rx="12" fill="#e2e8f0"/>
+  <rect x="598" y="382" width="92" height="92" rx="12" fill="#cffafe"/>
+  <path d="m364 430 18 18 34-42M492 430h48M620 420h48M620 448h36" stroke="#0891b2" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="232" cy="196" r="42" fill="#22d3ee"/>
+  <circle cx="728" cy="196" r="42" fill="#22d3ee"/>
+</svg>
