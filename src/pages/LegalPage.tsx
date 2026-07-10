@@ -24,15 +24,15 @@ export function LegalPage({ type }: { type: 'imprint' | 'privacy' }) {
                 <br />
                 Bilal Al-Badawi
               </p>
-              <p>[ANSCHRIFT ERGÄNZEN]</p>
-              <p>[TELEFON OPTIONAL ERGÄNZEN]</p>
+              <p></p>
+              <p></p>
               <p>E-Mail: {siteConfig.email}</p>
-              <p>[STEUERLICHE ANGABEN NUR FALLS ERFORDERLICH]</p>
+              <p></p>
             </div>
           ) : (
             <div className="mt-8 grid gap-5 rounded-card border border-slate-200 bg-white p-6 leading-8 text-slate-700 shadow-sm">
               <p>{t('legal.privacyText')}</p>
-              <p>Verantwortlich: Bilal Al-Badawi, [ANSCHRIFT ERGÄNZEN], {siteConfig.email}</p>
+              <p>Verantwortlich: Bilal Al-Badawi, {siteConfig.email}</p>
               <p>Bei Nutzung des Kontaktformulars werden Name, E-Mail-Adresse, optionale Unternehmensangaben und die Projektbeschreibung verarbeitet, um die Anfrage zu beantworten.</p>
               <p>Es werden keine nicht notwendigen Cookies gesetzt.</p>
             </div>
