@@ -36,9 +36,11 @@ VITE_CONTACT_MODE=mailto
 
 ## Deployment über GitHub Pages
 
-Jeder Push auf `main` baut die Website und veröffentlicht `dist` automatisch über
-GitHub Pages. Die Custom Domain wird durch `public/CNAME` auf `al-badawi.de`
-festgelegt.
+Das private Quell-Repository wird lokal gebaut. Der statische Inhalt aus `dist`
+wird im öffentlichen Deployment-Repository `Bill-Bandora/al-badawi-site`
+veröffentlicht. Die Custom Domain wird durch `public/CNAME` auf `al-badawi.de`
+festgelegt. Für Client-Routen muss dort zusätzlich eine Kopie von `index.html`
+als `404.html` liegen.
 
 Da GitHub Pages kein PHP ausführt, verwendet das Deployment
 `VITE_CONTACT_MODE=mailto`.
