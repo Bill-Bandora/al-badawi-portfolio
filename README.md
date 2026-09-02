@@ -34,13 +34,14 @@ VITE_CONTACT_MODE=mailto
 
 `php` sendet JSON per POST an `/api/contact.php`. `mailto` validiert im Browser und oeffnet danach das lokale E-Mail-Programm.
 
-## Statisches STRATO-Deployment
+## Deployment über GitHub Pages
 
-1. `npm run build` ausfuehren.
-2. Inhalt des `dist`-Ordners per SFTP oder FTP auf den STRATO-Webspace hochladen.
-3. `.htaccess` mit hochladen.
-4. Domain `al-badawi.de` auf das Zielverzeichnis zeigen lassen.
-5. Falls PHP genutzt wird, muss der Inhalt von `server/api/` nach `dist/api/` beziehungsweise direkt auf dem Webspace nach `/api/` kopiert werden. Das Build-Skript `scripts/copy-server-api.mjs` erledigt das automatisch nach `vite build`.
+Jeder Push auf `main` baut die Website und veröffentlicht `dist` automatisch über
+GitHub Pages. Die Custom Domain wird durch `public/CNAME` auf `al-badawi.de`
+festgelegt.
+
+Da GitHub Pages kein PHP ausführt, verwendet das Deployment
+`VITE_CONTACT_MODE=mailto`.
 
 ## PHP-Pruefung auf STRATO
 
