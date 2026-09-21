@@ -53,25 +53,25 @@ export default function App() {
         <Route path="/" element={<RootRedirect />} />
         <Route path="/:lang" element={<LanguageGate />}>
           <Route index element={<HomePage />} />
-          {Object.values(routeMap.services.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.services.paths))].map((path) => (
             <Route key={path} path={path} element={<ServicesPage />} />
           ))}
-          {Object.values(routeMap.projects.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.projects.paths))].map((path) => (
             <Route key={path} path={path} element={<ProjectsPage />} />
           ))}
-          {Object.values(routeMap.projects.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.projects.paths))].map((path) => (
             <Route key={`${path}-detail`} path={`${path}/:slug`} element={<ProjectDetailPage />} />
           ))}
-          {Object.values(routeMap.about.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.about.paths))].map((path) => (
             <Route key={path} path={path} element={<AboutPage />} />
           ))}
-          {Object.values(routeMap.contact.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.contact.paths))].map((path) => (
             <Route key={path} path={path} element={<ContactPage />} />
           ))}
-          {Object.values(routeMap.imprint.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.imprint.paths))].map((path) => (
             <Route key={path} path={path} element={<LegalPage type="imprint" />} />
           ))}
-          {Object.values(routeMap.privacy.paths).map((path) => (
+          {[...new Set(Object.values(routeMap.privacy.paths))].map((path) => (
             <Route key={path} path={path} element={<LegalPage type="privacy" />} />
           ))}
           <Route path="*" element={<NotFoundPage />} />

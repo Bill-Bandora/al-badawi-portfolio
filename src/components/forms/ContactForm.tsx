@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { siteConfig } from '../../config/site';
 import { buildMailto, type ContactValues, validateContact } from '../../utils/contact';
@@ -23,6 +23,19 @@ export function ContactForm() {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [contactMode, setContactMode] = useState('mailto');
+
+  useEffect(() => {
+    if (siteConfig.contactMode !== 'php') return;
+    let active = true;
+    void fetch('/api/contact-config.php', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : null)
+      .then((config: { mode?: string } | null) => {
+        if (active) setContactMode(config?.mode === 'php' ? 'php' : 'mailto');
+      })
+      .catch(() => { /* Keep the usable mailto fallback when configuration is unavailable. */ });
+    return () => { active = false; };
+  }, []);
   const errors = useMemo(
     () =>
       validateContact(values, {
@@ -45,7 +58,7 @@ export function ContactForm() {
     if (Object.keys(errors).length > 0 || values.website) return;
     setSubmitting(true);
     try {
-      if (siteConfig.contactMode === 'php') {
+      if (contactMode === 'php') {
         const response = await fetch('/api/contact.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -55,7 +68,7 @@ export function ContactForm() {
       } else {
         window.location.href = buildMailto(values);
       }
-      setStatus(t('contact.success'));
+      setStatus(t(contactMode === 'php' ? 'contact.success' : 'contact.mailtoInfo'));
       setValues({ ...initialValues, startedAt: Date.now() });
     } catch {
       setStatus('Die Anfrage konnte nicht gesendet werden. Bitte nutze die E-Mail-Adresse direkt.');
@@ -66,7 +79,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-5 rounded-card border border-slate-200 bg-white p-5 shadow-sm md:p-8" noValidate>
-      {siteConfig.contactMode === 'mailto' ? <p className="rounded-card bg-cyan/10 p-3 text-sm text-cyan">{t('contact.mailtoInfo')}</p> : null}
+      {contactMode === 'mailto' ? <p className="rounded-card bg-cyan/10 p-3 text-sm text-cyan">{t('contact.mailtoInfo')}</p> : null}
       <div className="hidden" aria-hidden="true">
         <label>
           Website

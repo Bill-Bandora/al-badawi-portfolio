@@ -1,5 +1,6 @@
 <?php
+// Compatibility example for existing non-Docker installations.
 return [
-    'recipient' => 'albadawi335@gmail.com',
-    'from' => 'website@al-badawi.de',
+    'recipient' => getenv('CONTACT_RECIPIENT') ?: '',
+    'from' => getenv('SMTP_FROM') ?: '',
 ];

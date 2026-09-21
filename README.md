@@ -1,3 +1,7 @@
+> Self-hosted production: see [docker/README.md](docker/README.md).
+> `al-badawi-portfolio` is the source repository; `al-badawi-site` is legacy
+> GitHub Pages output and is not used for the Gen8 deployment.
+
 # Al-Badawi Software Development
 
 Produktionsreife statische Portfolio-Website fuer `https://al-badawi.de`.
