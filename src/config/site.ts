@@ -15,11 +15,6 @@ export const siteConfig = {
   email: 'albadawi335@gmail.com',
   githubUrl: 'https://github.com/Bill-Bandora?tab=repositories',
   contactMode: import.meta.env.VITE_CONTACT_MODE ?? 'mailto',
-  projectUrls: {
-    buynot: 'https://buynot.al-badawi.de',
-    deviceTracking: 'https://geraetenachverfolgung.al-badawi.de',
-    roommate: 'https://roommate.al-badawi.de',
-  },
 };
 
 export const routeMap = {

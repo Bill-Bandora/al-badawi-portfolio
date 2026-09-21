@@ -17,7 +17,6 @@
     "viewProjects": "Projekte ansehen",
     "requestProject": "Projekt anfragen",
     "viewProject": "Projekt ansehen",
-    "landingPreparing": "Landingpage in Vorbereitung",
     "copyEmail": "E-Mail kopieren",
     "copied": "Kopiert",
     "back": "Zurück",
@@ -113,5 +112,16 @@
   "notFound": { "title": "Seite nicht gefunden", "text": "Die angeforderte Seite existiert nicht oder wurde verschoben." },
   "footer": {
     "text": "Al-Badawi Software Development ist der professionelle Webauftritt von Bilal Al-Badawi."
+  },
+  "projectLanding": {
+    "overview": "Projektüberblick",
+    "approach": "Technischer Ansatz",
+    "evolution": "Stand & nächste Schritte",
+    "planned": "Geplant",
+    "visual": "Stilisiertes Projektvisual · kein Screenshot",
+    "cta": "Ähnliches Projekt besprechen",
+    "ctaText": "Von einer konkreten Herausforderung zu einer passenden Anwendung.",
+    "back": "Alle Projekte",
+    "scope": "Funktionsumfang im aktuellen Projektstand"
   }
 }

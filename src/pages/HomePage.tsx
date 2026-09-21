@@ -85,7 +85,7 @@ export function HomePage() {
 
       <section className="bg-ink px-4 py-16 text-white sm:px-6 lg:px-8">
         <SectionHeading title={t('home.featured')} />
-        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

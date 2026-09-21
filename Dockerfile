@@ -19,6 +19,7 @@ COPY docker/php.ini /usr/local/etc/php/conf.d/contact.ini
 COPY docker/entrypoint.sh /usr/local/bin/contact-entrypoint
 RUN chmod 0755 /usr/local/bin/contact-entrypoint
 COPY --from=frontend /app/dist/ /var/www/html/
+RUN mv /var/www/html/project-routes.conf /etc/apache2/project-routes.conf
 EXPOSE 80
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
     CMD php -r 'exit(@file_get_contents("http://127.0.0.1/") === false ? 1 : 0);'

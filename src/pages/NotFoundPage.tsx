@@ -9,7 +9,7 @@ export function NotFoundPage() {
   const { lang = 'de' } = useParams();
   return (
     <>
-      <SeoHead title={t('notFound.title')} description={t('notFound.text')} />
+      <SeoHead title={t('notFound.title')} description={t('notFound.text')} noindex />
       <section className="grid min-h-[60svh] place-items-center bg-paper px-4 py-16 text-center">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-cyan">404</p>

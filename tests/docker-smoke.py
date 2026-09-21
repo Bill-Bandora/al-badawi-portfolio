@@ -59,6 +59,15 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
             raise AssertionError('Apache did not become ready')
 
         home = request('/')[1]
+        for language in ['de', 'en', 'ar']:
+            prefix = '/' + language + '/' + ('projekte' if language == 'de' else 'projects')
+            for slug in ['bandora-org', 'buynot', 'geraete-nachverfolgung', 'roommate-plus']:
+                assert request(prefix + '/' + slug)[:2] == (200, home)
+            assert request(prefix + '/unknown-project')[0] == 404
+            assert request(prefix + '/unknown-project')[1] == home
+        assert request('/project-routes.conf')[0] == 200  # SPA fallback, never the Apache configuration
+        assert 'RewriteRule' not in request('/project-routes.conf')[1]
+
         for route in ['/de/kontakt', '/en/services', '/ar/projects', '/de/unknown']:
             assert request(route)[:2] == (200, home)
         for asset in re.findall(r'(?:src|href)="(/assets/[^"]+)"', home):

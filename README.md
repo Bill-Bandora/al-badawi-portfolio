@@ -73,4 +73,6 @@ node scripts/copy-server-api.mjs
 - Steuerliche Angaben nur, falls erforderlich.
 - PHP-Absenderadresse in `server/api/config.php` auf eine Domain-Adresse wie `website@al-badawi.de` setzen.
 - Echte Projekt-Screenshots, sobald vorhanden.
-- Externe Projekt-Landingpages in `src/data/projects.ts` aktivieren, sobald sie live sind.
+- Projekt-Landingpages werden zentral in `src/data/projects.ts` gepflegt und innerhalb der bestehenden App ausgeliefert (DE/EN/AR). Keine separaten Dienste oder Subdomains.
+- `vite.config.ts` erzeugt Sitemap und Apache-Slug-Regeln aus denselben Projektdaten. Unbekannte Projekt-Slugs liefern im Docker-Runtime HTTP 404 mit der lokalisierten React-Fehlerseite.
+- Bandora Org: SVG ist eine Illustration, kein Screenshot. Geplante Erweiterungen bleiben getrennt; unbestätigte Technologien und Update-Artefakt-Repository werden nicht als Quellcode veröffentlicht.

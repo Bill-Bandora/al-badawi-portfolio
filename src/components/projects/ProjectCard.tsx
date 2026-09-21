@@ -12,7 +12,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const { t } = useTranslation();
   return (
     <article className="group grid overflow-hidden rounded-card border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft focus-within:shadow-soft">
-      <img src={project.image} alt="" className="aspect-[16/10] w-full bg-slate-100 object-cover" loading="lazy" />
+      <img src={project.image} alt="" width="960" height="600" className="aspect-[16/10] w-full bg-slate-100 object-cover" loading="lazy" />
       <div className="grid gap-4 p-5">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge label={localized(project.status, lang)} />
@@ -31,13 +31,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <Link to={`/${lang}/${routePath('projects', lang)}/${project.slug}`} className="inline-flex min-h-11 items-center rounded-card bg-ink px-4 py-2 font-semibold text-white transition hover:bg-cyan">
             {t('common.viewProject')} <ArrowUpRight className="ms-2 size-4 rtl:rotate-180" />
           </Link>
-          {project.landingPageLive ? (
-            <a href={project.landingPageUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-card border border-slate-300 px-4 py-2 font-semibold text-ink hover:border-cyan hover:text-cyan">
-              {t('common.external')}
-            </a>
-          ) : (
-            <span className="inline-flex min-h-11 items-center rounded-card border border-slate-200 px-4 py-2 text-sm font-medium text-slate-500">{t('common.landingPreparing')}</span>
-          )}
+
         </div>
       </div>
     </article>

@@ -19,7 +19,7 @@ export function ProjectsPage() {
         <SectionHeading title={t('projects.title')} intro={t('projects.intro')} />
         <div className="mx-auto max-w-7xl">
           <ProjectFilter value={filter} onChange={setFilter} />
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {filtered.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

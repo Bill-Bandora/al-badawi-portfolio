@@ -17,7 +17,6 @@
     "viewProjects": "View projects",
     "requestProject": "Request project",
     "viewProject": "View project",
-    "landingPreparing": "Landing page in preparation",
     "copyEmail": "Copy email",
     "copied": "Copied",
     "back": "Back",
@@ -98,5 +97,16 @@
     "privacyText": "This website does not use analytics tools, ad trackers, embedded social media widgets, marketing cookies, YouTube embeds, Google Maps or externally loaded fonts. The contact form processes submitted data only to handle the request."
   },
   "notFound": { "title": "Page not found", "text": "The requested page does not exist or has moved." },
-  "footer": { "text": "Al-Badawi Software Development is the professional web presence of Bilal Al-Badawi." }
+  "footer": { "text": "Al-Badawi Software Development is the professional web presence of Bilal Al-Badawi." },
+  "projectLanding": {
+    "overview": "Project overview",
+    "approach": "Technical approach",
+    "evolution": "Status & next steps",
+    "planned": "Planned",
+    "visual": "Illustrative project visual · not a screenshot",
+    "cta": "Discuss a similar project",
+    "ctaText": "From a specific challenge to a fitting application.",
+    "back": "All projects",
+    "scope": "Capabilities at the current project stage"
+  }
 }

@@ -27,9 +27,14 @@ describe('portfolio app', () => {
     expect(screen.queryByText('BuyNot')).not.toBeInTheDocument();
   });
 
-  it('keeps external landing pages disabled until live', () => {
+  it('shows all four projects with internal primary links', () => {
     renderWithProviders(<App />, '/de/projekte');
-    expect(screen.getAllByText('Landingpage in Vorbereitung')).toHaveLength(3);
+    expect(screen.getByRole('heading', { name: 'Bandora Org' })).toBeInTheDocument();
+    const links = screen.getAllByRole('link', { name: /Projekt ansehen/ });
+    expect(links).toHaveLength(4);
+    expect(links[0]).toHaveAttribute('href', '/de/projekte/bandora-org');
+    for (const link of links) expect(link.getAttribute('href')).toMatch(/^\/de\/projekte\//);
+    expect(screen.queryByText(/Landingpage in Vorbereitung/)).not.toBeInTheDocument();
   });
 
   it('renders navigation links', () => {

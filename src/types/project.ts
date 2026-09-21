@@ -18,8 +18,8 @@ export interface Project {
   technologies: string[];
   role: LocalizedText[];
   image: string;
-  landingPageUrl: string;
-  landingPageLive: boolean;
-  githubUrl?: string;
+  architectureNotes: LocalizedText;
+  developmentStatus: LocalizedText;
+  futureFeatures?: LocalizedText[];
   filters: string[];
 }
