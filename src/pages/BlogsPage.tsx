@@ -22,6 +22,7 @@ export function BlogsPage() {
         <SectionHeading
           title="Blogs"
           intro="Gedanken, Erfahrungen und praktische Impulse rund um Websites, Digitalisierung und Software. Ohne unnötiges Fachchinesisch."
+          level={1}
         />
         <div className="mx-auto max-w-5xl">
           {blogs.map((blog) => (

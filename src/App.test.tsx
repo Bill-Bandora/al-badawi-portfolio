@@ -50,6 +50,14 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: /eine website arbeitet auch nach feierabend/i })).toBeInTheDocument();
   });
 
+  it('renders a service detail page with related projects and contact CTA', () => {
+    renderWithProviders(<App />, '/de/leistungen/webentwicklung');
+    expect(screen.getByRole('heading', { name: 'Webentwicklung', level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Typische Anwendungsfälle' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Geräte-Nachverfolgung/ })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
+    expect(screen.getByRole('link', { name: 'Projekt besprechen' })).toHaveAttribute('href', '/de/kontakt');
+  });
+
   it('builds mailto fallback', () => {
     const href = buildMailto({
       name: 'Bilal',

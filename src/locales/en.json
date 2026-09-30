@@ -62,6 +62,19 @@
       { "title": "Automation", "text": "Internal tools and connections between existing systems.", "uses": ["Data processing", "Workflows", "System links"] }
     ]
   },
+  "serviceDetail": {
+    "detailTitle": "Services in detail",
+    "detailIntro": "Learn more about the process, typical use cases, technologies and relevant existing projects.",
+    "view": "View details",
+    "audience": "Who is this service for?",
+    "useCases": "Typical use cases",
+    "benefits": "Benefits",
+    "process": "Process",
+    "technologies": "Relevant technologies",
+    "projects": "Relevant existing projects",
+    "cta": "Discuss the right solution",
+    "ctaText": "Briefly describe the challenge. The next step is to identify a sensible technical scope."
+  },
   "projects": {
     "title": "Projects",
     "intro": "Selected software projects with product focus and without artificial metrics.",

@@ -8,5 +8,5 @@
     "strict": true,
     "noEmit": true
   },
-  "include": ["vite.config.ts", "vitest.setup.ts", "eslint.config.js", "src/data/projects.ts", "src/data/blogs.ts", "src/types/project.ts"]
+  "include": ["vite.config.ts", "vitest.setup.ts", "eslint.config.js", "src/data/projects.ts", "src/data/blogs.ts", "src/data/services.ts", "src/types/project.ts"]
 }

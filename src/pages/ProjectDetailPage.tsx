@@ -2,13 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { projects } from '../data/projects';
 import { localized } from '../utils/language';
-import { localizedUrl } from '../config/site';
+import { localizedUrl, routePath, siteConfig } from '../config/site';
 import { SeoHead } from '../components/common/SeoHead';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { TechnologyTag } from '../components/ui/TechnologyTag';
 import { StatusBadge } from '../components/ui/StatusBadge';
 import { ButtonLink } from '../components/ui/Button';
 import { NotFoundPage } from './NotFoundPage';
+import { services } from '../data/services';
 
 const themes: Record<string, { hero: string; number: string; reverse?: boolean }> = {
   'bandora-org': { hero: 'bg-slate-900 text-white', number: 'text-cyan-300' },
@@ -23,10 +24,22 @@ export function ProjectDetailPage() {
   const project = projects.find((item) => item.slug === slug);
   if (!project) return <NotFoundPage />;
   const theme = themes[project.id] ?? themes['bandora-org'];
+  const relatedServices = services.filter((service) => service.projectSlugs.includes(project.slug));
 
   return (
     <>
-      <SeoHead title={`${project.title} | Al-Badawi Software Development`} description={localized(project.shortDescription, lang)} path={`projekte/${project.slug}`} image={project.image} />
+      <SeoHead
+        title={`${project.title} | Al-Badawi Software Development`}
+        description={localized(project.shortDescription, lang)}
+        path={`${routePath('projects', lang)}/${project.slug}`}
+        image={project.image}
+        imageAlt={`${project.title}: ${localized(project.category, lang)}`}
+        breadcrumbs={[
+          { name: t('common.home'), url: `${siteConfig.domain}/${lang}/` },
+          { name: t('projects.title'), url: `${siteConfig.domain}${localizedUrl('projects', lang)}` },
+          { name: project.title, url: `${siteConfig.domain}/${lang}/${routePath('projects', lang)}/${project.slug}` },
+        ]}
+      />
       <div className="bg-paper px-4 pt-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl"><Breadcrumbs current={project.title} parent={{ label: t('projects.title'), to: localizedUrl('projects', lang) }} /></div>
       </div>
@@ -40,7 +53,7 @@ export function ProjectDetailPage() {
             <ButtonLink to={localizedUrl('contact', lang)} variant="dark" className="mt-8">{t('projectLanding.cta')}</ButtonLink>
           </div>
           <figure className={`min-w-0 ${theme.reverse ? 'lg:order-1' : ''}`}>
-            <img src={project.image} width="960" height="600" alt="" className="aspect-[16/10] w-full rounded-2xl border border-white/20 bg-paper object-cover shadow-soft" />
+            <img src={project.image} width="960" height="600" alt={`${project.title}: ${localized(project.category, lang)}`} className="aspect-[16/10] w-full rounded-2xl border border-white/20 bg-paper object-cover shadow-soft" />
             <figcaption className="mt-3 text-sm text-slate-300">{t('projectLanding.visual')}</figcaption>
           </figure>
         </div>
@@ -101,6 +114,9 @@ export function ProjectDetailPage() {
         <div className="mx-auto max-w-6xl rounded-2xl bg-ink p-8 text-white sm:p-12">
           <h2 className="max-w-2xl text-3xl font-semibold">{t('projectLanding.cta')}</h2>
           <p className="mt-4 text-slate-300">{t('projectLanding.ctaText')}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {relatedServices.map((service) => <ButtonLink key={service.slug} to={`/${lang}/${routePath('services', lang)}/${service.slug}`} variant="dark">{localized(service.title, lang)}</ButtonLink>)}
+          </div>
           <div className="mt-8 flex flex-wrap gap-4">
             <ButtonLink to={localizedUrl('contact', lang)} variant="dark">{t('nav.contact')}</ButtonLink>
             <ButtonLink to={localizedUrl('projects', lang)} variant="dark">{t('projectLanding.back')}</ButtonLink>

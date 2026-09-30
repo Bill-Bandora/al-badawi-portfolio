@@ -16,7 +16,7 @@ export function ProjectsPage() {
     <>
       <SeoHead title={t('seo.projectsTitle')} description={t('projects.intro')} path="projekte" />
       <section className="bg-paper px-4 py-16 sm:px-6 lg:px-8">
-        <SectionHeading title={t('projects.title')} intro={t('projects.intro')} />
+        <SectionHeading title={t('projects.title')} intro={t('projects.intro')} level={1} />
         <div className="mx-auto max-w-7xl">
           <ProjectFilter value={filter} onChange={setFilter} />
           <div className="grid gap-6 md:grid-cols-2">

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { Layout } from './layouts/Layout';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
+import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { BlogsPage } from './pages/BlogsPage';
 import { BlogArticlePage } from './pages/BlogArticlePage';
@@ -57,6 +58,9 @@ export default function App() {
           <Route index element={<HomePage />} />
           {[...new Set(Object.values(routeMap.services.paths))].map((path) => (
             <Route key={path} path={path} element={<ServicesPage />} />
+          ))}
+          {[...new Set(Object.values(routeMap.services.paths))].map((path) => (
+            <Route key={`${path}-detail`} path={`${path}/:slug`} element={<ServiceDetailPage />} />
           ))}
           {[...new Set(Object.values(routeMap.projects.paths))].map((path) => (
             <Route key={path} path={path} element={<ProjectsPage />} />

@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { SeoHead } from '../components/common/SeoHead';
 import { ButtonLink } from '../components/ui/Button';
 import { findBlog } from '../data/blogs';
-import { localizedUrl } from '../config/site';
+import { localizedUrl, siteConfig } from '../config/site';
 
 export function BlogArticlePage() {
   const { lang = 'de', slug } = useParams();
@@ -13,7 +13,28 @@ export function BlogArticlePage() {
 
   return (
     <>
-      <SeoHead title={`${blog.title} | Al-Badawi`} description={blog.excerpt} path={`blogs/${blog.slug}`} />
+      <SeoHead
+        title={`${blog.title} | Al-Badawi`}
+        description={blog.excerpt}
+        path={`blogs/${blog.slug}`}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: blog.title,
+          description: blog.excerpt,
+          datePublished: blog.publishedAt,
+          dateModified: blog.publishedAt,
+          inLanguage: 'de',
+          mainEntityOfPage: `${siteConfig.domain}/${lang}/blogs/${blog.slug}`,
+          author: { '@type': 'Person', name: siteConfig.developerName },
+          publisher: { '@type': 'Organization', name: siteConfig.brandName, url: siteConfig.domain },
+        }}
+        breadcrumbs={[
+          { name: 'Startseite', url: `${siteConfig.domain}/${lang}/` },
+          { name: 'Blogs', url: `${siteConfig.domain}${localizedUrl('blogs', lang)}` },
+          { name: blog.title, url: `${siteConfig.domain}/${lang}/blogs/${blog.slug}` },
+        ]}
+      />
       <article className="bg-white">
         <header className="bg-gradient-to-br from-ink via-coal to-blue px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -77,7 +98,10 @@ export function BlogArticlePage() {
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan">Der nächste Schritt</p>
             <h2 className="mt-3 text-2xl font-semibold">Dein Unternehmen soll online sichtbar werden?</h2>
             <p className="mt-3 leading-7 text-slate-300">Ich entwickle übersichtliche, schnelle Websites, die zu deinem Betrieb und deinen Kunden passen.</p>
-            <ButtonLink to={localizedUrl('contact', lang)} variant="dark" className="mt-6">Unverbindlich anfragen</ButtonLink>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink to={`/${lang}/${lang === 'de' ? 'leistungen' : 'services'}/webentwicklung`} variant="dark">Mehr zur Webentwicklung</ButtonLink>
+              <ButtonLink to={localizedUrl('contact', lang)} variant="dark">Unverbindlich anfragen</ButtonLink>
+            </div>
           </aside>
         </div>
       </article>

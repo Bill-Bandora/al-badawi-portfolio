@@ -2,7 +2,10 @@ import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { languages, siteConfig, routeMap } from '../../config/site';
 
-export function SeoHead({ title, description, path = '', image, noindex = false }: { title: string; description: string; path?: string; image?: string; noindex?: boolean }) {
+type Schema = Record<string, unknown>;
+type Breadcrumb = { name: string; url: string };
+
+export function SeoHead({ title, description, path = '', image, imageAlt, noindex = false, schema, breadcrumbs }: { title: string; description: string; path?: string; image?: string; imageAlt?: string; noindex?: boolean; schema?: Schema; breadcrumbs?: Breadcrumb[] }) {
   const { lang = 'de' } = useParams();
   const url = (language: string) => {
     const [segment, ...rest] = path.split('/');
@@ -11,19 +14,25 @@ export function SeoHead({ title, description, path = '', image, noindex = false 
     return `${siteConfig.domain}/${language}/${[prefix, ...rest].join('/')}`;
   };
   const canonical = url(lang);
-  const jsonLd = {
+  const baseSchema = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: siteConfig.brandName,
-    url: siteConfig.domain,
-    author: { '@type': 'Person', name: siteConfig.developerName, email: siteConfig.email },
+    '@graph': [
+      { '@type': 'Organization', '@id': `${siteConfig.domain}/#organization`, name: siteConfig.brandName, url: siteConfig.domain, founder: { '@type': 'Person', name: siteConfig.developerName }, sameAs: [siteConfig.githubUrl] },
+      { '@type': 'WebSite', '@id': `${siteConfig.domain}/#website`, name: siteConfig.brandName, url: siteConfig.domain, publisher: { '@id': `${siteConfig.domain}/#organization` }, inLanguage: languages.map((item) => item.code) },
+    ],
+  };
+  const breadcrumbSchema = breadcrumbs && {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, item: item.url })),
   };
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
+      <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+      {!noindex && <link rel="canonical" href={canonical} />}
       {!noindex && languages.map((item) => (
         <link key={item.code} rel="alternate" hrefLang={item.code} href={url(item.code)} />
       ))}
@@ -31,9 +40,16 @@ export function SeoHead({ title, description, path = '', image, noindex = false 
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonical} />
+      <meta property="og:site_name" content={siteConfig.brandName} />
+      <meta property="og:locale" content={lang === 'de' ? 'de_DE' : lang === 'ar' ? 'ar_AR' : 'en_US'} />
       {image && <meta property="og:image" content={`${siteConfig.domain}${image}`} />}
+      {image && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
       <meta name="twitter:card" content="summary_large_image" />
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <script type="application/ld+json">{JSON.stringify(baseSchema)}</script>
+      {schema && <script type="application/ld+json">{JSON.stringify(schema)}</script>}
+      {breadcrumbSchema && <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>}
     </Helmet>
   );
 }

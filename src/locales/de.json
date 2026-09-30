@@ -62,6 +62,19 @@
       { "title": "Automatisierung", "text": "Interne Werkzeuge und Verbindungen bestehender Systeme.", "uses": ["Datenverarbeitung", "Workflows", "Systemverbindungen"] }
     ]
   },
+  "serviceDetail": {
+    "detailTitle": "Leistungen im Detail",
+    "detailIntro": "Mehr über Ablauf, typische Einsatzbereiche, Technologien und passende bestehende Projekte erfahren.",
+    "view": "Details ansehen",
+    "audience": "Für wen ist diese Leistung gedacht?",
+    "useCases": "Typische Anwendungsfälle",
+    "benefits": "Vorteile",
+    "process": "Ablauf",
+    "technologies": "Relevante Technologien",
+    "projects": "Passende bestehende Projekte",
+    "cta": "Passende Lösung gemeinsam klären",
+    "ctaText": "Beschreibe kurz die Herausforderung. Im nächsten Schritt lässt sich der sinnvolle technische Umfang einordnen."
+  },
   "projects": {
     "title": "Projekte",
     "intro": "Ausgewählte Softwareprojekte mit klarem Produktfokus und ohne künstliche Metriken.",

@@ -12,7 +12,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const { t } = useTranslation();
   return (
     <article className="group grid overflow-hidden rounded-card border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft focus-within:shadow-soft">
-      <img src={project.image} alt="" width="960" height="600" className="aspect-[16/10] w-full bg-slate-100 object-cover" loading="lazy" />
+      <img src={project.image} alt={`${project.title}: ${localized(project.category, lang)}`} width="960" height="600" className="aspect-[16/10] w-full bg-slate-100 object-cover" loading="lazy" decoding="async" />
       <div className="grid gap-4 p-5">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge label={localized(project.status, lang)} />
