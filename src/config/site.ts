@@ -21,6 +21,7 @@ export const routeMap = {
   home: { key: 'home', paths: { de: '', en: '', ar: '' } },
   services: { key: 'services', paths: { de: 'leistungen', en: 'services', ar: 'services' } },
   projects: { key: 'projects', paths: { de: 'projekte', en: 'projects', ar: 'projects' } },
+  blogs: { key: 'blogs', paths: { de: 'blogs', en: 'blogs', ar: 'blogs' } },
   about: { key: 'about', paths: { de: 'ueber-mich', en: 'about', ar: 'about' } },
   contact: { key: 'contact', paths: { de: 'kontakt', en: 'contact', ar: 'contact' } },
   imprint: { key: 'imprint', paths: { de: 'impressum', en: 'imprint', ar: 'imprint' } },
@@ -31,6 +32,7 @@ export const navItems = [
   routeMap.home,
   routeMap.services,
   routeMap.projects,
+  routeMap.blogs,
   routeMap.about,
   routeMap.contact,
 ] as const;

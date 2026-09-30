@@ -3,6 +3,7 @@
     "home": "Startseite",
     "services": "Leistungen",
     "projects": "Projekte",
+    "blogs": "Blogs",
     "about": "Über mich",
     "contact": "Kontakt",
     "imprint": "Impressum",
@@ -29,6 +30,7 @@
     "homeDescription": "Bilal Al-Badawi entwickelt mobile Apps, individuelle Webanwendungen, APIs und digitale MVPs für Gründer, Privatpersonen und kleine Unternehmen.",
     "servicesTitle": "Leistungen | Al-Badawi Software Development",
     "projectsTitle": "Projekte | Al-Badawi Software Development",
+    "blogsTitle": "Blogs | Digitalisierung für kleine Unternehmen",
     "aboutTitle": "Über Bilal Al-Badawi | Softwareentwicklung",
     "contactTitle": "Kontakt | Projekt anfragen",
     "legalTitle": "Rechtliches | Al-Badawi Software Development"

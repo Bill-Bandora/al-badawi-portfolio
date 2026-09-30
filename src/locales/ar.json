@@ -3,6 +3,7 @@
     "home": "الرئيسية",
     "services": "الخدمات",
     "projects": "المشاريع",
+    "blogs": "المدونة",
     "about": "نبذة عني",
     "contact": "التواصل",
     "imprint": "بيانات قانونية",
@@ -29,6 +30,7 @@
     "homeDescription": "يطور Bilal Al-Badawi تطبيقات جوال وتطبيقات ويب مخصصة وواجهات API ونماذج MVP للمؤسسين والأفراد والشركات الصغيرة.",
     "servicesTitle": "الخدمات | Al-Badawi Software Development",
     "projectsTitle": "المشاريع | Al-Badawi Software Development",
+    "blogsTitle": "المدونة | الرقمنة للشركات الصغيرة",
     "aboutTitle": "نبذة عن Bilal Al-Badawi | تطوير برمجيات",
     "contactTitle": "التواصل | طلب مشروع",
     "legalTitle": "القانوني | Al-Badawi Software Development"

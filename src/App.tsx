@@ -5,6 +5,8 @@ import { Layout } from './layouts/Layout';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ProjectsPage } from './pages/ProjectsPage';
+import { BlogsPage } from './pages/BlogsPage';
+import { BlogArticlePage } from './pages/BlogArticlePage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -61,6 +63,12 @@ export default function App() {
           ))}
           {[...new Set(Object.values(routeMap.projects.paths))].map((path) => (
             <Route key={`${path}-detail`} path={`${path}/:slug`} element={<ProjectDetailPage />} />
+          ))}
+          {[...new Set(Object.values(routeMap.blogs.paths))].map((path) => (
+            <Route key={path} path={path} element={<BlogsPage />} />
+          ))}
+          {[...new Set(Object.values(routeMap.blogs.paths))].map((path) => (
+            <Route key={`${path}-article`} path={`${path}/:slug`} element={<BlogArticlePage />} />
           ))}
           {[...new Set(Object.values(routeMap.about.paths))].map((path) => (
             <Route key={path} path={path} element={<AboutPage />} />

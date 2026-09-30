@@ -41,6 +41,13 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/en/');
     expect(screen.getAllByRole('link', { name: /services/i })[0]).toHaveAttribute('href', '/en/services');
     expect(screen.getAllByRole('link', { name: /projects/i })[0]).toHaveAttribute('href', '/en/projects');
+    expect(screen.getAllByRole('link', { name: /blogs/i })[0]).toHaveAttribute('href', '/en/blogs');
+  });
+
+  it('renders the blog article', () => {
+    renderWithProviders(<App />, '/de/blogs/warum-kleine-unternehmen-eine-website-brauchen');
+    expect(screen.getByRole('heading', { name: /keine website/i, level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /eine website arbeitet auch nach feierabend/i })).toBeInTheDocument();
   });
 
   it('builds mailto fallback', () => {

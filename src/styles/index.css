@@ -50,6 +50,30 @@ img {
   transform: rotate(180deg);
 }
 
+.blog-content {
+  color: #334155;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.blog-content .lead {
+  color: #0f172a;
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.blog-content h2 {
+  margin-top: 2.75rem;
+  color: #0f172a;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.blog-content p {
+  margin-top: 1.25rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
