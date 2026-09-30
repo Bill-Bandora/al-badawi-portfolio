@@ -17,7 +17,8 @@ RUN apt-get update \
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/php.ini /usr/local/etc/php/conf.d/contact.ini
 COPY docker/entrypoint.sh /usr/local/bin/contact-entrypoint
-RUN chmod 0755 /usr/local/bin/contact-entrypoint
+RUN sed -i 's/\r$//' /usr/local/bin/contact-entrypoint \
+    && chmod 0755 /usr/local/bin/contact-entrypoint
 COPY --from=frontend /app/dist/ /var/www/html/
 RUN mv /var/www/html/project-routes.conf /etc/apache2/project-routes.conf
 EXPOSE 80

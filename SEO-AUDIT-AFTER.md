@@ -89,7 +89,7 @@ Es wurden keine LocalBusiness-Daten, Bewertungen, Kunden, Kennzahlen oder Stando
 - Produktionsbuild: bestanden.
 - 51/51 vorgerenderte Dokumente besitzen genau einen Titel, eine H1 und einen Canonical.
 - Sitemap und robots.txt werden erzeugt bzw. kopiert.
-- Ein lokaler Docker-Smoke-Test war auf dem Windows-Arbeitsplatz nicht möglich, weil Docker Desktop nicht lief. Der unveränderte Docker-Aufbau wird deshalb vor bzw. beim Server-Deployment auf Gen8 geprüft.
+- Docker Desktop lief auf dem Windows-Arbeitsplatz nicht; deshalb wurde das Produktionsimage direkt auf Gen8 gebaut und dort isoliert geprüft. Die Entrypoint-Zeilenenden werden im Docker-Build zusätzlich normalisiert, damit Builds unabhängig von der Checkout-Plattform starten.
 
 ## 12. Noch offene SEO-Aufgaben
 
