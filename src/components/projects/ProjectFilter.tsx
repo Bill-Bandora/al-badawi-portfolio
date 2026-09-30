@@ -7,8 +7,8 @@ export function ProjectFilter({ value, onChange }: { value: string; onChange: (v
   const { t } = useTranslation();
   const [, setSearchParams] = useSearchParams();
   return (
-    <div className="-mx-4 mb-8 overflow-x-auto px-4" role="toolbar" aria-label="Projektfilter">
-      <div className="flex min-w-max gap-2">
+    <div className="mb-8" role="toolbar" aria-label="Projektfilter">
+      <div className="flex flex-wrap gap-x-2 gap-y-3">
         {filters.map((filter) => (
           <button
             key={filter}

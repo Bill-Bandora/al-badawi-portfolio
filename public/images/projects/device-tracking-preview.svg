@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
-  <title id="title">Geräte-Nachverfolgung Projektvorschau</title>
-  <desc id="desc">Dashboard mit Gerätefluss, Statuskarten und Historie.</desc>
-  <rect width="960" height="600" fill="#f8fafc"/>
-  <rect x="80" y="70" width="800" height="460" rx="16" fill="#0f172a"/>
-  <rect x="120" y="120" width="170" height="350" rx="10" fill="#1e293b"/>
-  <rect x="330" y="120" width="220" height="130" rx="10" fill="#e2e8f0"/>
-  <rect x="590" y="120" width="220" height="130" rx="10" fill="#cffafe"/>
-  <rect x="330" y="294" width="480" height="176" rx="10" fill="#ffffff"/>
-  <path d="M376 176h128M636 176h128M376 350h360M376 396h300M376 442h240" stroke="#0891b2" stroke-width="16" stroke-linecap="round"/>
-  <path d="M550 185h40" stroke="#22d3ee" stroke-width="12" stroke-linecap="round"/>
-  <circle cx="170" cy="170" r="22" fill="#22d3ee"/>
-  <circle cx="170" cy="250" r="22" fill="#94a3b8"/>
-  <circle cx="170" cy="330" r="22" fill="#94a3b8"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="t d"><title id="t">Geräte-Nachverfolgung</title><desc id="d">Enterprise Dashboard für Gerätestatus und Historie</desc><defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#080d18"/><stop offset="1" stop-color="#182448"/></linearGradient></defs><rect width="960" height="600" fill="url(#b)"/><rect x="52" y="50" width="856" height="500" rx="24" fill="#0c1424" stroke="#818cf8" stroke-opacity=".45"/><rect x="52" y="50" width="190" height="500" rx="24" fill="#10182b"/><text x="82" y="100" fill="#c7d2fe" font-family="Arial" font-size="23" font-weight="700">DEVICE OPS</text><g fill="#94a3b8" font-family="Arial" font-size="16"><text x="82" y="170">Dashboard</text><text x="82" y="215">Gerätesuche</text><text x="82" y="260">Mitarbeiter</text><text x="82" y="305">Abteilungen</text><text x="82" y="350">Historie</text></g><text x="282" y="105" fill="#f8fafc" font-family="Arial" font-size="28" font-weight="700">Gerätefluss</text><rect x="282" y="140" width="586" height="70" rx="14" fill="#131e34"/><text x="310" y="183" fill="#64748b" font-family="Arial" font-size="17">Inventarnummer oder Gerät suchen…</text><g fill="#111c31" stroke="#334155"><rect x="282" y="245" width="270" height="250" rx="16"/><rect x="578" y="245" width="290" height="250" rx="16"/></g><g font-family="Arial"><text x="310" y="287" fill="#67e8f9" font-size="16">CURRENT STATE</text><text x="310" y="335" fill="#e2e8f0" font-size="24">NB-2048</text><text x="310" y="375" fill="#94a3b8" font-size="16">Standort · Service</text><text x="310" y="405" fill="#94a3b8" font-size="16">Mitarbeiter · A. Keller</text><rect x="310" y="435" width="120" height="32" rx="16" fill="#164e63"/><text x="370" y="457" fill="#67e8f9" font-size="14" text-anchor="middle">IN PRÜFUNG</text><text x="606" y="287" fill="#a5b4fc" font-size="16">TRANSACTION HISTORY</text><text x="606" y="335" fill="#e2e8f0" font-size="16">09:42 · Statuswechsel</text><text x="606" y="375" fill="#e2e8f0" font-size="16">09:18 · Abteilung</text><text x="606" y="415" fill="#e2e8f0" font-size="16">08:55 · Zuweisung</text><text x="606" y="455" fill="#86efac" font-size="16">✓ Rollback-safe</text></g></svg>

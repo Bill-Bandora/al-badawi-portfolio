@@ -50,7 +50,7 @@ export function ProjectDetailPage() {
   return (
     <>
       <SeoHead
-        title={`${project.title} | Al-Badawi Software Development`}
+        title={`${project.title} | Bandora Development`}
         description={localized(project.shortDescription, lang)}
         path={`${routePath('projects', lang)}/${project.slug}`}
         image={project.image}

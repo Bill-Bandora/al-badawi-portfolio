@@ -1,3 +1,5 @@
+import { BrandCrest } from './BrandCrest';
+
 export function ProfileVisual() {
   return (
     <div className="glow-border relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-[1.4rem] bg-night shadow-deep">
@@ -10,9 +12,9 @@ export function ProfileVisual() {
           event.currentTarget.style.display = 'none';
         }}
       />
-      <div className="glass-panel absolute inset-x-6 bottom-6 rounded-card p-4 text-white">
-        <p className="text-sm uppercase tracking-widest text-cyan">AB</p>
-        <p className="font-semibold">Software Development</p>
+      <div className="glass-panel absolute inset-x-5 bottom-5 flex items-center gap-4 rounded-card p-3 text-white">
+        <BrandCrest cropped className="block size-16 shrink-0 border border-gold/60" />
+        <div><p className="text-xs uppercase tracking-widest text-gold">Bandora</p><p className="font-semibold">Development</p></div>
       </div>
     </div>
   );

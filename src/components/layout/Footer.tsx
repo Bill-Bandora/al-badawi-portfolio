@@ -41,7 +41,7 @@ export function Footer() {
           <LanguageSwitcher />
         </div>
       </div>
-      <div className="relative border-t border-white/10 px-4 py-4 text-center text-sm text-slate-500">© {new Date().getFullYear()} Al-Badawi Software Development</div>
+      <div className="relative border-t border-white/10 px-4 py-4 text-center text-sm text-slate-500">© {new Date().getFullYear()} Bandora Development</div>
     </footer>
   );
 }

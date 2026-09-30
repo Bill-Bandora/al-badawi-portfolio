@@ -26,18 +26,18 @@
     "home": "الرئيسية"
   },
   "seo": {
-    "homeTitle": "Al-Badawi Software Development | تطبيقات وويب ونماذج MVP",
+    "homeTitle": "Bandora Development | تطبيقات وويب ونماذج MVP",
     "homeDescription": "يطور Bilal Al-Badawi تطبيقات جوال وتطبيقات ويب مخصصة وواجهات API ونماذج MVP للمؤسسين والأفراد والشركات الصغيرة.",
-    "servicesTitle": "الخدمات | Al-Badawi Software Development",
-    "projectsTitle": "المشاريع | Al-Badawi Software Development",
+    "servicesTitle": "الخدمات | Bandora Development",
+    "projectsTitle": "المشاريع | Bandora Development",
     "blogsTitle": "المدونة | الرقمنة للشركات الصغيرة",
     "aboutTitle": "نبذة عن Bilal Al-Badawi | تطوير برمجيات",
     "contactTitle": "التواصل | طلب مشروع",
-    "legalTitle": "القانوني | Al-Badawi Software Development"
+    "legalTitle": "القانوني | Bandora Development"
   },
   "home": {
     "heroTitle": "من الفكرة إلى برنامج يعمل.",
-    "heroText": "تطور Al-Badawi Software Development تطبيقات جوال وتطبيقات ويب مخصصة ونماذج MVP رقمية للمؤسسين والأفراد والشركات الصغيرة.",
+    "heroText": "تطور Bandora Development تطبيقات جوال وتطبيقات ويب مخصصة ونماذج MVP رقمية للمؤسسين والأفراد والشركات الصغيرة.",
     "terminal": ["تطبيق", "ويب", "API", "MVP"],
     "competencies": "الكفاءات الأساسية",
     "trust": "مجالات الخبرة",
@@ -114,7 +114,7 @@
     "privacyText": "لا يستخدم هذا الموقع أدوات تحليل أو متتبعات إعلانات أو ودجات تواصل اجتماعي مضمنة أو ملفات تعريف ارتباط تسويقية أو تضمينات YouTube أو خرائط Google أو خطوطا خارجية. يعالج نموذج التواصل البيانات المدخلة فقط لمعالجة الطلب."
   },
   "notFound": { "title": "الصفحة غير موجودة", "text": "الصفحة المطلوبة غير موجودة أو تم نقلها." },
-  "footer": { "text": "Al-Badawi Software Development هو الحضور المهني على الويب الخاص بـ Bilal Al-Badawi." },
+  "footer": { "text": "Bandora Development هو الحضور المهني على الويب الخاص بـ Bilal Al-Badawi." },
   "projectLanding": {
     "overview": "نظرة عامة على المشروع",
     "approach": "النهج التقني",

@@ -4,6 +4,7 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { localizedUrl, navItems, siteConfig } from '../../config/site';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { BrandCrest } from '../common/BrandCrest';
 
 export function Header() {
   const { t } = useTranslation();
@@ -37,10 +38,10 @@ export function Header() {
     <header className={`sticky top-0 z-40 border-b transition duration-300 ${scrolled || open ? 'border-white/10 bg-night/92 shadow-[0_18px_50px_rgba(2,6,23,0.42)] backdrop-blur-xl' : 'border-transparent bg-night/72 backdrop-blur-lg'}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <NavLink to={localizedUrl('home', lang)} className="group flex items-center gap-3 font-semibold text-white">
-          <span className="grid size-11 place-items-center rounded-card border border-cyan/30 bg-gradient-to-br from-cyan/20 to-blue/20 text-cyan shadow-[0_0_24px_rgba(34,211,238,0.12)] transition group-hover:border-cyan/60">AB</span>
+          <BrandCrest cropped eager className="block size-11 shrink-0 border border-gold/70 shadow-[0_0_24px_rgba(214,168,75,0.18)] transition group-hover:border-gold" />
           <span className="leading-tight">
-            Al-Badawi
-            <span className="block text-xs font-medium text-slate-400">Software Development</span>
+            Bandora
+            <span className="block text-xs font-medium text-slate-400">Development</span>
           </span>
         </NavLink>
 

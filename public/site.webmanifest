@@ -1,9 +1,9 @@
 {
-  "name": "Al-Badawi Software Development",
-  "short_name": "Al-Badawi",
+  "name": "Bandora Development",
+  "short_name": "Bandora",
   "start_url": "/de/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#0f172a",
+  "background_color": "#070b14",
+  "theme_color": "#070b14",
   "lang": "de"
 }

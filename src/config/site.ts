@@ -8,8 +8,8 @@ export const languages = [
 export type LanguageCode = (typeof languages)[number]['code'];
 
 export const siteConfig = {
-  brandName: 'Al-Badawi Software Development',
-  shortBrand: 'Al-Badawi',
+  brandName: 'Bandora Development',
+  shortBrand: 'Bandora',
   developerName: 'Bilal Al-Badawi',
   domain: 'https://al-badawi.de',
   email: 'albadawi335@gmail.com',

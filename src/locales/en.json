@@ -26,18 +26,18 @@
     "home": "Home"
   },
   "seo": {
-    "homeTitle": "Al-Badawi Software Development | Apps, web applications and MVPs",
+    "homeTitle": "Bandora Development | Apps, web applications and MVPs",
     "homeDescription": "Bilal Al-Badawi builds mobile apps, custom web applications, APIs and digital MVPs for founders, individuals and small businesses.",
-    "servicesTitle": "Services | Al-Badawi Software Development",
-    "projectsTitle": "Projects | Al-Badawi Software Development",
+    "servicesTitle": "Services | Bandora Development",
+    "projectsTitle": "Projects | Bandora Development",
     "blogsTitle": "Blogs | Digitalization for small businesses",
     "aboutTitle": "About Bilal Al-Badawi | Software Development",
     "contactTitle": "Contact | Request a project",
-    "legalTitle": "Legal | Al-Badawi Software Development"
+    "legalTitle": "Legal | Bandora Development"
   },
   "home": {
     "heroTitle": "From idea to working software.",
-    "heroText": "Al-Badawi Software Development builds mobile apps, custom web applications and digital MVPs for founders, individuals and small businesses.",
+    "heroText": "Bandora Development builds mobile apps, custom web applications and digital MVPs for founders, individuals and small businesses.",
     "terminal": ["App", "Web", "API", "MVP"],
     "competencies": "Core competencies",
     "trust": "Competence areas",
@@ -114,7 +114,7 @@
     "privacyText": "This website does not use analytics tools, ad trackers, embedded social media widgets, marketing cookies, YouTube embeds, Google Maps or externally loaded fonts. The contact form processes submitted data only to handle the request."
   },
   "notFound": { "title": "Page not found", "text": "The requested page does not exist or has moved." },
-  "footer": { "text": "Al-Badawi Software Development is the professional web presence of Bilal Al-Badawi." },
+  "footer": { "text": "Bandora Development is the professional web presence of Bilal Al-Badawi." },
   "projectLanding": {
     "overview": "Project overview",
     "approach": "Technical approach",

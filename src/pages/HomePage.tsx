@@ -31,7 +31,7 @@ export function HomePage() {
         <div className="ambient-orb -right-24 bottom-10 size-96 bg-blue/20 [animation-delay:-5s]" aria-hidden="true" />
         <div className="relative mx-auto grid min-h-[calc(100svh-72px)] max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cyan">Al-Badawi Software Development</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-gold">Bandora Development</p>
             <h1 className="text-gradient text-balance text-5xl font-semibold tracking-tight md:text-7xl">{t('home.heroTitle')}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{t('home.heroText')}</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -41,9 +41,9 @@ export function HomePage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="relative pb-12">
+          <div className="grid gap-8 pb-2">
             <BrandCrest eager className="mx-auto block w-[min(82vw,31rem)] opacity-95 drop-shadow-[0_30px_65px_rgba(214,168,75,0.22)]" />
-            <div className="gold-border glow-border relative -mt-14 rounded-[1.4rem] lg:ms-20">
+            <div className="gold-border glow-border rounded-[1.4rem] lg:ms-20">
             <div className="glass-panel relative overflow-hidden rounded-[1.4rem] p-5 font-mono text-sm">
               <div className="scan-line absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-transparent via-cyan/10 to-transparent" aria-hidden="true" />
               <div className="mb-4 flex gap-2">
@@ -117,7 +117,7 @@ export function HomePage() {
 
       <section className="bg-navy px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[0.8fr_1.2fr]">
-          <div className="relative"><ProfileVisual /><BrandCrest className="absolute -bottom-6 -right-2 block w-32 drop-shadow-[0_18px_35px_rgba(214,168,75,0.2)] sm:w-40" /></div>
+          <ProfileVisual />
           <div>
             <h2 className="text-3xl font-semibold text-white">Bilal Al-Badawi</h2>
             <p className="mt-4 text-lg leading-8 text-slate-300">{t('home.aboutPreview')}</p>

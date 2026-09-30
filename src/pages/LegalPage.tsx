@@ -12,7 +12,7 @@ export function LegalPage({ type }: { type: 'imprint' | 'privacy' }) {
   }, []);
   return (
     <>
-      <SeoHead title={`${title} | Al-Badawi Software Development`} description={t('seo.legalTitle')} path={type === 'imprint' ? 'impressum' : 'datenschutz'} />
+      <SeoHead title={`${title} | Bandora Development`} description={t('seo.legalTitle')} path={type === 'imprint' ? 'impressum' : 'datenschutz'} />
       <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <Breadcrumbs current={title} />

@@ -14,7 +14,7 @@ export function BlogArticlePage() {
   return (
     <>
       <SeoHead
-        title={`${blog.title} | Al-Badawi`}
+        title={`${blog.title} | Bandora Development`}
         description={blog.excerpt}
         path={`blogs/${blog.slug}`}
         schema={{

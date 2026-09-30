@@ -18,7 +18,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="relative min-h-72 overflow-hidden border-b border-white/10 bg-slate-950 md:border-b-0 md:border-e">
         <div className="tech-grid absolute inset-0" aria-hidden="true" />
         <img src={project.image} alt={`${project.title}: ${localized(project.category, lang)}`} width="960" height="600" className="relative h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.035] motion-reduce:transform-none" loading="lazy" decoding="async" />
-        <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-night/75 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-cyan backdrop-blur">Case Study</span>
+        <span className="absolute bottom-5 left-5 rounded-full border border-white/15 bg-night/75 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-cyan backdrop-blur">Case Study</span>
       </div>
       <div className="grid content-center gap-5 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-2">

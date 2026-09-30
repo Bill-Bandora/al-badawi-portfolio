@@ -44,6 +44,11 @@ describe('portfolio app', () => {
     expect(screen.getAllByRole('link', { name: /blogs/i })[0]).toHaveAttribute('href', '/en/blogs');
   });
 
+  it('renders the localized floating contact link', () => {
+    renderWithProviders(<App />, '/en/projects');
+    expect(screen.getByRole('link', { name: /Floating contact/ })).toHaveAttribute('href', '/en/contact');
+  });
+
   it('renders the blog article', () => {
     renderWithProviders(<App />, '/de/blogs/warum-kleine-unternehmen-eine-website-brauchen');
     expect(screen.getByRole('heading', { name: /keine website/i, level: 1 })).toBeInTheDocument();
