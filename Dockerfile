@@ -12,7 +12,7 @@ RUN apt-get update \
     && apt-mark manual libonig5 \
     && apt-get purge -y --auto-remove libonig-dev \
     && rm -rf /var/lib/apt/lists/* \
-    && a2enmod rewrite \
+    && a2enmod rewrite headers expires \
     && install -d -o www-data -g www-data -m 0700 /var/lib/contact
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/php.ini /usr/local/etc/php/conf.d/contact.ini
