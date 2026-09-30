@@ -18,6 +18,11 @@ for (const route of [...new Set(prerenderRoutes)]) {
     .replace('<div id="root"></div>', `<div id="root">${rendered.html}</div>`);
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, document);
+  if (!route.endsWith('/')) {
+    const extensionlessOutput = join(dist, `${route.replace(/^\//, '')}.html`);
+    await mkdir(dirname(extensionlessOutput), { recursive: true });
+    await writeFile(extensionlessOutput, document);
+  }
 }
 
 await rm(join(root, 'dist-ssr'), { recursive: true, force: true });

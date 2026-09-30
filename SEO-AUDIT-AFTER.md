@@ -11,7 +11,7 @@ Stand: 30. September 2026
 - Einheitliche Titel, Descriptions, Canonicals, hreflang, Robots-, Open-Graph- und Twitter-Metadaten erweitert.
 - Genau eine H1 auf jeder indexierbaren, vorgerenderten Seite sichergestellt.
 - Bildbeschreibungen für Projektvisuals ergänzt; feste Dimensionen und Lazy Loading bleiben erhalten.
-- Apache so erweitert, dass vorgerenderte Dokumente ohne erzwungenen Trailing Slash ausgeliefert werden.
+- Apache und der Prerender-Build so erweitert, dass vorgerenderte Dokumente ohne erzwungenen Trailing Slash ausgeliefert werden und exakt mit ihren Canonicals übereinstimmen.
 - Unbekannte Projekt-, Blog-, Leistungs- und Top-Level-Routen erhalten im Docker/Apache-Betrieb einen echten 404-Status mit bestehender React-404-Seite.
 - Keine bestehenden Inhalte, Funktionen, Projekte, Bilder, Animationen oder Navigationselemente entfernt.
 
