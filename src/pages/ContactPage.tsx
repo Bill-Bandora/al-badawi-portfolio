@@ -10,7 +10,7 @@ export function ContactPage() {
   return (
     <>
       <SeoHead title={t('seo.contactTitle')} description={t('contact.intro')} path="kontakt" />
-      <section className="bg-paper px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <h1 className="text-4xl font-semibold text-ink md:text-5xl">{t('contact.title')}</h1>

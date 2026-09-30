@@ -40,14 +40,15 @@ export function ServiceDetailPage() {
           { name: localized(service.title, lang), url: `${siteConfig.domain}/${lang}/${path}` },
         ]}
       />
-      <div className="bg-paper px-4 pt-8 sm:px-6 lg:px-8">
+      <div className="bg-night px-4 pt-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Breadcrumbs current={localized(service.title, lang)} parent={{ label: t('services.title'), to: localizedUrl('services', lang) }} />
         </div>
       </div>
       <article>
-        <header className="bg-ink px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-5xl">
+        <header className="relative overflow-hidden bg-ink px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
+          <div className="tech-grid absolute inset-0" aria-hidden="true" /><div className="ambient-orb -right-20 top-0 size-80 bg-cyan/15" aria-hidden="true" />
+          <div className="relative mx-auto max-w-5xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-cyan">{t('services.title')}</p>
             <h1 className="mt-4 text-balance text-4xl font-semibold md:text-6xl">{localized(service.title, lang)}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">{localized(service.summary, lang)}</p>
@@ -55,7 +56,7 @@ export function ServiceDetailPage() {
           </div>
         </header>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
             <div>
               <h2 className="text-3xl font-semibold text-ink">{t('serviceDetail.audience')}</h2>
@@ -70,27 +71,27 @@ export function ServiceDetailPage() {
           </div>
         </section>
 
-        <section className="bg-paper px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-navy px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-semibold text-ink">{t('serviceDetail.benefits')}</h2>
+            <h2 className="text-3xl font-semibold text-white">{t('serviceDetail.benefits')}</h2>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
-              {service.benefits.map((item) => <div key={item.de} className="rounded-card border border-slate-200 bg-white p-6 leading-7 text-slate-700 shadow-sm">{localized(item, lang)}</div>)}
+              {service.benefits.map((item) => <div key={item.de} className="glass-panel rounded-card p-6 leading-7 text-slate-200">{localized(item, lang)}</div>)}
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-night px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-semibold text-ink">{t('serviceDetail.process')}</h2>
+            <h2 className="text-3xl font-semibold text-white">{t('serviceDetail.process')}</h2>
             <ol className="mt-8 grid gap-5 md:grid-cols-3">
-              {service.process.map((item, index) => <li key={item.de} className="rounded-card border border-slate-200 p-6"><span className="text-sm font-semibold text-cyan">{String(index + 1).padStart(2, '0')}</span><p className="mt-3 font-semibold leading-7 text-ink">{localized(item, lang)}</p></li>)}
+              {service.process.map((item, index) => <li key={item.de} className="glass-panel rounded-card p-6"><span className="text-sm font-semibold text-cyan">{String(index + 1).padStart(2, '0')}</span><p className="mt-3 font-semibold leading-7 text-slate-100">{localized(item, lang)}</p></li>)}
             </ol>
-            <h2 className="mt-14 text-2xl font-semibold text-ink">{t('serviceDetail.technologies')}</h2>
+            <h2 className="mt-14 text-2xl font-semibold text-white">{t('serviceDetail.technologies')}</h2>
             <div className="mt-5 flex flex-wrap gap-2">{service.technologies.map((technology) => <TechnologyTag key={technology} label={technology} />)}</div>
           </div>
         </section>
 
-        <section className="bg-paper px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-3xl font-semibold text-ink">{t('serviceDetail.projects')}</h2>
             <div className="mt-8 grid gap-5 md:grid-cols-2">

@@ -17,7 +17,7 @@ export function AboutPage() {
   return (
     <>
       <SeoHead title={t('seo.aboutTitle')} description={t('about.role')} path="ueber-mich" />
-      <section className="bg-paper px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <ProfileVisual />
           <div>
@@ -31,7 +31,7 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
         <SectionHeading title={t('about.tech')} />
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           {Object.entries(tech).map(([group, items]) => (

@@ -10,11 +10,12 @@ export function NotFoundPage() {
   return (
     <>
       <SeoHead title={t('notFound.title')} description={t('notFound.text')} noindex />
-      <section className="grid min-h-[60svh] place-items-center bg-paper px-4 py-16 text-center">
-        <div>
+      <section className="relative grid min-h-[60svh] place-items-center overflow-hidden bg-night px-4 py-16 text-center">
+        <div className="tech-grid absolute inset-0" aria-hidden="true" />
+        <div className="relative">
           <p className="text-sm font-semibold uppercase tracking-widest text-cyan">404</p>
-          <h1 className="mt-4 text-4xl font-semibold text-ink">{t('notFound.title')}</h1>
-          <p className="mt-4 text-slate-700">{t('notFound.text')}</p>
+          <h1 className="mt-4 text-4xl font-semibold text-white">{t('notFound.title')}</h1>
+          <p className="mt-4 text-slate-300">{t('notFound.text')}</p>
           <ButtonLink to={localizedUrl('home', lang)} className="mt-8">
             {t('common.home')}
           </ButtonLink>

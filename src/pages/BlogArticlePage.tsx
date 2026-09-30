@@ -35,7 +35,7 @@ export function BlogArticlePage() {
           { name: blog.title, url: `${siteConfig.domain}/${lang}/blogs/${blog.slug}` },
         ]}
       />
-      <article className="bg-white">
+      <article className="bg-night">
         <header className="bg-gradient-to-br from-ink via-coal to-blue px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <Link to={localizedUrl('blogs', lang)} className="inline-flex items-center gap-2 text-sm font-semibold text-cyan hover:text-white">
@@ -52,8 +52,8 @@ export function BlogArticlePage() {
           </div>
         </header>
 
-        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
-          <div className="blog-content">
+        <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="blog-content glass-panel rounded-[1.4rem] p-6 sm:p-10">
             <p className="lead">Wir leben in einer Zeit, in der man sein Essen per App bestellt, Rechnungen mit dem Handy bezahlt und in wenigen Sekunden herausfindet, welcher Handwerker, Friseur oder Laden in der Nähe gute Bewertungen hat. Und trotzdem gibt es noch erstaunlich viele kleine Unternehmen und Betriebe, die keine eigene Website haben.</p>
 
             <p>Das ist gar nicht als Vorwurf gemeint. Viele Inhaberinnen und Inhaber haben schlicht genug mit ihrem Tagesgeschäft zu tun. Aufträge bearbeiten, Kunden betreuen, Material bestellen, Papierkram erledigen – da landet die Website schnell auf der Liste mit den Dingen, die man „irgendwann mal“ angeht. Manche sagen auch: „Meine Kunden kommen über Empfehlungen“ oder „Ich habe doch Instagram“. Beides kann gut funktionieren. Trotzdem bleibt ohne eigene Website ziemlich viel Potenzial liegen.</p>

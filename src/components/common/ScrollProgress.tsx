@@ -11,5 +11,5 @@ export function ScrollProgress() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-  return <div className="fixed left-0 top-0 z-50 h-1 bg-cyan transition-all" style={{ width: `${progress}%` }} />;
+  return <div className="fixed left-0 top-0 z-50 h-0.5 bg-gradient-to-r from-cyan via-electric to-blue shadow-[0_0_14px_rgba(34,211,238,0.8)] transition-all" style={{ width: `${progress}%` }} />;
 }

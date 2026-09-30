@@ -58,6 +58,17 @@ describe('portfolio app', () => {
     expect(screen.getByRole('link', { name: 'Projekt besprechen' })).toHaveAttribute('href', '/de/kontakt');
   });
 
+  it('runs the device-tracking mock demo without external data', async () => {
+    renderWithProviders(<App />, '/de/projekte/geraete-nachverfolgung');
+    await userEvent.type(screen.getByLabelText('Inventarnummer, z. B. INV-1042'), 'INV-1042');
+    await userEvent.click(screen.getByRole('button', { name: 'Gerät suchen' }));
+    expect(screen.getByText(/Gerät gefunden: INV-1042/)).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Mitarbeiter zuweisen' }));
+    expect(screen.getByText('Mitarbeiter zugewiesen')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Fehler & Rollback simulieren' }));
+    expect(screen.getByText('Fehler erkannt · Änderung zurückgerollt')).toBeInTheDocument();
+  });
+
   it('builds mailto fallback', () => {
     const href = buildMailto({
       name: 'Bilal',

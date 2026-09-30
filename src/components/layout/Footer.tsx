@@ -8,10 +8,11 @@ export function Footer() {
   const { t } = useTranslation();
   const { lang = 'de' } = useParams();
   return (
-    <footer className="bg-ink text-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-night text-white">
+      <div className="tech-grid absolute inset-0 opacity-60" aria-hidden="true" />
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 md:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div>
-          <p className="text-xl font-semibold">{siteConfig.brandName}</p>
+          <p className="text-xl font-semibold text-gradient">{siteConfig.brandName}</p>
           <p className="mt-2 text-slate-300">{siteConfig.developerName}</p>
           <p className="mt-4 max-w-md text-slate-300">{t('footer.text')}</p>
         </div>
@@ -38,7 +39,7 @@ export function Footer() {
           <LanguageSwitcher />
         </div>
       </div>
-      <div className="border-t border-white/10 px-4 py-4 text-center text-sm text-slate-400">© {new Date().getFullYear()} Al-Badawi Software Development</div>
+      <div className="relative border-t border-white/10 px-4 py-4 text-center text-sm text-slate-500">© {new Date().getFullYear()} Al-Badawi Software Development</div>
     </footer>
   );
 }

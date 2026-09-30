@@ -15,15 +15,18 @@ export function ProjectsPage() {
   return (
     <>
       <SeoHead title={t('seo.projectsTitle')} description={t('projects.intro')} path="projekte" />
-      <section className="bg-paper px-4 py-16 sm:px-6 lg:px-8">
-        <SectionHeading title={t('projects.title')} intro={t('projects.intro')} level={1} />
+      <section className="relative overflow-hidden bg-night px-4 py-20 sm:px-6 lg:px-8">
+        <div className="tech-grid absolute inset-0" aria-hidden="true" />
+        <div className="relative">
+        <SectionHeading title={t('projects.title')} intro={t('projects.intro')} level={1} inverse />
         <div className="mx-auto max-w-7xl">
           <ProjectFilter value={filter} onChange={setFilter} />
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-10">
             {filtered.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
+        </div>
         </div>
       </section>
     </>

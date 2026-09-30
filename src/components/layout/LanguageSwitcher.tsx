@@ -16,7 +16,7 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex rounded-card border border-slate-200 bg-white p-1" aria-label="Sprache auswählen">
+    <div className="flex rounded-card border border-white/10 bg-white/5 p-1" aria-label="Sprache auswählen">
       {languages.map((item) => (
         <button
           key={item.code}
@@ -24,7 +24,7 @@ export function LanguageSwitcher() {
           onClick={() => {
             navigate(translatedPath(item.code) + location.search);
           }}
-          className={`min-h-9 rounded px-3 text-sm font-semibold transition ${lang === item.code ? 'bg-ink text-white' : 'text-slate-700 hover:bg-slate-100'}`}
+          className={`min-h-9 rounded px-3 text-sm font-semibold transition ${lang === item.code ? 'bg-cyan text-night shadow-sm' : 'text-slate-300 hover:bg-white/10 hover:text-white'}`}
           aria-pressed={lang === item.code}
         >
           {item.short}
