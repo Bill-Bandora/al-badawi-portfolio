@@ -24,6 +24,9 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/de/projekte');
     await userEvent.click(screen.getByRole('button', { name: 'Abgeschlossen' }));
     expect(screen.getByText('Geräte-Nachverfolgung')).toBeInTheDocument();
+    expect(screen.getByText('Bandora Org')).toBeInTheDocument();
+    expect(screen.getByText('Bandora Gen8')).toBeInTheDocument();
+    expect(screen.getByText('Bandora Studio')).toBeInTheDocument();
     expect(screen.queryByText('BuyNot')).not.toBeInTheDocument();
   });
 

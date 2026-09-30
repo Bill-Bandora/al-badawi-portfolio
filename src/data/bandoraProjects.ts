@@ -57,7 +57,7 @@ export const bandoraProjects: Project[] = [
     ],
     relatedSlugs: ['bandora-studio', 'digital-footprint-os'],
     image: '/images/projects/bandora-gen8-preview.svg',
-    filters: ['infrastructure', 'automation', 'development'],
+    filters: ['infrastructure', 'automation', 'development', 'completed'],
     visualTheme: 'infrastructure',
   },
   {
@@ -296,7 +296,7 @@ export const bandoraProjects: Project[] = [
     ],
     relatedSlugs: ['bandora-gen8', 'digital-footprint-os'],
     image: '/images/projects/bandora-studio-preview.svg',
-    filters: ['web', 'automation', 'development'],
+    filters: ['web', 'automation', 'development', 'completed'],
     visualTheme: 'studio',
   },
 ];

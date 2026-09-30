@@ -89,7 +89,8 @@ export const projects: Project[] = [
   "image": "/images/projects/bandora-org-preview.svg",
   "filters": [
     "desktop",
-    "development"
+    "development",
+    "completed"
   ],
   "architectureNotes": {
     "de": "Programmdaten und Anwendung sind getrennt. Vor Updates wird ein Backup erstellt. Ist der Updateserver nicht erreichbar, kann lokal weitergearbeitet werden.",
