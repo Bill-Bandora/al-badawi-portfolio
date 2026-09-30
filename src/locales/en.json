@@ -52,6 +52,8 @@
   },
   "services": {
     "title": "Services",
+    "heroTitle": "Software, systems and digital products — from idea to operation.",
+    "heroIntro": "I build more than isolated interfaces. Product thinking, architecture, automation and operations come together in solutions that remain understandable, testable and extensible.",
     "intro": "Custom software development focused on usable outcomes, clear architecture and realistic MVPs.",
     "items": [
       { "title": "Mobile app development", "text": "iOS and Android applications with React Native and Expo.", "uses": ["Prototypes", "MVPs", "App Store preparation"] },
@@ -83,7 +85,7 @@
     "features": "Features",
     "technologies": "Technologies",
     "role": "Role",
-    "filters": { "mobile": "Mobile apps", "web": "Web applications", "mvp": "MVP", "development": "In development", "completed": "Completed" }
+    "filters": { "mobile": "Mobile apps", "web": "Web applications", "desktop": "Desktop", "infrastructure": "Infrastructure", "automation": "Automation", "trading": "Trading engineering", "mvp": "MVP", "development": "In development", "completed": "Completed" }
   },
   "about": {
     "title": "Bilal Al-Badawi",

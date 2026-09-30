@@ -13,12 +13,19 @@ import { services } from '../data/services';
 import { ArchitectureFlow } from '../components/projects/ArchitectureFlow';
 import { DeviceTrackingDemo } from '../components/projects/DeviceTrackingDemo';
 import { TiltSurface } from '../components/common/InteractiveSurface';
+import { ProjectInteractiveDemo } from '../components/projects/ProjectInteractiveDemo';
+import { ProjectCard } from '../components/projects/ProjectCard';
 
 const themes: Record<string, { hero: string; number: string; reverse?: boolean }> = {
   'bandora-org': { hero: 'bg-slate-900 text-white', number: 'text-cyan-300' },
   buynot: { hero: 'bg-emerald-950 text-white', number: 'text-emerald-300', reverse: true },
   'device-tracking': { hero: 'bg-indigo-950 text-white', number: 'text-indigo-300' },
   roommate: { hero: 'bg-violet-950 text-white', number: 'text-violet-300', reverse: true },
+  'bandora-gen8': { hero: 'bg-[#080d18] text-white', number: 'text-gold' },
+  'digital-footprint-os': { hero: 'bg-[#15102d] text-white', number: 'text-violet-300', reverse: true },
+  'bandora-mt5-trader': { hero: 'bg-[#080d18] text-white', number: 'text-gold' },
+  'bandora-crypto-scanner': { hero: 'bg-[#07131b] text-white', number: 'text-cyan', reverse: true },
+  'bandora-studio': { hero: 'bg-[#120e25] text-white', number: 'text-gold' },
 };
 
 export function ProjectDetailPage() {
@@ -28,6 +35,17 @@ export function ProjectDetailPage() {
   if (!project) return <NotFoundPage />;
   const theme = themes[project.id] ?? themes['bandora-org'];
   const relatedServices = services.filter((service) => service.projectSlugs.includes(project.slug));
+  const relatedProjects = (project.relatedSlugs ?? []).map((item) => projects.find((candidate) => candidate.slug === item)).filter(Boolean) as typeof projects;
+  const projectSchema = {
+    '@context': 'https://schema.org',
+    '@type': project.id === 'bandora-gen8' ? 'CreativeWork' : 'SoftwareApplication',
+    name: project.title,
+    description: localized(project.shortDescription, lang),
+    applicationCategory: localized(project.category, lang),
+    operatingSystem: project.id === 'bandora-gen8' ? 'Linux' : 'Cross-platform',
+    creator: { '@type': 'Person', name: siteConfig.developerName },
+    url: `${siteConfig.domain}/${lang}/${routePath('projects', lang)}/${project.slug}`,
+  };
 
   return (
     <>
@@ -37,6 +55,7 @@ export function ProjectDetailPage() {
         path={`${routePath('projects', lang)}/${project.slug}`}
         image={project.image}
         imageAlt={`${project.title}: ${localized(project.category, lang)}`}
+        schema={projectSchema}
         breadcrumbs={[
           { name: t('common.home'), url: `${siteConfig.domain}/${lang}/` },
           { name: t('projects.title'), url: `${siteConfig.domain}${localizedUrl('projects', lang)}` },
@@ -108,11 +127,14 @@ export function ProjectDetailPage() {
         </div>
       </section>
       {project.id === 'device-tracking' && <DeviceTrackingDemo lang={lang} />}
+      <ProjectInteractiveDemo projectId={project.id} lang={lang} />
       <section className="border-y border-slate-200 bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-3xl font-semibold text-ink">{t('projectLanding.evolution')}</h2>
           <div className="mt-5"><StatusBadge label={localized(project.status, lang)} /></div>
           <p className="mt-5 max-w-3xl leading-8 text-slate-700">{localized(project.developmentStatus, lang)}</p>
+          {project.disclaimer && <p className="mt-6 max-w-3xl rounded-card border border-amber-300/50 bg-amber-50 p-4 text-sm leading-6 text-amber-950">{localized(project.disclaimer, lang)}</p>}
+          {project.technicalChallenges && <div className="mt-10"><h3 className="text-xl font-semibold text-ink">Technical challenges</h3><ul className="mt-4 grid gap-3 md:grid-cols-2">{project.technicalChallenges.map((item) => <li key={item.en} className="rounded-card border border-slate-200 bg-white p-5 text-slate-700">{localized(item, lang)}</li>)}</ul></div>}
           {project.futureFeatures && <ul className="mt-8 grid gap-4 md:grid-cols-2">{project.futureFeatures.map((feature) => (
             <li key={feature.en} className="rounded-card border border-dashed border-slate-300 bg-white p-5">
               <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t('projectLanding.planned')}</span>
@@ -121,6 +143,7 @@ export function ProjectDetailPage() {
           ))}</ul>}
         </div>
       </section>
+      {relatedProjects.length > 0 && <section className="bg-night px-4 py-20 sm:px-6 lg:px-8"><div className="mx-auto max-w-6xl"><h2 className="mb-8 text-3xl font-semibold text-white">Related projects</h2><div className="grid gap-8">{relatedProjects.map((item) => <ProjectCard key={item.id} project={item} />)}</div></div></section>}
       <section className="bg-night px-4 py-20 sm:px-6 lg:px-8">
         <div className="glow-border mx-auto max-w-6xl rounded-[1.5rem] bg-navy p-8 text-white shadow-deep sm:p-12">
           <h2 className="max-w-2xl text-3xl font-semibold">{t('projectLanding.cta')}</h2>

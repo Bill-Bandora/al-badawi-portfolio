@@ -9,6 +9,7 @@ import { ProjectCard } from '../components/projects/ProjectCard';
 import { RevealOnScroll } from '../components/common/RevealOnScroll';
 import { ProfileVisual } from '../components/common/ProfileVisual';
 import { localizedUrl } from '../config/site';
+import { BrandCrest } from '../components/common/BrandCrest';
 
 const icons = [Smartphone, Code2, Rocket, Database, Wrench, Workflow];
 
@@ -19,6 +20,7 @@ export function HomePage() {
   const trust = t('home.trustItems', { returnObjects: true }) as string[];
   const process = t('home.processItems', { returnObjects: true }) as string[];
   const terminal = t('home.terminal', { returnObjects: true }) as string[];
+  const featuredProjects = ['digital-footprint-os', 'bandora-studio', 'bandora-mt5-trader'].map((id) => projects.find((project) => project.id === id)).filter(Boolean) as typeof projects;
 
   return (
     <>
@@ -39,7 +41,9 @@ export function HomePage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="glow-border rounded-[1.4rem]">
+          <div className="relative pb-12">
+            <BrandCrest eager className="mx-auto block w-[min(82vw,31rem)] opacity-95 drop-shadow-[0_30px_65px_rgba(214,168,75,0.22)]" />
+            <div className="gold-border glow-border relative -mt-14 rounded-[1.4rem] lg:ms-20">
             <div className="glass-panel relative overflow-hidden rounded-[1.4rem] p-5 font-mono text-sm">
               <div className="scan-line absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-transparent via-cyan/10 to-transparent" aria-hidden="true" />
               <div className="mb-4 flex gap-2">
@@ -56,6 +60,7 @@ export function HomePage() {
                 ))}
               </div>
               <p className="mt-5 animate-pulse text-slate-300 motion-reduce:animate-none">status: MVP ready for testing</p>
+            </div>
             </div>
           </div>
         </div>
@@ -91,10 +96,11 @@ export function HomePage() {
       <section className="bg-night px-4 py-24 text-white sm:px-6 lg:px-8">
         <SectionHeading title={t('home.featured')} inverse align="left" />
         <div className="mx-auto grid max-w-7xl gap-10">
-          {projects.map((project) => (
+          {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
+        <div className="mx-auto mt-10 max-w-7xl"><ButtonLink to={localizedUrl('projects', lang)} variant="dark">{t('common.viewProjects')}</ButtonLink></div>
       </section>
 
       <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
@@ -111,7 +117,7 @@ export function HomePage() {
 
       <section className="bg-navy px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[0.8fr_1.2fr]">
-          <ProfileVisual />
+          <div className="relative"><ProfileVisual /><BrandCrest className="absolute -bottom-6 -right-2 block w-32 drop-shadow-[0_18px_35px_rgba(214,168,75,0.2)] sm:w-40" /></div>
           <div>
             <h2 className="text-3xl font-semibold text-white">Bilal Al-Badawi</h2>
             <p className="mt-4 text-lg leading-8 text-slate-300">{t('home.aboutPreview')}</p>

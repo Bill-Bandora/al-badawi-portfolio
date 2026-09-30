@@ -4,6 +4,7 @@ import { SeoHead } from '../components/common/SeoHead';
 import { ProfileVisual } from '../components/common/ProfileVisual';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { siteConfig } from '../config/site';
+import { BrandCrest } from '../components/common/BrandCrest';
 
 const tech = {
   Frontend: ['React', 'React Native', 'Expo', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Vite'],
@@ -19,7 +20,7 @@ export function AboutPage() {
       <SeoHead title={t('seo.aboutTitle')} description={t('about.role')} path="ueber-mich" />
       <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <ProfileVisual />
+          <div className="relative"><ProfileVisual /><BrandCrest className="absolute -bottom-8 -right-3 block w-36 drop-shadow-[0_20px_40px_rgba(214,168,75,0.2)] sm:w-44" /></div>
           <div>
             <h1 className="text-4xl font-semibold text-ink md:text-5xl">{t('about.title')}</h1>
             <p className="mt-4 text-xl leading-8 text-cyan">{t('about.role')}</p>

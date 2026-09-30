@@ -52,6 +52,8 @@
   },
   "services": {
     "title": "Leistungen",
+    "heroTitle": "Software, Systeme und digitale Produkte – von der Idee bis zum Betrieb.",
+    "heroIntro": "Ich entwickle nicht nur einzelne Oberflächen. Ich verbinde Produktidee, Architektur, Automatisierung und Betrieb zu einer Lösung, die verständlich, testbar und ausbaufähig bleibt.",
     "intro": "Individuelle Softwareentwicklung mit klarem Fokus auf nutzbare Ergebnisse, verständliche Architektur und realistische MVPs.",
     "items": [
       { "title": "Mobile App-Entwicklung", "text": "iOS- und Android-Anwendungen mit React Native und Expo.", "uses": ["Prototypen", "MVPs", "App-Store-Vorbereitung"] },
@@ -83,7 +85,7 @@
     "features": "Funktionen",
     "technologies": "Technologien",
     "role": "Rolle",
-    "filters": { "mobile": "Mobile Apps", "web": "Webanwendungen", "mvp": "MVP", "development": "In Entwicklung", "completed": "Abgeschlossen" }
+    "filters": { "mobile": "Mobile Apps", "web": "Webanwendungen", "desktop": "Desktop", "infrastructure": "Infrastruktur", "automation": "Automatisierung", "trading": "Trading Engineering", "mvp": "MVP", "development": "In Entwicklung", "completed": "Abgeschlossen" }
   },
   "about": {
     "title": "Bilal Al-Badawi",

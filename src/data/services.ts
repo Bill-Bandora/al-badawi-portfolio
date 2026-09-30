@@ -42,7 +42,7 @@ export const services: Service[] = [
       { de: 'Umsetzen, testen und für die Veröffentlichung vorbereiten', en: 'Build, test and prepare for launch', ar: 'التنفيذ والاختبار والتحضير للنشر' },
     ],
     technologies: ['React', 'TypeScript', 'Vite', 'Node.js', 'REST APIs', 'MariaDB'],
-    projectSlugs: ['geraete-nachverfolgung', 'roommate-plus'],
+    projectSlugs: ['geraete-nachverfolgung', 'roommate-plus', 'digital-footprint-os', 'bandora-studio', 'bandora-gen8'],
   },
   {
     slug: 'softwareentwicklung',
@@ -73,7 +73,7 @@ export const services: Service[] = [
       { de: 'Iterativ entwickeln, testen und dokumentieren', en: 'Develop, test and document iteratively', ar: 'التطوير والاختبار والتوثيق بشكل تكراري' },
     ],
     technologies: ['TypeScript', 'JavaScript', 'Node.js', 'Express', 'NestJS', 'PostgreSQL', 'MariaDB', 'Docker'],
-    projectSlugs: ['bandora-org', 'geraete-nachverfolgung'],
+    projectSlugs: ['bandora-org', 'geraete-nachverfolgung', 'digital-footprint-os', 'bandora-mt5-trader', 'bandora-crypto-scanner', 'bandora-studio', 'bandora-gen8'],
   },
   {
     slug: 'app-entwicklung',
@@ -135,7 +135,7 @@ export const services: Service[] = [
       { de: 'Umsetzen und mit realistischen Fällen prüfen', en: 'Implement and verify with realistic cases', ar: 'التنفيذ والتحقق باستخدام حالات واقعية' },
     ],
     technologies: ['Node.js', 'REST APIs', 'TypeScript', 'PostgreSQL', 'MariaDB', 'Docker'],
-    projectSlugs: ['bandora-org', 'geraete-nachverfolgung'],
+    projectSlugs: ['bandora-org', 'geraete-nachverfolgung', 'digital-footprint-os', 'bandora-mt5-trader', 'bandora-crypto-scanner', 'bandora-studio', 'bandora-gen8'],
   },
 ];
 

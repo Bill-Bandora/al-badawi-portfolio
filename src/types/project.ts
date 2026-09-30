@@ -20,6 +20,10 @@ export interface Project {
   image: string;
   architectureNotes: LocalizedText;
   developmentStatus: LocalizedText;
+  technicalChallenges?: LocalizedText[];
+  relatedSlugs?: string[];
+  disclaimer?: LocalizedText;
+  visualTheme?: 'infrastructure' | 'privacy' | 'trading' | 'scanner' | 'studio';
   futureFeatures?: LocalizedText[];
   filters: string[];
 }

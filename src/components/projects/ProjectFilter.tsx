@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const filters = ['all', 'mobile', 'web', 'mvp', 'development', 'completed'] as const;
+const filters = ['all', 'mobile', 'web', 'desktop', 'infrastructure', 'automation', 'trading', 'mvp', 'development', 'completed'] as const;
 
 export function ProjectFilter({ value, onChange }: { value: string; onChange: (value: string) => void }) {
   const { t } = useTranslation();

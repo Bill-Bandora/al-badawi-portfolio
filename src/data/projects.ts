@@ -1,4 +1,5 @@
 import type { Project } from '../types/project';
+import { bandoraProjects } from './bandoraProjects';
 
 export const projects: Project[] = [
 {
@@ -279,4 +280,5 @@ export const projects: Project[] = [
     image: '/images/projects/roommate-preview.svg',
     filters: ['mobile', 'web', 'mvp', 'development'],
   },
+  ...bandoraProjects,
 ];

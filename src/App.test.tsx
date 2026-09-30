@@ -27,11 +27,11 @@ describe('portfolio app', () => {
     expect(screen.queryByText('BuyNot')).not.toBeInTheDocument();
   });
 
-  it('shows all four projects with internal primary links', () => {
+  it('shows all projects with internal primary links', () => {
     renderWithProviders(<App />, '/de/projekte');
     expect(screen.getByRole('heading', { name: 'Bandora Org' })).toBeInTheDocument();
     const links = screen.getAllByRole('link', { name: /Projekt ansehen/ });
-    expect(links).toHaveLength(4);
+    expect(links).toHaveLength(9);
     expect(links[0]).toHaveAttribute('href', '/de/projekte/bandora-org');
     for (const link of links) expect(link.getAttribute('href')).toMatch(/^\/de\/projekte\//);
     expect(screen.queryByText(/Landingpage in Vorbereitung/)).not.toBeInTheDocument();
