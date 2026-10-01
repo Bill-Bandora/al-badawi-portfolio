@@ -21,7 +21,8 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
     root = pathlib.Path(directory)
     root.chmod(0o755)
     capture = root / 'capture-mail'
-    capture.write_text('#!/bin/sh\ncat > /tmp/captured-mail\n')
+    with capture.open('w', newline='\n') as stream:
+        stream.write('#!/bin/sh\ncat > /tmp/captured-mail\n')
     capture.chmod(0o755)
     ini = root / 'test.ini'
     ini.write_text('sendmail_path="/usr/local/bin/capture-mail -t"\n')
@@ -62,14 +63,19 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
         for language in ['de', 'en', 'ar']:
             prefix = '/' + language + '/' + ('projekte' if language == 'de' else 'projects')
             for slug in ['bandora-org', 'buynot', 'geraete-nachverfolgung', 'roommate-plus']:
-                assert request(prefix + '/' + slug)[:2] == (200, home)
+                status, body, _ = request(prefix + '/' + slug)
+                assert status == 200
+                assert '<div id="root">' in body
+                assert body != home  # Known routes serve their route-specific prerendered HTML.
             assert request(prefix + '/unknown-project')[0] == 404
             assert request(prefix + '/unknown-project')[1] == home
         assert request('/project-routes.conf')[0] == 200  # SPA fallback, never the Apache configuration
         assert 'RewriteRule' not in request('/project-routes.conf')[1]
 
-        for route in ['/de/kontakt', '/en/services', '/ar/projects', '/de/unknown']:
-            assert request(route)[:2] == (200, home)
+        for route in ['/de/kontakt', '/en/services', '/ar/projects']:
+            status, body, _ = request(route)
+            assert status == 200 and '<div id="root">' in body and body != home
+        assert request('/de/unknown')[:2] == (404, home)
         for asset in re.findall(r'(?:src|href)="(/assets/[^"]+)"', home):
             assert request(asset)[0] == 200
         for asset in ['/favicon.svg', '/robots.txt', '/sitemap.xml']:
