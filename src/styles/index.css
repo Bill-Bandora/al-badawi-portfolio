@@ -180,7 +180,8 @@ button {
 @media (max-width: 768px) {
   .ambient-orb,
   .scan-line,
-  .signal-dot {
+  .signal-dot,
+  .animate-pulse {
     animation: none;
     will-change: auto;
   }
