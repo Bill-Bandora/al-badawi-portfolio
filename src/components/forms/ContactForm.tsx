@@ -78,7 +78,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-5 rounded-card border border-slate-200 bg-white p-5 shadow-sm md:p-8" noValidate>
+    <form onSubmit={onSubmit} className="grid gap-5 rounded-card border border-slate-200 bg-white p-5 shadow-sm max-[768px]:border-white/10 max-[768px]:bg-navy max-[768px]:text-white md:p-8" noValidate>
       {contactMode === 'mailto' ? <p className="rounded-card bg-cyan/10 p-3 text-sm text-cyan">{t('contact.mailtoInfo')}</p> : null}
       <div className="hidden" aria-hidden="true">
         <label>
@@ -95,10 +95,10 @@ export function ContactForm() {
       <SelectField name="projectType" label={t('contact.fields.projectType')} value={values.projectType} options={types} error={showError('projectType')} onBlur={() => setTouched((c) => ({ ...c, projectType: true }))} onChange={(value) => setValue('projectType', value)} required />
       <SelectField name="budget" label={t('contact.fields.budget')} value={values.budget} options={budgets} onChange={(value) => setValue('budget', value)} />
       <div>
-        <label htmlFor="message" className="font-medium text-ink">
+        <label htmlFor="message" className="font-medium text-ink max-[768px]:text-white">
           {t('contact.fields.message')} *
         </label>
-        <textarea id="message" maxLength={1200} rows={7} value={values.message} onBlur={() => setTouched((c) => ({ ...c, message: true }))} onChange={(event) => setValue('message', event.target.value)} aria-describedby="message-error message-count" className="mt-2 w-full rounded-card border border-slate-300 px-4 py-3 focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/20" />
+        <textarea id="message" maxLength={1200} rows={7} value={values.message} onBlur={() => setTouched((c) => ({ ...c, message: true }))} onChange={(event) => setValue('message', event.target.value)} aria-describedby="message-error message-count" className="mt-2 min-h-32 w-full rounded-card border border-slate-300 px-4 py-3 max-[768px]:border-white/15 max-[768px]:bg-night max-[768px]:text-white focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/20" />
         <div className="mt-1 flex justify-between text-sm">
           <span id="message-error" className="text-red-700" aria-live="polite">
             {showError('message') || ''}
@@ -108,7 +108,7 @@ export function ContactForm() {
           </span>
         </div>
       </div>
-      <label className="flex items-start gap-3 text-sm text-slate-700">
+      <label className="flex items-start gap-3 text-sm text-slate-700 max-[768px]:text-slate-300">
         <input type="checkbox" checked={values.privacy} onChange={(event) => setValue('privacy', event.target.checked)} onBlur={() => setTouched((c) => ({ ...c, privacy: true }))} className="mt-1 size-5 rounded border-slate-300 text-cyan focus:ring-cyan" />
         <span>
           {t('contact.privacy')} *
@@ -132,10 +132,10 @@ export function ContactForm() {
 function Field({ name, label, value, onChange, error, type = 'text', required, onBlur }: { name: string; label: string; value: string; onChange: (value: string) => void; error?: string | false; type?: string; required?: boolean; onBlur?: () => void }) {
   return (
     <div>
-      <label htmlFor={name} className="font-medium text-ink">
+      <label htmlFor={name} className="font-medium text-ink max-[768px]:text-white">
         {label} {required ? '*' : ''}
       </label>
-      <input id={name} type={type} value={value} maxLength={120} onBlur={onBlur} onChange={(event) => onChange(event.target.value)} aria-describedby={`${name}-error`} className="mt-2 w-full rounded-card border border-slate-300 px-4 py-3 focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/20" />
+      <input id={name} type={type} value={value} maxLength={120} onBlur={onBlur} onChange={(event) => onChange(event.target.value)} aria-describedby={`${name}-error`} className="mt-2 min-h-12 w-full rounded-card border border-slate-300 px-4 py-3 max-[768px]:border-white/15 max-[768px]:bg-night max-[768px]:text-white focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/20" />
       <p id={`${name}-error`} className="mt-1 min-h-5 text-sm text-red-700" aria-live="polite">
         {error || ''}
       </p>
@@ -146,10 +146,10 @@ function Field({ name, label, value, onChange, error, type = 'text', required, o
 function SelectField({ name, label, value, options, onChange, error, required, onBlur }: { name: string; label: string; value: string; options: string[]; onChange: (value: string) => void; error?: string | false; required?: boolean; onBlur?: () => void }) {
   return (
     <div>
-      <label htmlFor={name} className="font-medium text-ink">
+      <label htmlFor={name} className="font-medium text-ink max-[768px]:text-white">
         {label} {required ? '*' : ''}
       </label>
-      <select id={name} value={value} onBlur={onBlur} onChange={(event) => onChange(event.target.value)} aria-describedby={`${name}-error`} className="mt-2 w-full rounded-card border border-slate-300 bg-white px-4 py-3 focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/20">
+      <select id={name} value={value} onBlur={onBlur} onChange={(event) => onChange(event.target.value)} aria-describedby={`${name}-error`} className="mt-2 min-h-12 w-full rounded-card border border-slate-300 bg-white px-4 py-3 max-[768px]:border-white/15 max-[768px]:bg-night max-[768px]:text-white focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/20">
         <option value=""></option>
         {options.map((option) => (
           <option key={option} value={option}>

@@ -177,6 +177,19 @@ button {
   margin-top: 1.25rem;
 }
 
+@media (max-width: 768px) {
+  .mobile-line-clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

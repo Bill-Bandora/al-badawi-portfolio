@@ -18,7 +18,7 @@ export function BlogsPage() {
         description="Gedanken und praktische Impulse rund um Websites, Digitalisierung und Software für kleine Unternehmen."
         path="blogs"
       />
-      <section className="relative overflow-hidden bg-night px-4 py-20 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-night px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="tech-grid absolute inset-0" aria-hidden="true" /><div className="relative">
         <SectionHeading
           title="Blogs"
@@ -26,11 +26,11 @@ export function BlogsPage() {
           level={1}
           inverse
         />
-        <div className="mx-auto max-w-5xl">
+        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-5 min-[769px]:mx-auto min-[769px]:block min-[769px]:max-w-5xl min-[769px]:overflow-visible min-[769px]:px-0 [scrollbar-width:none]">
           {blogs.map((blog) => (
-            <article key={blog.slug} className="glow-border overflow-hidden rounded-[1.4rem] bg-navy shadow-deep">
+            <article key={blog.slug} className="glow-border w-[86vw] max-w-md shrink-0 snap-center overflow-hidden rounded-[1.4rem] bg-navy shadow-deep min-[769px]:w-auto min-[769px]:max-w-none">
               <div className="grid md:grid-cols-[0.7fr_1.3fr]">
-                <div className="flex min-h-64 items-end bg-gradient-to-br from-ink via-blue to-cyan p-8 text-white">
+                <div className="flex min-h-48 items-end bg-gradient-to-br from-ink via-blue to-cyan p-6 text-white sm:min-h-64 sm:p-8">
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-100">Digitalisierung</p>
                     <p className="mt-3 text-2xl font-semibold leading-tight">Online sichtbar.<br />Auch als kleiner Betrieb.</p>

@@ -1,6 +1,6 @@
-import { screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import App from './App';
 import { renderWithProviders } from './test/render';
 import { buildMailto } from './utils/contact';
@@ -45,6 +45,43 @@ describe('portfolio app', () => {
     expect(screen.getAllByRole('link', { name: /services/i })[0]).toHaveAttribute('href', '/en/services');
     expect(screen.getAllByRole('link', { name: /projects/i })[0]).toHaveAttribute('href', '/en/projects');
     expect(screen.getAllByRole('link', { name: /blogs/i })[0]).toHaveAttribute('href', '/en/blogs');
+  });
+
+  it('renders the localized five-item mobile app navigation', () => {
+    renderWithProviders(<App />, '/de/projekte');
+    const navigation = screen.getByRole('navigation', { name: 'Mobile Hauptnavigation' });
+    const links = within(navigation).getAllByRole('link');
+    expect(links).toHaveLength(5);
+    expect(within(navigation).getByRole('link', { name: 'Projekte' })).toHaveAttribute('aria-current', 'page');
+    expect(within(navigation).getByRole('link', { name: 'Blog' })).toHaveAttribute('href', '/de/blogs');
+  });
+
+  it('opens the mobile project filter as a sheet and applies a selection', async () => {
+    renderWithProviders(<App />, '/de/projekte');
+    await userEvent.click(screen.getByRole('button', { name: 'Filter' }));
+    const dialog = screen.getByRole('dialog', { name: 'Projekte filtern' });
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Abgeschlossen' }));
+    expect(screen.queryByRole('dialog', { name: 'Projekte filtern' })).not.toBeInTheDocument();
+    expect(screen.getByText('Geräte-Nachverfolgung')).toBeInTheDocument();
+    expect(screen.queryByText('BuyNot')).not.toBeInTheDocument();
+  });
+
+  it('persists a dragged contact FAB while keeping it within mobile bounds', async () => {
+    localStorage.removeItem('bandora-contact-fab-position');
+    renderWithProviders(<App />, '/de/');
+    const fab = await screen.findByTestId('contact-fab');
+    Object.defineProperty(fab, 'setPointerCapture', { value: vi.fn(), configurable: true });
+    vi.spyOn(fab, 'getBoundingClientRect').mockReturnValue({ x: 300, y: 500, left: 300, top: 500, right: 356, bottom: 556, width: 56, height: 56, toJSON: () => ({}) });
+    const pointer = (type: string, clientX: number, clientY: number) => {
+      const event = new MouseEvent(type, { bubbles: true, button: 0, clientX, clientY });
+      Object.defineProperty(event, 'pointerId', { value: 1 });
+      fireEvent(fab, event);
+    };
+    pointer('pointerdown', 328, 528);
+    pointer('pointermove', 30, 150);
+    pointer('pointerup', 30, 150);
+    await waitFor(() => expect(localStorage.getItem('bandora-contact-fab-position')).not.toBeNull());
+    expect(JSON.parse(localStorage.getItem('bandora-contact-fab-position') ?? '{}')).toMatchObject({ side: 'left' });
   });
 
   it('renders the localized floating contact link', () => {

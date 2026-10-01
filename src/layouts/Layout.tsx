@@ -3,6 +3,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { ScrollProgress } from '../components/common/ScrollProgress';
 import { FloatingContact } from '../components/layout/FloatingContact';
+import { MobileBottomNav } from '../components/layout/MobileBottomNav';
 
 export function Layout() {
   return (
@@ -12,11 +13,12 @@ export function Layout() {
       </a>
       <ScrollProgress />
       <Header />
-      <main id="main">
+      <main id="main" className="pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:pb-0">
         <Outlet />
       </main>
       <Footer />
       <FloatingContact />
+      <MobileBottomNav />
     </>
   );
 }

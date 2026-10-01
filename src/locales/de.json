@@ -12,6 +12,7 @@
     "menu": "Menü",
     "close": "Menü schließen"
   },
+  "mobileNav": { "label": "Mobile Hauptnavigation", "home": "Start", "services": "Leistungen", "projects": "Projekte", "blogs": "Blog", "about": "Profil" },
   "common": {
     "skip": "Zum Inhalt springen",
     "discussProject": "Projekt besprechen",
@@ -85,6 +86,8 @@
     "features": "Funktionen",
     "technologies": "Technologien",
     "role": "Rolle",
+    "filterButton": "Filter",
+    "filterTitle": "Projekte filtern",
     "filters": { "mobile": "Mobile Apps", "web": "Webanwendungen", "desktop": "Desktop", "infrastructure": "Infrastruktur", "automation": "Automatisierung", "trading": "Trading Engineering", "mvp": "MVP", "development": "In Entwicklung", "completed": "Abgeschlossen" }
   },
   "about": {
@@ -92,7 +95,8 @@
     "role": "Fachinformatiker für Anwendungsentwicklung mit Schwerpunkt auf modernen Webanwendungen, mobilen Apps, APIs, Datenbanken und MVP-Entwicklung.",
     "text": "Ich entwickle individuelle Softwarelösungen, die konkrete Probleme verständlich und wirtschaftlich lösen. Wichtig sind klare Anforderungen, ein belastbarer technischer Umfang und eine Umsetzung, die früh testbar ist.",
     "workflow": "Meine Arbeitsweise verbindet Produktverständnis, saubere Frontend- und Backend-Entwicklung und pragmatische Architekturentscheidungen.",
-    "tech": "Technologieübersicht"
+    "tech": "Technologieübersicht",
+    "more": "Mehr erfahren"
   },
   "contact": {
     "title": "Projekt anfragen",
@@ -139,6 +143,13 @@
     "cta": "Ähnliches Projekt besprechen",
     "ctaText": "Von einer konkreten Herausforderung zu einer passenden Anwendung.",
     "back": "Alle Projekte",
-    "scope": "Funktionsumfang im aktuellen Projektstand"
+    "scope": "Funktionsumfang im aktuellen Projektstand",
+    "mobileSections": {
+      "label": "Projektbereiche",
+      "overview": "Überblick",
+      "features": "Features",
+      "tech": "Technik",
+      "problemSolution": "Problem und Lösung"
+    }
   }
 }

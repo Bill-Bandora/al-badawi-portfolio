@@ -36,15 +36,15 @@ export function BlogArticlePage() {
         ]}
       />
       <article className="bg-night">
-        <header className="bg-gradient-to-br from-ink via-coal to-blue px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-8">
+        <header className="bg-gradient-to-br from-ink via-coal to-blue px-4 py-10 text-white sm:px-6 min-[769px]:py-24 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <Link to={localizedUrl('blogs', lang)} className="inline-flex items-center gap-2 text-sm font-semibold text-cyan hover:text-white">
               <ArrowLeft className="size-4" /> Zurück zu den Blogs
             </Link>
-            <p className="mt-10 text-sm font-semibold uppercase tracking-[0.18em] text-cyan">Digitalisierung · Kleine Unternehmen</p>
-            <h1 className="mt-4 max-w-4xl text-balance text-4xl font-semibold leading-tight sm:text-5xl">{blog.title}</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-200">{blog.excerpt}</p>
-            <div className="mt-7 flex flex-wrap gap-5 text-sm text-slate-300">
+            <p className="mt-7 text-xs font-semibold uppercase tracking-[0.18em] text-cyan min-[769px]:mt-10 min-[769px]:text-sm">Digitalisierung · Kleine Unternehmen</p>
+            <h1 className="mt-3 max-w-4xl text-balance text-[clamp(2.15rem,10vw,3rem)] font-semibold leading-tight min-[769px]:mt-4 sm:text-5xl">{blog.title}</h1>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-200 min-[769px]:mt-6 min-[769px]:text-lg min-[769px]:leading-8">{blog.excerpt}</p>
+            <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-300 min-[769px]:mt-7 min-[769px]:gap-5 min-[769px]:text-sm">
               <span className="inline-flex items-center gap-2"><CalendarDays className="size-4" />{blog.publishedLabel}</span>
               <span className="inline-flex items-center gap-2"><Clock className="size-4" />{blog.readingTime}</span>
               <span>Von Bilal Al-Badawi</span>
@@ -52,8 +52,8 @@ export function BlogArticlePage() {
           </div>
         </header>
 
-        <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-20">
-          <div className="blog-content glass-panel rounded-[1.4rem] p-6 sm:p-10">
+        <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 min-[769px]:py-20">
+          <div className="blog-content glass-panel rounded-[1.4rem] p-5 min-[769px]:p-10">
             <p className="lead">Wir leben in einer Zeit, in der man sein Essen per App bestellt, Rechnungen mit dem Handy bezahlt und in wenigen Sekunden herausfindet, welcher Handwerker, Friseur oder Laden in der Nähe gute Bewertungen hat. Und trotzdem gibt es noch erstaunlich viele kleine Unternehmen und Betriebe, die keine eigene Website haben.</p>
 
             <p>Das ist gar nicht als Vorwurf gemeint. Viele Inhaberinnen und Inhaber haben schlicht genug mit ihrem Tagesgeschäft zu tun. Aufträge bearbeiten, Kunden betreuen, Material bestellen, Papierkram erledigen – da landet die Website schnell auf der Liste mit den Dingen, die man „irgendwann mal“ angeht. Manche sagen auch: „Meine Kunden kommen über Empfehlungen“ oder „Ich habe doch Instagram“. Beides kann gut funktionieren. Trotzdem bleibt ohne eigene Website ziemlich viel Potenzial liegen.</p>
@@ -94,7 +94,7 @@ export function BlogArticlePage() {
             <p>Für kleine Unternehmen geht es dabei nicht darum, jedem Trend hinterherzulaufen. Es geht darum, dort sichtbar zu sein, wo potenzielle Kunden längst suchen. Und das ist heute nun einmal sehr häufig online.</p>
           </div>
 
-          <aside className="mt-14 rounded-card bg-ink p-7 text-white sm:p-10">
+          <aside className="mt-8 rounded-card bg-ink p-6 text-white min-[769px]:mt-14 min-[769px]:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan">Der nächste Schritt</p>
             <h2 className="mt-3 text-2xl font-semibold">Dein Unternehmen soll online sichtbar werden?</h2>
             <p className="mt-3 leading-7 text-slate-300">Ich entwickle übersichtliche, schnelle Websites, die zu deinem Betrieb und deinen Kunden passen.</p>

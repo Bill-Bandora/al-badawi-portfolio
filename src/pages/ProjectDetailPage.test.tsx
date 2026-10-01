@@ -1,4 +1,5 @@
 import { screen, waitFor, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import App from '../App';
 import { renderWithProviders } from '../test/render';
@@ -26,6 +27,14 @@ describe('project landing pages', () => {
     expect(screen.getAllByText('Geplant')).toHaveLength(5);
     expect(screen.getByText('Automatisch erzeugte Wochenblätter')).toBeInTheDocument();
     expect(screen.queryByText('Electron')).not.toBeInTheDocument();
+  });
+  it('switches the mobile problem/solution segment without removing either text from the DOM', async () => {
+    renderWithProviders(<App />, '/de/projekte/bandora-org');
+    const solution = screen.getByRole('tab', { name: 'Lösung' });
+    expect(solution).toHaveAttribute('aria-selected', 'false');
+    await userEvent.click(solution);
+    expect(solution).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByText('Teilnehmerdaten, Termine und ihre Dokumentation müssen zusammen nachvollziehbar bleiben. Gleichzeitig darf ein nicht erreichbarer Updateserver die tägliche Arbeit nicht unterbrechen.')).toBeInTheDocument();
   });
   it('renders a localized not-found page for an unknown project without redirecting', () => {
     renderWithProviders(<App />, '/de/projekte/does-not-exist');

@@ -12,6 +12,7 @@
     "menu": "Menu",
     "close": "Close menu"
   },
+  "mobileNav": { "label": "Mobile primary navigation", "home": "Home", "services": "Services", "projects": "Projects", "blogs": "Blog", "about": "Profile" },
   "common": {
     "skip": "Skip to content",
     "discussProject": "Discuss project",
@@ -85,6 +86,8 @@
     "features": "Features",
     "technologies": "Technologies",
     "role": "Role",
+    "filterButton": "Filter",
+    "filterTitle": "Filter projects",
     "filters": { "mobile": "Mobile apps", "web": "Web applications", "desktop": "Desktop", "infrastructure": "Infrastructure", "automation": "Automation", "trading": "Trading engineering", "mvp": "MVP", "development": "In development", "completed": "Completed" }
   },
   "about": {
@@ -92,7 +95,8 @@
     "role": "Application development specialist focused on modern web applications, mobile apps, APIs, databases and MVP development.",
     "text": "I build custom software solutions that solve concrete problems in an understandable and economically sensible way.",
     "workflow": "My work combines product understanding, clean frontend and backend development, and pragmatic architecture decisions.",
-    "tech": "Technology overview"
+    "tech": "Technology overview",
+    "more": "Learn more"
   },
   "contact": {
     "title": "Request a project",
@@ -124,6 +128,13 @@
     "cta": "Discuss a similar project",
     "ctaText": "From a specific challenge to a fitting application.",
     "back": "All projects",
-    "scope": "Capabilities at the current project stage"
+    "scope": "Capabilities at the current project stage",
+    "mobileSections": {
+      "label": "Project sections",
+      "overview": "Overview",
+      "features": "Features",
+      "tech": "Tech",
+      "problemSolution": "Problem and solution"
+    }
   }
 }
