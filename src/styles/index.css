@@ -178,6 +178,17 @@ button {
 }
 
 @media (max-width: 768px) {
+  .ambient-orb,
+  .scan-line,
+  .signal-dot {
+    animation: none;
+    will-change: auto;
+  }
+
+  .glass-panel {
+    backdrop-filter: none;
+  }
+
   .mobile-line-clamp {
     display: -webkit-box;
     overflow: hidden;
