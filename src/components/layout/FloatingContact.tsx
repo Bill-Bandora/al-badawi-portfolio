@@ -36,15 +36,20 @@ export function FloatingContact() {
   const suppressClick = useRef(false);
 
   useEffect(() => {
-    const fallback = clampPosition({ side: 'right', y: window.innerHeight - 160 });
     try {
       const stored = parsePosition(localStorage.getItem(storageKey));
-      const next = clampPosition(stored ?? fallback);
-      livePosition.current = next;
-      setPosition(next);
-    } catch { livePosition.current = fallback; setPosition(fallback); }
+      if (stored) {
+        const next = clampPosition(stored);
+        livePosition.current = next;
+        setPosition(next);
+      }
+    } catch { livePosition.current = null; }
     const onResize = () => setPosition((current) => {
-      const next = current ? clampPosition(current) : fallback;
+      if (!current) {
+        livePosition.current = null;
+        return null;
+      }
+      const next = clampPosition(current);
       livePosition.current = next;
       return next;
     });
@@ -105,7 +110,7 @@ export function FloatingContact() {
       onDragStart={(event) => event.preventDefault()}
       onClick={(event) => { if (suppressClick.current) event.preventDefault(); }}
       style={position ? { ...sideStyle, top: position.y, bottom: 'auto', touchAction: 'none' } : { right: margin }}
-      className={`fixed z-30 inline-flex min-h-14 min-w-14 select-none items-center justify-center gap-2 rounded-full border border-gold/60 bg-night/[0.95] px-4 font-semibold text-white shadow-[0_12px_45px_rgba(8,145,178,0.3)] backdrop-blur transition-[transform,border-color,color,left,right] duration-200 hover:-translate-y-1 hover:border-cyan hover:text-cyan focus-visible:outline-cyan motion-reduce:transition-none max-[639px]:px-0 ${position ? '' : 'bottom-[calc(6rem+env(safe-area-inset-bottom))] sm:bottom-6'} ${dragging ? 'scale-95 cursor-grabbing' : 'cursor-grab'}`}
+      className={`fixed z-30 inline-flex min-h-14 min-w-14 select-none items-center justify-center gap-2 rounded-full border border-gold/60 bg-night/[0.95] px-4 font-semibold text-white shadow-[0_12px_45px_rgba(8,145,178,0.3)] backdrop-blur transition-[transform,border-color,color,left,right] duration-200 hover:-translate-y-1 hover:border-cyan hover:text-cyan focus-visible:outline-cyan motion-reduce:transition-none max-[639px]:px-0 ${position ? '' : 'bottom-[calc(5.5rem+env(safe-area-inset-bottom))] sm:bottom-6'} ${dragging ? 'scale-95 cursor-grabbing' : 'cursor-grab'}`}
     >
       <MessageCircle className="size-5" aria-hidden="true" />
       <span className="hidden sm:inline">{t('common.discussProject')}</span>
