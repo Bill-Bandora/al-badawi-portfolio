@@ -4,8 +4,20 @@ import { languages, siteConfig, routeMap } from '../../config/site';
 
 type Schema = Record<string, unknown>;
 type Breadcrumb = { name: string; url: string };
+type SeoHeadProps = {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
+  schema?: Schema;
+  breadcrumbs?: Breadcrumb[];
+  alternateLanguages?: readonly string[];
+  ogType?: 'website' | 'article';
+};
 
-export function SeoHead({ title, description, path = '', image, imageAlt, noindex = false, schema, breadcrumbs }: { title: string; description: string; path?: string; image?: string; imageAlt?: string; noindex?: boolean; schema?: Schema; breadcrumbs?: Breadcrumb[] }) {
+export function SeoHead({ title, description, path = '', image, imageAlt, noindex = false, schema, breadcrumbs, alternateLanguages, ogType = 'website' }: SeoHeadProps) {
   const { lang = 'de' } = useParams();
   const url = (language: string) => {
     const [segment, ...rest] = path.split('/');
@@ -33,12 +45,12 @@ export function SeoHead({ title, description, path = '', image, imageAlt, noinde
       <meta name="description" content={description} />
       <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
       {!noindex && <link rel="canonical" href={canonical} />}
-      {!noindex && languages.map((item) => (
+      {!noindex && languages.filter((item) => !alternateLanguages || alternateLanguages.includes(item.code)).map((item) => (
         <link key={item.code} rel="alternate" hrefLang={item.code} href={url(item.code)} />
       ))}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonical} />
       <meta property="og:site_name" content={siteConfig.brandName} />
       <meta property="og:locale" content={lang === 'de' ? 'de_DE' : lang === 'ar' ? 'ar_AR' : 'en_US'} />

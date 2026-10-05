@@ -95,12 +95,30 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: /eine website arbeitet auch nach feierabend/i })).toBeInTheDocument();
   });
 
+  it('renders a P1 guide with useful structure and contextual links', () => {
+    renderWithProviders(<App />, '/de/blogs/website-erstellen-lassen-kosten-2026');
+    expect(screen.getByRole('heading', { name: /website erstellen lassen: kosten 2026/i, level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('navigation', { name: 'Inhaltsübersicht' })).toBeInTheDocument();
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /webentwicklung/i }).some((link) => link.getAttribute('href') === '/de/leistungen/webentwicklung')).toBe(true);
+    expect(screen.getByRole('heading', { name: 'Häufige Fragen' })).toBeInTheDocument();
+  });
+
+  it('does not expose German-only P1 articles in English', () => {
+    renderWithProviders(<App />, '/en/blogs');
+    expect(screen.getByRole('heading', { name: 'Blogs', level: 1 })).toBeInTheDocument();
+    expect(screen.queryByText(/Kosten 2026/)).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /keine website/i })).toBeInTheDocument();
+  });
+
   it('renders a service detail page with related projects and contact CTA', () => {
     renderWithProviders(<App />, '/de/leistungen/webentwicklung');
     expect(screen.getByRole('heading', { name: 'Webentwicklung', level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Typische Anwendungsfälle' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Geräte-Nachverfolgung/ })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
     expect(screen.getByRole('link', { name: 'Projekt besprechen' })).toHaveAttribute('href', '/de/kontakt');
+    expect(screen.getByRole('heading', { name: 'Ratgeber für Ihr Website-Projekt' })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Ratgeber lesen/ })).toHaveLength(6);
   });
 
   it('runs the device-tracking mock demo without external data', async () => {

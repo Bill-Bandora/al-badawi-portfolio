@@ -1,24 +1,36 @@
-export type BlogPost = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  publishedAt: string;
-  publishedLabel: string;
-  readingTime: string;
-};
+import type { BlogLanguage, BlogPost } from './blogTypes';
+import { costArticle } from './blogPosts/costArticle';
+import { providerArticle } from './blogPosts/providerArticle';
+import { platformArticle } from './blogPosts/platformArticle';
+import { processArticle } from './blogPosts/processArticle';
+import { offerArticle } from './blogPosts/offerArticle';
+import { seoArticle } from './blogPosts/seoArticle';
+import { smallBusinessArticle } from './blogPosts/smallBusinessArticle';
+
+export type { BlogPost } from './blogTypes';
 
 export const blogs: BlogPost[] = [
-  {
-    slug: 'warum-kleine-unternehmen-eine-website-brauchen',
-    title: 'Keine Website? Warum kleine Unternehmen damit Chancen liegen lassen',
-    excerpt:
-      'Viele kleine Betriebe sind großartig in dem, was sie tun – online findet man davon aber kaum etwas. Dabei kann schon eine einfache Website spürbar mehr Vertrauen, Sichtbarkeit und Anfragen bringen.',
-    publishedAt: '2026-09-30',
-    publishedLabel: '30. September 2026',
-    readingTime: '6 Min. Lesezeit',
-  },
+  costArticle,
+  providerArticle,
+  platformArticle,
+  processArticle,
+  offerArticle,
+  seoArticle,
+  smallBusinessArticle,
 ];
 
-export function findBlog(slug: string | undefined) {
-  return blogs.find((blog) => blog.slug === slug);
+export function blogSupportsLanguage(blog: BlogPost, lang: string) {
+  return blog.languages.includes(lang as BlogLanguage);
+}
+
+export function visibleBlogs(lang: string) {
+  return blogs.filter((blog) => blogSupportsLanguage(blog, lang));
+}
+
+export function findBlog(slug: string | undefined, lang?: string) {
+  return blogs.find((blog) => blog.slug === slug && (!lang || blogSupportsLanguage(blog, lang)));
+}
+
+export function blogUrl(slug: string) {
+  return `/de/blogs/${slug}`;
 }

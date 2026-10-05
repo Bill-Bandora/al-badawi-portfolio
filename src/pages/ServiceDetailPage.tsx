@@ -7,6 +7,7 @@ import { ButtonLink } from '../components/ui/Button';
 import { TechnologyTag } from '../components/ui/TechnologyTag';
 import { findService } from '../data/services';
 import { projects } from '../data/projects';
+import { visibleBlogs } from '../data/blogs';
 import { localized } from '../utils/language';
 import { localizedUrl, routePath, siteConfig } from '../config/site';
 import { NotFoundPage } from './NotFoundPage';
@@ -18,6 +19,9 @@ export function ServiceDetailPage() {
   if (!service) return <NotFoundPage />;
   const path = `${routePath('services', lang)}/${service.slug}`;
   const relatedProjects = projects.filter((project) => service.projectSlugs.includes(project.slug));
+  const websiteGuides = service.slug === 'webentwicklung' && lang === 'de'
+    ? visibleBlogs('de').filter((blog) => blog.slug !== 'warum-kleine-unternehmen-eine-website-brauchen').slice(0, 6)
+    : [];
   const title = `${localized(service.title, lang)} | ${siteConfig.brandName}`;
 
   return (
@@ -108,6 +112,25 @@ export function ServiceDetailPage() {
             </div>
           </div>
         </section>
+
+        {websiteGuides.length > 0 && (
+          <section className="bg-night px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8" aria-labelledby="website-guides-title">
+            <div className="mx-auto max-w-6xl">
+              <p className="text-sm font-semibold uppercase tracking-widest text-cyan">Planung und Entscheidung</p>
+              <h2 id="website-guides-title" className="mt-3 text-3xl font-semibold text-white">Ratgeber für Ihr Website-Projekt</h2>
+              <p className="mt-4 max-w-3xl leading-7 text-slate-300">Kosten, Ablauf, Anbieterwahl, Technik und SEO: Diese Leitfäden helfen Ihnen, Angebote besser einzuordnen und Ihr Projekt realistisch vorzubereiten.</p>
+              <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {websiteGuides.map((blog) => (
+                  <Link key={blog.slug} to={`/de/blogs/${blog.slug}`} className="group rounded-card border border-slate-700 bg-navy p-5 transition hover:border-cyan">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-cyan">{blog.category}</span>
+                    <h3 className="mt-2 text-lg font-semibold leading-snug text-white group-hover:text-cyan">{blog.title}</h3>
+                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-cyan">Ratgeber lesen<ArrowRight className="ms-2 size-4" aria-hidden="true" /></span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="bg-ink px-4 py-12 text-center text-white sm:px-6 min-[769px]:py-16 lg:px-8">
           <h2 className="text-3xl font-semibold">{t('serviceDetail.cta')}</h2>

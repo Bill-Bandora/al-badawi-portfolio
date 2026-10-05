@@ -3,13 +3,14 @@ import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SeoHead } from '../components/common/SeoHead';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { blogs } from '../data/blogs';
+import { visibleBlogs } from '../data/blogs';
 import { localizedUrl } from '../config/site';
 
 export function BlogsPage() {
   const { t } = useTranslation();
   const { lang = 'de' } = useParams();
   const blogsUrl = localizedUrl('blogs', lang).replace(/\/$/, '');
+  const blogs = visibleBlogs(lang);
 
   return (
     <>
@@ -32,8 +33,8 @@ export function BlogsPage() {
               <div className="grid md:grid-cols-[0.7fr_1.3fr]">
                 <div className="flex min-h-48 items-end bg-gradient-to-br from-ink via-blue to-cyan p-6 text-white sm:min-h-64 sm:p-8">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-100">Digitalisierung</p>
-                    <p className="mt-3 text-2xl font-semibold leading-tight">Online sichtbar.<br />Auch als kleiner Betrieb.</p>
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-100">{blog.category}</p>
+                    <p className="mt-3 text-2xl font-semibold leading-tight">{blog.cardTitle}</p>
                   </div>
                 </div>
                 <div className="flex flex-col justify-center p-7 text-slate-200 sm:p-10">

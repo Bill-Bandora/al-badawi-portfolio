@@ -13,7 +13,7 @@ type RenderedHelmet = { title: { toString(): string }; meta: { toString(): strin
 export const prerenderRoutes = languages.flatMap(({ code }) => {
   const baseRoutes = Object.values(routeMap).map((route) => `/${code}/${route.paths[code]}`.replace(/\/$/, '/') || `/${code}/`);
   const projectRoutes = projects.map((project) => `/${code}/${routeMap.projects.paths[code]}/${project.slug}`);
-  const blogRoutes = blogs.map((blog) => `/${code}/${routeMap.blogs.paths[code]}/${blog.slug}`);
+  const blogRoutes = blogs.filter((blog) => blog.languages.includes(code)).map((blog) => `/${code}/${routeMap.blogs.paths[code]}/${blog.slug}`);
   const serviceRoutes = services.map((service) => `/${code}/${routeMap.services.paths[code]}/${service.slug}`);
   return [...baseRoutes, ...projectRoutes, ...blogRoutes, ...serviceRoutes];
 });

@@ -17,17 +17,17 @@ export const services: Service[] = [
     slug: 'webentwicklung',
     title: { de: 'Webentwicklung', en: 'Web development', ar: 'تطوير الويب' },
     summary: {
-      de: 'Individuelle Websites und Webanwendungen, die Informationen klar vermitteln und konkrete Arbeitsabläufe digital abbilden.',
+      de: 'Professionelle Firmenwebsites und individuelle Webanwendungen, die Informationen klar vermitteln, technisch sauber umgesetzt sind und konkrete Arbeitsabläufe digital abbilden.',
       en: 'Custom websites and web applications that communicate clearly and support real digital workflows.',
       ar: 'مواقع وتطبيقات ويب مخصصة تعرض المعلومات بوضوح وتدعم سير العمل الرقمي الحقيقي.',
     },
     audience: {
-      de: 'Für kleine Unternehmen, Gründer und Teams, die mehr als eine austauschbare Standardseite benötigen.',
+      de: 'Für kleine Unternehmen, Gründer und Teams, die eine professionelle Website erstellen lassen möchten und mehr als eine austauschbare Standardseite benötigen.',
       en: 'For small businesses, founders and teams that need more than a generic template.',
       ar: 'للشركات الصغيرة والمؤسسين والفرق التي تحتاج إلى أكثر من قالب عام.',
     },
     useCases: [
-      { de: 'Responsive Unternehmenswebsites und Landingpages', en: 'Responsive business websites and landing pages', ar: 'مواقع شركات وصفحات هبوط متجاوبة' },
+      { de: 'Responsive Firmenwebsites und Landingpages mit klarer Nutzerführung', en: 'Responsive business websites and landing pages', ar: 'مواقع شركات وصفحات هبوط متجاوبة' },
       { de: 'Interne Dashboards und Verwaltungsoberflächen', en: 'Internal dashboards and administration interfaces', ar: 'لوحات معلومات وواجهات إدارة داخلية' },
       { de: 'Mehrsprachige, technisch suchmaschinenfreundliche Auftritte', en: 'Multilingual, search-friendly websites', ar: 'مواقع متعددة اللغات ومهيأة تقنيا لمحركات البحث' },
     ],
