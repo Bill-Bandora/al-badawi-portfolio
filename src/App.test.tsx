@@ -111,6 +111,32 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: /keine website/i })).toBeInTheDocument();
   });
 
+  it('switches the blog overview between grid and list with keyboard-accessible controls', async () => {
+    renderWithProviders(<App />, '/de/blogs');
+    const gridButton = screen.getByRole('button', { name: 'Kartenansicht' });
+    const listButton = screen.getByRole('button', { name: 'Listenansicht' });
+    const results = document.getElementById('blog-results');
+    expect(gridButton).toHaveAttribute('aria-pressed', 'true');
+    expect(listButton).toHaveAttribute('aria-pressed', 'false');
+    expect(results).toHaveAttribute('data-view', 'grid');
+    expect(within(results as HTMLElement).getAllByRole('article')).toHaveLength(7);
+
+    listButton.focus();
+    await userEvent.keyboard('{Enter}');
+    expect(listButton).toHaveAttribute('aria-pressed', 'true');
+    expect(results).toHaveAttribute('data-view', 'list');
+    expect(localStorage.getItem('bandora-blog-view')).toBe('list');
+  });
+
+  it('restores the saved blog view and localizes the switcher for RTL', async () => {
+    localStorage.setItem('bandora-blog-view', 'list');
+    renderWithProviders(<App />, '/ar/blogs');
+    await waitFor(() => expect(document.documentElement.dir).toBe('rtl'));
+    expect(screen.getByRole('button', { name: 'عرض البطاقات' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'عرض القائمة' })).toHaveAttribute('aria-pressed', 'true');
+    expect(document.getElementById('blog-results')).toHaveAttribute('data-view', 'list');
+  });
+
   it('renders a service detail page with related projects and contact CTA', () => {
     renderWithProviders(<App />, '/de/leistungen/webentwicklung');
     expect(screen.getByRole('heading', { name: 'Webentwicklung', level: 1 })).toBeInTheDocument();
