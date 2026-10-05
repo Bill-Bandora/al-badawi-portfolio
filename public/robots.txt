@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://al-badawi.de/sitemap.xml
+Sitemap: https://bandora-dev.de/sitemap.xml

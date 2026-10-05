@@ -4,6 +4,8 @@ import { projects } from './src/data/projects';
 import { blogs } from './src/data/blogs';
 import { services } from './src/data/services';
 
+const productionDomain = 'https://bandora-dev.de';
+
 export default defineConfig({
   ssr: { noExternal: ['react-helmet-async'] },
   plugins: [react(), {
@@ -29,10 +31,10 @@ export default defineConfig({
         ar: ['', 'services', 'projects', 'blogs', 'about', 'contact', 'imprint', 'privacy'],
       };
       const urls = Object.entries(paths).flatMap(([lang, routes]) => [
-        ...routes.map((route) => `https://al-badawi.de/${lang}/${route}`),
-        ...slugs.map((slug) => `https://al-badawi.de/${lang}/${lang === 'de' ? 'projekte' : 'projects'}/${slug}`),
-        ...blogs.filter((blog) => blog.languages.includes(lang as 'de' | 'en' | 'ar')).map((blog) => `https://al-badawi.de/${lang}/blogs/${blog.slug}`),
-        ...serviceSlugs.map((slug) => `https://al-badawi.de/${lang}/${lang === 'de' ? 'leistungen' : 'services'}/${slug}`),
+        ...routes.map((route) => `${productionDomain}/${lang}/${route}`),
+        ...slugs.map((slug) => `${productionDomain}/${lang}/${lang === 'de' ? 'projekte' : 'projects'}/${slug}`),
+        ...blogs.filter((blog) => blog.languages.includes(lang as 'de' | 'en' | 'ar')).map((blog) => `${productionDomain}/${lang}/blogs/${blog.slug}`),
+        ...serviceSlugs.map((slug) => `${productionDomain}/${lang}/${lang === 'de' ? 'leistungen' : 'services'}/${slug}`),
       ]);
       const lastModified = (url: string) => {
         const blog = blogs.find((item) => url.endsWith(`/blogs/${item.slug}`));

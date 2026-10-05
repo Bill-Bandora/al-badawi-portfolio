@@ -112,7 +112,7 @@ if (!$stored) {
 }
 
 $safe = fn(string $text): string => htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$subject = 'Projektanfrage ueber al-badawi.de';
+$subject = 'Projektanfrage ueber bandora-dev.de';
 $body = implode("\n", [
     'Name: ' . $safe($name),
     'E-Mail: ' . $safe($email),

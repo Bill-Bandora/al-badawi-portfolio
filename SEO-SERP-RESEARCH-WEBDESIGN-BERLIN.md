@@ -1,8 +1,8 @@
 # SEO-SERP-Research: Webdesign und Website-Erstellung in Berlin
 
 **Marke:** Bandora Development  
-**Aktuelle Domain:** https://al-badawi.de  
-**Spätere Domain:** https://bandora-dev.de (nicht Bestandteil dieses Auftrags)  
+**Aktuelle Domain:** https://bandora-dev.de
+
 **Abrufdatum der Recherche:** 5. Oktober 2026  
 **Markt:** deutschsprachige Suchergebnisse mit Schwerpunkt Berlin/Deutschland
 
@@ -210,7 +210,7 @@ Die Berliner SERPs sind kommerziell und wettbewerbsintensiv. Gute Chancen besteh
 
 ### Jetzt
 
-**Money Page:** https://al-badawi.de/de/leistungen/webentwicklung
+**Money Page:** https://bandora-dev.de/de/leistungen/webentwicklung
 
 Empfohlene Weiterentwicklung:
 

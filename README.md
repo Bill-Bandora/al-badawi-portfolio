@@ -2,9 +2,9 @@
 > `al-badawi-portfolio` is the source repository; `al-badawi-site` is legacy
 > GitHub Pages output and is not used for the Gen8 deployment.
 
-# Al-Badawi Software Development
+# Bandora Development
 
-Produktionsreife statische Portfolio-Website fuer `https://al-badawi.de`.
+Produktionsreife statische Portfolio-Website fuer `https://bandora-dev.de`.
 
 ## Lokale Entwicklung
 
@@ -42,7 +42,7 @@ VITE_CONTACT_MODE=mailto
 
 Das private Quell-Repository wird lokal gebaut. Der statische Inhalt aus `dist`
 wird im öffentlichen Deployment-Repository `Bill-Bandora/al-badawi-site`
-veröffentlicht. Die Custom Domain wird durch `public/CNAME` auf `al-badawi.de`
+veröffentlicht. Die Custom Domain wird durch `public/CNAME` auf `bandora-dev.de`
 festgelegt. Für Client-Routen muss dort zusätzlich eine Kopie von `index.html`
 als `404.html` liegen.
 
@@ -71,7 +71,7 @@ node scripts/copy-server-api.mjs
 - Vollstaendige Impressumsanschrift.
 - Optionale Telefonnummer.
 - Steuerliche Angaben nur, falls erforderlich.
-- PHP-Absenderadresse in `server/api/config.php` auf eine Domain-Adresse wie `website@al-badawi.de` setzen.
+- PHP-Absenderadresse in der Laufzeitkonfiguration auf eine Domain-Adresse wie `website@bandora-dev.de` setzen.
 - Echte Projekt-Screenshots, sobald vorhanden.
 - Projekt-Landingpages werden zentral in `src/data/projects.ts` gepflegt und innerhalb der bestehenden App ausgeliefert (DE/EN/AR). Keine separaten Dienste oder Subdomains.
 - `vite.config.ts` erzeugt Sitemap und Apache-Slug-Regeln aus denselben Projektdaten. Unbekannte Projekt-Slugs liefern im Docker-Runtime HTTP 404 mit der lokalisierten React-Fehlerseite.

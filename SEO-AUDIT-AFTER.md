@@ -56,7 +56,7 @@ Es wurden keine LocalBusiness-Daten, Bewertungen, Kunden, Kennzahlen oder Stando
 
 ## 7. Sitemap
 
-- Build-generiert unter `https://al-badawi.de/sitemap.xml`.
+- Build-generiert unter `https://bandora-dev.de/sitemap.xml`.
 - Enthält 51 eindeutige, indexierbare URLs inklusive Leistungsseiten und `lastmod`.
 - Admin-, API-, Entwicklungs- und 404-URLs werden nicht aufgenommen.
 

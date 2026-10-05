@@ -11,7 +11,7 @@ export const siteConfig = {
   brandName: 'Bandora Development',
   shortBrand: 'Bandora',
   developerName: 'Bilal Al-Badawi',
-  domain: 'https://al-badawi.de',
+  domain: 'https://bandora-dev.de',
   email: 'albadawi335@gmail.com',
   githubUrl: 'https://github.com/Bill-Bandora?tab=repositories',
   contactMode: import.meta.env.VITE_CONTACT_MODE ?? 'mailto',
