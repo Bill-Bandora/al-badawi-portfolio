@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import { languages, siteConfig, routeMap } from '../../config/site';
+import { languages, localizedContentPath, siteConfig } from '../../config/site';
 
 type Schema = Record<string, unknown>;
 type Breadcrumb = { name: string; url: string };
@@ -20,10 +20,8 @@ type SeoHeadProps = {
 export function SeoHead({ title, description, path = '', image, imageAlt, noindex = false, schema, breadcrumbs, alternateLanguages, ogType = 'website' }: SeoHeadProps) {
   const { lang = 'de' } = useParams();
   const url = (language: string) => {
-    const [segment, ...rest] = path.split('/');
-    const route = Object.values(routeMap).find((item) => item.paths.de === segment);
-    const prefix = route ? route.paths[language as keyof typeof route.paths] : segment;
-    return `${siteConfig.domain}/${language}/${[prefix, ...rest].join('/')}`;
+    const localizedPath = localizedContentPath(path, language);
+    return `${siteConfig.domain}/${language}/${localizedPath}`;
   };
   const canonical = url(lang);
   const baseSchema = {

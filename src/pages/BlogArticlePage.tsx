@@ -9,6 +9,24 @@ import { localizedUrl, siteConfig } from '../config/site';
 
 type BlogEvent = 'blog_view' | 'blog_50_percent' | 'blog_90_percent' | 'blog_to_service_click' | 'blog_cta_click' | 'blog_to_contact_click';
 
+const articleLabels = {
+  de: {
+    back: 'Zurück zu den Blogs', contents: 'Inhalt', by: 'Von', faq: 'Häufige Fragen', projectInsights: 'Passende Einblicke aus Bandora-Projekten',
+    sources: 'Quellen und Marktbeispiele', sourceIntro: 'Externe Preisangaben sind veröffentlichte Beispiele der jeweiligen Anbieter und keine eigenen Bandora-Preise.',
+    related: 'Passende Ratgeber', service: 'Mehr zur Webentwicklung', home: 'Startseite', blogs: 'Blogs',
+  },
+  en: {
+    back: 'Back to the blog', contents: 'Contents', by: 'By', faq: 'Frequently asked questions', projectInsights: 'Related insights from Bandora projects',
+    sources: 'Sources and market examples', sourceIntro: 'External prices are published examples from the respective providers and are not Bandora prices.',
+    related: 'Related guides', service: 'More about web development', home: 'Home', blogs: 'Blog',
+  },
+  ar: {
+    back: 'العودة إلى المدونة', contents: 'المحتويات', by: 'بقلم', faq: 'الأسئلة الشائعة', projectInsights: 'موضوعات مرتبطة من مشاريع Bandora',
+    sources: 'المصادر وأمثلة السوق', sourceIntro: 'الأسعار الخارجية أمثلة منشورة من مقدمي الخدمات المعنيين وليست أسعارًا خاصة بـ Bandora.',
+    related: 'أدلة ذات صلة', service: 'المزيد عن تطوير الويب', home: 'الرئيسية', blogs: 'المدونة',
+  },
+} as const;
+
 function emitBlogEvent(event: BlogEvent, blog: BlogPost, destination?: string) {
   window.dispatchEvent(new CustomEvent('bandora:analytics', { detail: { event, slug: blog.slug, destination } }));
 }
@@ -36,6 +54,7 @@ function TrackedLink({ link, blog }: { link: BlogLink; blog: BlogPost }) {
 export function BlogArticlePage() {
   const { lang = 'de', slug } = useParams();
   const blog = findBlog(slug, lang);
+  const labels = articleLabels[lang as keyof typeof articleLabels] ?? articleLabels.de;
 
   useEffect(() => {
     if (!blog) return;
@@ -86,8 +105,8 @@ export function BlogArticlePage() {
         ogType="article"
         schema={{ '@context': 'https://schema.org', '@graph': faqSchema ? [articleSchema, faqSchema] : [articleSchema] }}
         breadcrumbs={[
-          { name: 'Startseite', url: `${siteConfig.domain}/${lang}/` },
-          { name: 'Blogs', url: `${siteConfig.domain}${localizedUrl('blogs', lang)}` },
+          { name: labels.home, url: `${siteConfig.domain}/${lang}/` },
+          { name: labels.blogs, url: `${siteConfig.domain}${localizedUrl('blogs', lang)}` },
           { name: blog.title, url: articleUrl },
         ]}
       />
@@ -95,7 +114,7 @@ export function BlogArticlePage() {
         <header className="bg-gradient-to-br from-ink via-coal to-blue px-4 py-10 text-white sm:px-6 min-[769px]:py-24 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <Link to={localizedUrl('blogs', lang)} className="inline-flex items-center gap-2 text-sm font-semibold text-cyan hover:text-white">
-              <ArrowLeft className="size-4" aria-hidden="true" /> Zurück zu den Blogs
+              <ArrowLeft className="size-4 rtl:rotate-180" aria-hidden="true" /> {labels.back}
             </Link>
             <p className="mt-7 text-xs font-semibold uppercase tracking-[0.18em] text-cyan min-[769px]:mt-10 min-[769px]:text-sm">{blog.category}</p>
             <h1 className="mt-3 max-w-4xl text-balance text-[clamp(2.15rem,10vw,3rem)] font-semibold leading-tight min-[769px]:mt-4 sm:text-5xl">{blog.title}</h1>
@@ -103,7 +122,7 @@ export function BlogArticlePage() {
             <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-300 min-[769px]:mt-7 min-[769px]:gap-5 min-[769px]:text-sm">
               <span className="inline-flex items-center gap-2"><CalendarDays className="size-4" aria-hidden="true" />{blog.publishedLabel}</span>
               <span className="inline-flex items-center gap-2"><Clock className="size-4" aria-hidden="true" />{blog.readingTime}</span>
-              <span>Von Bilal Al-Badawi</span>
+              <span>{labels.by} Bilal Al-Badawi</span>
             </div>
           </div>
         </header>
@@ -114,7 +133,7 @@ export function BlogArticlePage() {
 
             {blog.sections.length > 3 && (
               <nav aria-label="Inhaltsübersicht" className="mt-8 rounded-card border border-slate-700 bg-night/60 p-5">
-                <h2 className="!mt-0 !text-xl">Inhalt</h2>
+                <h2 className="!mt-0 !text-xl">{labels.contents}</h2>
                 <ol className="mt-4 grid gap-2 text-base sm:grid-cols-2">
                   {blog.sections.map((section) => (
                     <li key={section.id}><a className="text-cyan hover:text-white" href={`#${section.id}`}>{section.title}</a></li>
@@ -148,7 +167,7 @@ export function BlogArticlePage() {
 
             {blog.faq && blog.faq.length > 0 && (
               <section id="fragen" className="scroll-mt-24">
-                <h2>Häufige Fragen</h2>
+                <h2>{labels.faq}</h2>
                 <div className="mt-5 grid gap-3">
                   {blog.faq.map((item) => <details key={item.question} className="group rounded-card border border-slate-700 bg-night/50 p-5"><summary className="cursor-pointer list-none font-semibold text-white">{item.question}</summary><p className="!mt-3">{item.answer}</p></details>)}
                 </div>
@@ -157,15 +176,15 @@ export function BlogArticlePage() {
 
             {blog.projectLinks.length > 0 && (
               <section id="praxis">
-                <h2>Passende Einblicke aus Bandora-Projekten</h2>
+                <h2>{labels.projectInsights}</h2>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">{blog.projectLinks.map((link) => <Link key={link.to} to={link.to} className="rounded-card border border-slate-700 bg-night/60 p-5 font-semibold text-cyan transition hover:border-cyan hover:text-white">{link.label}<ArrowRight className="ms-2 inline size-4" aria-hidden="true" /></Link>)}</div>
               </section>
             )}
 
             {blog.sources && blog.sources.length > 0 && (
               <section id="quellen">
-                <h2>Quellen und Marktbeispiele</h2>
-                <p>Externe Preisangaben sind veröffentlichte Beispiele der jeweiligen Anbieter und keine eigenen Bandora-Preise.</p>
+                <h2>{labels.sources}</h2>
+                <p>{labels.sourceIntro}</p>
                 <ul className="mt-5 grid gap-3 text-sm">{blog.sources.map((source) => <li key={source.url}><a className="inline-flex items-start gap-2 text-cyan underline decoration-cyan/30 underline-offset-4 hover:text-white" href={source.url} target="_blank" rel="noreferrer">{source.label}<ExternalLink className="mt-1 size-3.5 shrink-0" aria-hidden="true" /></a>{source.note && <span className="ms-2 text-slate-500">({source.note})</span>}</li>)}</ul>
               </section>
             )}
@@ -173,7 +192,7 @@ export function BlogArticlePage() {
 
           {related.length > 0 && (
             <aside aria-labelledby="related-articles" className="mt-8 min-[769px]:mt-12">
-              <h2 id="related-articles" className="text-2xl font-semibold text-white">Passende Ratgeber</h2>
+              <h2 id="related-articles" className="text-2xl font-semibold text-white">{labels.related}</h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">{related.map((item) => <Link key={item.slug} to={blogUrl(item.slug)} className="rounded-card border border-slate-700 bg-navy p-5 text-white transition hover:border-cyan"><span className="text-xs font-semibold uppercase tracking-wider text-cyan">{item.category}</span><h3 className="mt-2 text-lg font-semibold">{item.title}</h3></Link>)}</div>
             </aside>
           )}
@@ -183,8 +202,8 @@ export function BlogArticlePage() {
             <h2 className="mt-3 text-2xl font-semibold">{blog.cta.title}</h2>
             <p className="mt-3 leading-7 text-slate-300">{blog.cta.text}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink to="/de/leistungen/webentwicklung" variant="dark" data-event="blog_to_service_click" onClick={() => emitBlogEvent('blog_to_service_click', blog, '/de/leistungen/webentwicklung')}>Mehr zur Webentwicklung</ButtonLink>
-              <ButtonLink to="/de/kontakt" variant="dark" data-event="blog_cta_click" onClick={() => { emitBlogEvent('blog_cta_click', blog, '/de/kontakt'); emitBlogEvent('blog_to_contact_click', blog, '/de/kontakt'); }}>{blog.cta.label}</ButtonLink>
+              <ButtonLink to={`${localizedUrl('services', lang).replace(/\/$/, '')}/webentwicklung`} variant="dark" data-event="blog_to_service_click" onClick={() => emitBlogEvent('blog_to_service_click', blog, `${localizedUrl('services', lang).replace(/\/$/, '')}/webentwicklung`)}>{labels.service}</ButtonLink>
+              <ButtonLink to={localizedUrl('contact', lang)} variant="dark" data-event="blog_cta_click" onClick={() => { emitBlogEvent('blog_cta_click', blog, localizedUrl('contact', lang)); emitBlogEvent('blog_to_contact_click', blog, localizedUrl('contact', lang)); }}>{blog.cta.label}</ButtonLink>
             </div>
           </aside>
         </div>

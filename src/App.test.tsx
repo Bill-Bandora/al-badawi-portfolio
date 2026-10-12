@@ -95,6 +95,25 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: /eine website arbeitet auch nach feierabend/i })).toBeInTheDocument();
   });
 
+  it('renders the small-business article with complete English content and links', () => {
+    renderWithProviders(<App />, '/en/blogs/warum-kleine-unternehmen-eine-website-brauchen');
+    expect(screen.getByRole('heading', { name: /no website\?/i, level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /keeps working after business hours/i })).toBeInTheDocument();
+    expect(screen.queryByText(/eine website arbeitet/i)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /web development/i }).some((link) => link.getAttribute('href') === '/en/services/webentwicklung')).toBe(true);
+    expect(screen.getByRole('link', { name: 'Send an enquiry' })).toHaveAttribute('href', '/en/contact');
+  });
+
+  it('renders the small-business article in Arabic with RTL and localized links', async () => {
+    renderWithProviders(<App />, '/ar/blogs/warum-kleine-unternehmen-eine-website-brauchen');
+    expect(screen.getByRole('heading', { name: /لا تملك موقعًا/, level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /يواصل الموقع العمل بعد انتهاء الدوام/ })).toBeInTheDocument();
+    expect(screen.queryByText(/eine website arbeitet/i)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /تطوير الويب/ }).some((link) => link.getAttribute('href') === '/ar/services/webentwicklung')).toBe(true);
+    expect(screen.getByRole('link', { name: 'أرسل استفسارك' })).toHaveAttribute('href', '/ar/contact');
+    await waitFor(() => expect(document.documentElement.dir).toBe('rtl'));
+  });
+
   it('renders a P1 guide with useful structure and contextual links', () => {
     renderWithProviders(<App />, '/de/blogs/website-erstellen-lassen-kosten-2026');
     expect(screen.getByRole('heading', { name: /website erstellen lassen: kosten 2026/i, level: 1 })).toBeInTheDocument();
@@ -108,7 +127,7 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/en/blogs');
     expect(screen.getByRole('heading', { name: 'Blogs', level: 1 })).toBeInTheDocument();
     expect(screen.queryByText(/Kosten 2026/)).not.toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /keine website/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /no website/i })).toBeInTheDocument();
   });
 
   it('switches the blog overview between grid and list with keyboard-accessible controls', async () => {

@@ -9,11 +9,17 @@ import sys
 import tempfile
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
 def docker(*args):
     return subprocess.check_output(['docker', *args], text=True).strip()
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 image = sys.argv[1] if len(sys.argv) > 1 else 'al-badawi-portfolio:local'
@@ -38,12 +44,15 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
         port = json.loads(docker('inspect', cid))[0]['NetworkSettings']['Ports']['80/tcp'][0]['HostPort']
         base = f'http://127.0.0.1:{port}'
 
-        def request(path, data=None, headers=None):
+        no_redirect_opener = urllib.request.build_opener(NoRedirect)
+
+        def request(path, data=None, headers=None, follow_redirects=True):
             req = urllib.request.Request(base + path,
                 data=json.dumps(data).encode() if data is not None else None,
                 headers={'Content-Type': 'application/json', **(headers or {})})
             try:
-                response = urllib.request.urlopen(req, timeout=10)
+                response = (urllib.request.urlopen(req, timeout=10) if follow_redirects
+                            else no_redirect_opener.open(req, timeout=10))
             except urllib.error.HTTPError as error:
                 response = error
             with response:
@@ -51,7 +60,7 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
 
         for attempt in range(50):
             try:
-                if request('/')[0] == 200:
+                if request('/de/')[0] == 200:
                     break
             except OSError:
                 pass
@@ -59,7 +68,13 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
         else:
             raise AssertionError('Apache did not become ready')
 
-        home = request('/')[1]
+        root_status, _, root_headers = request('/', follow_redirects=False)
+        assert root_status == 301
+        assert urllib.parse.urlsplit(root_headers['Location']).path == '/de/'
+        assert request('/de/')[0] == 200
+        assert request('/en/')[0] == 200
+        assert request('/ar/')[0] == 200
+        home = request('/index.html')[1]
         for language in ['de', 'en', 'ar']:
             prefix = '/' + language + '/' + ('projekte' if language == 'de' else 'projects')
             for slug in ['bandora-org', 'buynot', 'geraete-nachverfolgung', 'roommate-plus']:
@@ -76,7 +91,7 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
             status, body, _ = request(route)
             assert status == 200 and '<div id="root">' in body and body != home
         assert request('/de/unknown')[:2] == (404, home)
-        for asset in re.findall(r'(?:src|href)="(/assets/[^"]+)"', home):
+        for asset in re.findall(r'(?:src|href)="(/assets/[^"]+)"', request('/de/')[1]):
             assert request(asset)[0] == 200
         for asset in ['/favicon.svg', '/robots.txt', '/sitemap.xml']:
             assert request(asset)[0] == 200
@@ -123,7 +138,7 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
         docker('exec', '-u', 'www-data', cid, 'sh', '-c',
                'printf "broken" > /var/lib/contact/rate-limit.json')
         assert request('/api/contact.php', valid)[0] == 503
-        print('PASS: SPA/API routing, PHP/mbstring, honeypot, timing, validation,')
+        print('PASS: root 301, localized SPA/API routing, PHP/mbstring, honeypot, timing, validation,')
         print('      mail headers, IP limit/spoof protection, mail/storage failures,')
         print('      msmtp config/permissions and no Node runtime.')
     finally:

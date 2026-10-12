@@ -24,9 +24,7 @@ export type BlogSource = {
   note?: string;
 };
 
-export type BlogPost = {
-  slug: string;
-  languages: BlogLanguage[];
+export type BlogLocalizedContent = {
   title: string;
   metaTitle: string;
   excerpt: string;
@@ -43,6 +41,12 @@ export type BlogPost = {
   relatedSlugs: string[];
   projectLinks: BlogLink[];
   cta: { eyebrow: string; title: string; text: string; label: string };
+};
+
+export type BlogPost = BlogLocalizedContent & {
+  slug: string;
+  languages: BlogLanguage[];
+  translations?: Partial<Record<BlogLanguage, BlogLocalizedContent>>;
 };
 
 export const p1PublishedAt = '2026-10-05';

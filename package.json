@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "test": "vitest run",
+    "test:seo": "npm run build && node scripts/validate-seo-build.mjs",
     "format": "prettier --write .",
     "preview": "vite preview"
   },

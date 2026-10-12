@@ -46,3 +46,11 @@ export function localizedUrl(key: keyof typeof routeMap, lang: string = defaultL
   const path = routePath(key, lang);
   return `/${lang}/${path}`.replace(/\/$/, '/');
 }
+
+export function localizedContentPath(path: string, lang: string = defaultLanguage) {
+  const language = languages.some((item) => item.code === lang) ? (lang as LanguageCode) : defaultLanguage;
+  const [segment = '', ...rest] = path.split('/').filter(Boolean);
+  const route = Object.values(routeMap).find((item) => (Object.values(item.paths) as string[]).includes(segment));
+  const localizedSegment = route ? route.paths[language] : segment;
+  return [localizedSegment, ...rest].filter(Boolean).join('/');
+}
