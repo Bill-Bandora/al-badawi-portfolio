@@ -71,6 +71,13 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
         root_status, _, root_headers = request('/', follow_redirects=False)
         assert root_status == 301
         assert urllib.parse.urlsplit(root_headers['Location']).path == '/de/'
+        for proxy_header in [
+                {'X-Forwarded-Proto': 'https'},
+                {'CF-Visitor': '{"scheme":"https"}'},
+        ]:
+            status, _, headers = request('/', headers=proxy_header, follow_redirects=False)
+            assert status == 301
+            assert headers['Location'] == 'https://bandora-dev.de/de/'
         assert request('/de/')[0] == 200
         assert request('/en/')[0] == 200
         assert request('/ar/')[0] == 200

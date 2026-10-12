@@ -196,6 +196,29 @@ Eine Indexierungsanfrage ist eine separate Entscheidung und benötigt weiterhin 
 
 ## 8. Release-Status
 
-**Releasebereit nach Freigabe.** Quellcode, Typprüfung, Lint, Unit-/Komponententests, Produktionsbuild, 72-Seiten-SEO-Regression, Performanceprüfung, isolierter Docker-Build und der unveränderte Container-Smoke-Test sind grün. Vor dem produktiven Deployment ist eine ausdrückliche Deployment-Freigabe erforderlich.
+**Korrigierter Release Candidate wartet auf erneute Freigabe.** Quellcode, Typprüfung, Lint, Unit-/Komponententests, Produktionsbuild, 72-Seiten-SEO-Regression, Performanceprüfung, isolierter Docker-Build und der erweiterte Container-Smoke-Test sind grün. Vor dem zweiten produktiven Deployment ist wegen des geänderten Commits und Image-Digests eine erneute ausdrückliche Freigabe erforderlich.
 
-Es wurde kein Push oder Deployment durchgeführt.
+### 8.1 Erster Deployment-Versuch und automatischer Rollback
+
+Commit `2be91865ae91e4a1d0746e4b702715860038d425` wurde nach Freigabe auf `origin/main` veröffentlicht und mit dem geprüften Image `portfolio-blog:2be9186-rc` produktiv gestartet. Container-Image, Umgebungsvariablen, Labels, Netzwerk, Volumes, Restart-Policy, Healthcheck, Entrypoint und Startkommando wurden vor und nach dem Austausch vollständig verglichen.
+
+Die erste öffentliche Prüfung zeigte jedoch eine kritische Redirectkette:
+
+```text
+https://bandora-dev.de/
+  301 Location: http://bandora-dev.de/de/
+  Cloudflare-Redirect
+  200 https://bandora-dev.de/de/
+```
+
+Ursache war, dass Cloudflare beziehungsweise Traefik die HTTPS-Anfrage intern über HTTP an Apache übergibt. Apache erzeugte deshalb aus dem relativen Redirectziel eine absolute HTTP-Location. Der neue Container wurde sofort gestoppt und die vorherige Version `portfolio-blog:b261a16` mit der unveränderten Konfiguration wieder gestartet. Der Rollback-Container war anschließend erneut `running` und `healthy`.
+
+### 8.2 Gezielte Korrektur nach dem Rollback
+
+Die Root-Regel erkennt jetzt `X-Forwarded-Proto: https` beziehungsweise Cloudflares `CF-Visitor`-Kennzeichnung und liefert dann direkt:
+
+```text
+Location: https://bandora-dev.de/de/
+```
+
+Direkte lokale Healthchecks ohne Proxy-Header behalten den relativen Redirect auf `/de/` und bleiben dadurch unabhängig von Cloudflare. Der unveränderte Container-Smoke-Test wurde um beide sicheren Proxy-Szenarien ergänzt. Lint, TypeScript, 56/56 Vitest, 72/72 SEO-Buildprüfungen sowie beide Docker-Smoke-Test-Modi bestanden erneut.
