@@ -33,6 +33,7 @@ describe('portfolio app', () => {
   it('shows all projects with internal primary links', () => {
     renderWithProviders(<App />, '/de/projekte');
     expect(screen.getByRole('heading', { name: 'Bandora Org' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'IT-Geräte-Nachverfolgung mit Standort- und Statushistorie' })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
     const links = screen.getAllByRole('link', { name: /Projekt ansehen/ });
     expect(links).toHaveLength(9);
     expect(links[0]).toHaveAttribute('href', '/de/projekte/bandora-org');
@@ -123,6 +124,13 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: 'Häufige Fragen' })).toBeInTheDocument();
   });
 
+  it('adds a transparent three-year cost model to the provider comparison', () => {
+    renderWithProviders(<App />, '/de/blogs/webdesigner-freelancer-oder-agentur');
+    expect(screen.getByRole('heading', { name: 'Drei Jahre Betrieb: Warum der Startpreis allein nicht reicht' })).toBeInTheDocument();
+    expect(screen.getByRole('table', { name: 'Beispielrechnung mit Kostenindex (keine Europreise)' })).toBeInTheDocument();
+    expect(screen.getByText('Gesamtindex nach 3 Jahren')).toBeInTheDocument();
+  });
+
   it('does not expose German-only P1 articles in English', () => {
     renderWithProviders(<App />, '/en/blogs');
     expect(screen.getByRole('heading', { name: 'Blogs', level: 1 })).toBeInTheDocument();
@@ -168,6 +176,8 @@ describe('portfolio app', () => {
 
   it('runs the device-tracking mock demo without external data', async () => {
     renderWithProviders(<App />, '/de/projekte/geraete-nachverfolgung');
+    expect(screen.getByRole('heading', { name: 'Nachvollziehbarer Ablauf im MVP' })).toBeInTheDocument();
+    expect(screen.getByText('Jede Änderung in der Historie festhalten; fehlerhafte Vorgänge werden zurückgerollt.')).toBeInTheDocument();
     await userEvent.type(screen.getByLabelText('Inventarnummer, z. B. INV-1042'), 'INV-1042');
     await userEvent.click(screen.getByRole('button', { name: 'Gerät suchen' }));
     expect(screen.getByText(/Gerät gefunden: INV-1042/)).toBeInTheDocument();

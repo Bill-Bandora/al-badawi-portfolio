@@ -11,7 +11,8 @@ export const providerArticle: BlogPost = {
   cardTitle: 'Den passenden Partner statt das passende Etikett wählen.',
   publishedAt: p1PublishedAt,
   publishedLabel: p1PublishedLabel,
-  readingTime: '9 Min. Lesezeit',
+  modifiedAt: '2026-10-20',
+  readingTime: '10 Min. Lesezeit',
   intro: 'Für ein klar begrenztes Projekt kann ein erfahrener Freelancer die beste Lösung sein. Eine Agentur ist sinnvoll, wenn mehrere Disziplinen gleichzeitig gebraucht werden oder Ausfallsicherheit im Team wichtig ist. Entscheidend ist nicht die Bezeichnung, sondern ob Kompetenz, Kapazität, Verantwortlichkeit und Betrieb zu Ihrem Projekt passen.',
   sections: [
     {
@@ -62,6 +63,32 @@ export const providerArticle: BlogPost = {
         'Welche Annahmen könnten Preis oder Termin später verändern?'
       ],
       links: [{ label: 'Webdesign-Angebote technisch und wirtschaftlich vergleichen', to: '/de/blogs/webdesign-angebote-vergleichen' }]
+    },
+    {
+      id: 'betriebskosten-drei-jahre',
+      title: 'Drei Jahre Betrieb: Warum der Startpreis allein nicht reicht',
+      paragraphs: [
+        'Zwei Angebote lassen sich erst sinnvoll vergleichen, wenn neben der Umsetzung auch Wartung, Änderungen, Ausfallsicherheit und eine mögliche Übergabe berücksichtigt werden. Die folgende Modellrechnung nutzt bewusst einen Kostenindex statt Eurobeträgen. Sie ist keine Preisangabe von Bandora, sondern zeigt, wie dieselbe Entscheidung über drei Jahre anders aussehen kann.',
+        'Im Beispiel wirkt Angebot A beim Projektstart günstiger. Durch höhere laufende Aufwände und eine kostenpflichtige Übergabe liegt es nach drei Jahren dennoch über Angebot B. Ersetzen Sie die Indexwerte durch die Positionen Ihrer echten Angebote und lassen Sie jede Annahme schriftlich bestätigen.'
+      ],
+      table: {
+        caption: 'Beispielrechnung mit Kostenindex (keine Europreise)',
+        headers: ['Kostenblock', 'Angebot A', 'Angebot B'],
+        rows: [
+          ['Umsetzung zum Start', '100', '125'],
+          ['Hosting, Wartung und Support für 3 Jahre', '45', '24'],
+          ['Geplante Änderungen für 3 Jahre', '30', '18'],
+          ['Dokumentierte Übergabe / Exit', '10', '0, bereits enthalten'],
+          ['Gesamtindex nach 3 Jahren', '185', '167']
+        ]
+      },
+      bullets: [
+        'Welche Reaktionszeit und welcher Umfang sind im Support tatsächlich enthalten?',
+        'Sind Updates, Backups, Monitoring und Wiederherstellung getrennte Positionen?',
+        'Wie werden kleinere Änderungen abgerechnet und priorisiert?',
+        'Sind Repository, Dokumentation und Zugangsdaten ohne Zusatzkosten übergabefähig?',
+        'Wer übernimmt bei Urlaub, Krankheit oder Anbieterwechsel?'
+      ]
     },
     {
       id: 'szenarien',

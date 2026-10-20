@@ -106,7 +106,16 @@ export function ServiceDetailPage() {
                 <Link key={project.slug} to={`/${lang}/${routePath('projects', lang)}/${project.slug}`} className="group w-[84vw] shrink-0 snap-center rounded-card border border-slate-200 bg-white p-6 shadow-sm hover:border-cyan min-[769px]:w-auto">
                   <h3 className="text-xl font-semibold text-ink">{project.title}</h3>
                   <p className="mt-3 leading-7 text-slate-700">{localized(project.shortDescription, lang)}</p>
-                  <span className="mt-5 inline-flex items-center font-semibold text-cyan">{t('common.viewProject')}<ArrowRight className="ms-2 size-4" aria-hidden="true" /></span>
+                  <span className="mt-5 inline-flex items-center font-semibold text-cyan">
+                    {project.id === 'device-tracking'
+                      ? lang === 'de'
+                        ? 'IT-Geräte-Nachverfolgung mit Statushistorie ansehen'
+                        : lang === 'ar'
+                          ? 'عرض تتبّع أجهزة تقنية المعلومات وسجل الحالة'
+                          : 'View IT device tracking with status history'
+                      : t('common.viewProject')}
+                    <ArrowRight className="ms-2 size-4" aria-hidden="true" />
+                  </span>
                 </Link>
               ))}
             </div>
