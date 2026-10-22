@@ -27,8 +27,8 @@
     "home": "Startseite"
   },
   "seo": {
-    "homeTitle": "Bandora Development | Apps, Webanwendungen und MVPs",
-    "homeDescription": "Bilal Al-Badawi entwickelt mobile Apps, individuelle Webanwendungen, APIs und digitale MVPs für Gründer, Privatpersonen und kleine Unternehmen.",
+    "homeTitle": "Bandora Development | Software- und Webentwicklung",
+    "homeDescription": "Bandora Development entwickelt individuelle Software, Webdesign, Webanwendungen, mobile Apps und MVPs für Gründer und kleine Unternehmen.",
     "servicesTitle": "Leistungen | Bandora Development",
     "projectsTitle": "Projekte | Bandora Development",
     "blogsTitle": "Blogs | Digitalisierung für kleine Unternehmen",
@@ -37,8 +37,8 @@
     "legalTitle": "Rechtliches | Bandora Development"
   },
   "home": {
-    "heroTitle": "Von der Idee zur funktionierenden Software.",
-    "heroText": "Bandora Development entwickelt mobile Apps, individuelle Webanwendungen und digitale MVPs für Gründer, Privatpersonen und kleine Unternehmen.",
+    "heroTitle": "Softwareentwicklung von der Idee bis zum funktionierenden Produkt.",
+    "heroText": "Bandora Development verbindet Webdesign, Webentwicklung, mobile Apps und APIs zu klar abgegrenzten digitalen Produkten und testbaren MVPs.",
     "terminal": ["App", "Web", "API", "MVP"],
     "competencies": "Kernkompetenzen",
     "trust": "Kompetenzfelder",

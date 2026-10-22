@@ -27,7 +27,17 @@ export function SeoHead({ title, description, path = '', image, imageAlt, noinde
   const baseSchema = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Organization', '@id': `${siteConfig.domain}/#organization`, name: siteConfig.brandName, url: siteConfig.domain, founder: { '@type': 'Person', name: siteConfig.developerName }, sameAs: [siteConfig.githubUrl] },
+      {
+        '@type': 'Organization',
+        '@id': `${siteConfig.domain}/#organization`,
+        name: siteConfig.brandName,
+        alternateName: siteConfig.shortBrand,
+        url: siteConfig.domain,
+        logo: `${siteConfig.domain}/images/brand/bandora-crest-1200.webp`,
+        email: siteConfig.email,
+        founder: { '@type': 'Person', '@id': `${siteConfig.domain}/#founder`, name: siteConfig.developerName },
+        sameAs: [siteConfig.githubUrl],
+      },
       { '@type': 'WebSite', '@id': `${siteConfig.domain}/#website`, name: siteConfig.brandName, url: siteConfig.domain, publisher: { '@id': `${siteConfig.domain}/#organization` }, inLanguage: languages.map((item) => item.code) },
     ],
   };

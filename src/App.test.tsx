@@ -6,6 +6,21 @@ import { renderWithProviders } from './test/render';
 import { buildMailto } from './utils/contact';
 
 describe('portfolio app', () => {
+  it('presents the German homepage with consistent brand and organization data', async () => {
+    renderWithProviders(<App />, '/de/');
+    expect(screen.getByRole('heading', { name: 'Softwareentwicklung von der Idee bis zum funktionierenden Produkt.', level: 1 })).toBeInTheDocument();
+    await waitFor(() => expect(document.title).toBe('Bandora Development | Software- und Webentwicklung'));
+    const schemas = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) => JSON.parse(script.textContent ?? '{}'));
+    const organization = schemas.flatMap((schema) => schema['@graph'] ?? []).find((entry) => entry['@type'] === 'Organization');
+    expect(organization).toMatchObject({
+      name: 'Bandora Development',
+      alternateName: 'Bandora',
+      url: 'https://bandora-dev.de',
+      logo: 'https://bandora-dev.de/images/brand/bandora-crest-1200.webp',
+      sameAs: ['https://github.com/Bill-Bandora'],
+    });
+  });
+
   it('switches language and applies RTL for Arabic', async () => {
     renderWithProviders(<App />, '/de/');
     await userEvent.click(screen.getAllByRole('button', { name: 'AR' })[0]);

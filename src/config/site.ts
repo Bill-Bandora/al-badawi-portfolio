@@ -13,7 +13,7 @@ export const siteConfig = {
   developerName: 'Bilal Al-Badawi',
   domain: 'https://bandora-dev.de',
   email: 'albadawi335@gmail.com',
-  githubUrl: 'https://github.com/Bill-Bandora?tab=repositories',
+  githubUrl: 'https://github.com/Bill-Bandora',
   contactMode: import.meta.env.VITE_CONTACT_MODE ?? 'mailto',
 };
 
