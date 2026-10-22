@@ -6,13 +6,15 @@
 
 **Produktiver Ausgangsstand:** Commit `3f5ca019accc71283ee563eaa40818e4729321ae`
 
-**Status dieses Änderungspakets:** lokal umgesetzt und vollständig geprüft; zum Zeitpunkt dieses Berichts noch nicht produktiv veröffentlicht
+**Produktiver Commit:** `99c038d1c4a7e3b9262868929a5a08acd398ec5a`
+
+**Status dieses Änderungspakets:** produktiv veröffentlicht und live verifiziert
 
 ## 1. Kurzfazit
 
 Die technische Basis ist intakt. Der Live-Crawl vom 22.10.2026 bestätigte alle 72 Sitemap-URLs, selbstreferenzielle Canonicals, reziproke hreflang-Verweise und sämtliche 144 selektiven Migrationsweiterleitungen. `al-badawi.de` bleibt außerhalb dieser bekannten Pfade eigenständig und liefert am Root sowie für einen unbekannten Testpfad weiterhin HTTP 404.
 
-Es wurden nur zwei kleine, nachweisbare Optimierungen vorbereitet:
+Es wurden nur zwei kleine, nachweisbare Optimierungen veröffentlicht:
 
 1. Die deutsche Startseite ordnet **Bandora Development** klarer den Themen Softwareentwicklung, Webentwicklung und Webdesign zu.
 2. Das vorhandene `Organization`-Schema wurde mit ausschließlich realen Angaben ergänzt: Kurzname `Bandora`, vorhandenes Logo, Kontakt-E-Mail, Gründer-ID und kanonisches GitHub-Profil.
@@ -163,15 +165,36 @@ Nach den Änderungen wurden folgende Prüfungen ausgeführt:
 | SEO-Buildvalidator | 72/72 bestanden |
 | Titles, Descriptions, Canonicals, H1, Main, Schema | bestanden |
 | interne Ziele und reziprokes hreflang | bestanden |
-| live technische Stichprobe vor Änderung | 72/72 Seiten und 144/144 Redirects korrekt |
+| Liveprüfung nach Deployment | 72/72 Seiten und 144/144 Redirects korrekt |
+| Kontakt-Konfiguration | HTTP 200, Modus `mailto` |
+| Kontakt-API GET | erwartetes HTTP 405 |
+| sicherer Honeypot-POST | HTTP 200, kein E-Mail-Versand |
+| Produktionscontainer | `running`, `healthy`, RestartCount 0 |
 
 Die Änderung betrifft keinen Seitenaufbau, keine Navigation, kein CSS und keine Interaktionslogik. Deshalb entsteht durch dieses Paket keine neue mobile/desktop Layoutfläche. Ein vollständiges neues Lighthouse- oder WCAG-Audit wurde nicht simuliert; der bestehende Build, die UI-Tests und die unveränderte Gestaltung zeigen jedoch keine Regression.
 
 ## 9. Veröffentlichungsstatus
 
-Das Paket ist lokal geprüft, aber in diesem Bericht noch nicht als produktiv bezeichnet. Die öffentliche Website läuft weiterhin auf Commit `3f5ca019accc71283ee563eaa40818e4729321ae` und Image `portfolio-blog:3f5ca01-rc` mit Digest `sha256:ebcf841632d742be8749b6264157b825541a4e5481108a8b36881cd858014e62`.
+Das Paket wurde kontrolliert veröffentlicht.
 
-Vor einer Veröffentlichung muss für den neuen Commit ein reproduzierbarer Docker-Release-Candidate mit festem Digest gebaut und über den bestehenden kontrollierten Release-Runner ausgerollt werden. Der bisherige produktive Container und das Image bleiben dabei Rollback-Basis. Ein Git-Push allein darf keinen automatischen Coolify-Rollout auslösen.
+| Gegenstand | Produktiver Wert |
+|---|---|
+| Git-Commit | `99c038d1c4a7e3b9262868929a5a08acd398ec5a` |
+| Image | `portfolio-blog:99c038d-rc` |
+| Image-Digest | `sha256:f1c35d9bff72cf7a569ed44eec72345838b7881009f3898b7c4efa1fe3873011` |
+| Deployment-ID | `bandora-20261022T102851Z-99c038d` |
+| Releasebeginn | 22.10.2026, 10:28:52 UTC / 12:28:52 MESZ |
+| Release abgeschlossen | 22.10.2026, 10:29:24 UTC / 12:29:24 MESZ |
+| Cutover-Prüfdauer | 7,394 Sekunden bis zur zweiten aufeinanderfolgenden vollständigen Bestätigung |
+| vorübergehende HTTP-404-Antworten | 0 |
+| Rollback-Image | `portfolio-blog:3f5ca01-rc` |
+| Rollback-Digest | `sha256:ebcf841632d742be8749b6264157b825541a4e5481108a8b36881cd858014e62` |
+
+Der Git-Push löste kein automatisches Coolify-Deployment aus. Der bestehende Release-Runner übernahm Labels, Umgebungsvariablen, Netzwerke, Healthcheck und Laufzeitkonfiguration unverändert. Es wurde kein neues Docker-Netzwerk angelegt. Der bisherige Produktionscontainer blieb gestoppt unter einem Rollback-Namen erhalten.
+
+Die erste interne Origin-Prüfung unmittelbar nach dem Tausch lief in ein Timeout, während die öffentlichen HTTPS-Prüfungen bereits erfolgreich waren. Nach 6,195 Sekunden war die gesamte Route-Matrix erfolgreich; nach 7,394 Sekunden wurde sie ein zweites Mal bestätigt. Danach blieb der Container in sechs weiteren Prüfintervallen über rund 52 Sekunden durchgehend `running`, `healthy`, mit Root-301, DE-200 und RestartCount 0.
+
+Die repräsentativen Antwortzeiten nach dem Release lagen bei sieben Kernseiten zwischen 67 und 257 ms. Es wurde keine kritische Performance- oder Funktionsregression festgestellt.
 
 ## 10. Vorher-/Nachher-Bewertung und nächste Schritte
 
