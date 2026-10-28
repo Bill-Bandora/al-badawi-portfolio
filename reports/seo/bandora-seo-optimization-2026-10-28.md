@@ -224,6 +224,7 @@ Die zunächst optisch abgeschnitten wirkende 390-px-Chrome-Aufnahme wurde mit de
 - Der finale Dry-Run meldete `mutations: 0`, exakten Candidate-Digest, gesunden Ausgangscontainer und semantisch unveränderte Konfiguration.
 - Es wurden keine neuen Docker-Netzwerke erzeugt. Candidate-Prüfung nutzte das bestehende `bridge`-Netz, Produktion weiterhin ausschließlich `coolify`.
 - Labels, Umgebungsvariablen, Healthcheck, Restart-Policy und Traefik-Router wurden unverändert übernommen.
+- Deshalb bleibt das historische Laufzeitlabel `org.opencontainers.image.revision=b261a16` am Container bewusst unverändert. Die freigegebene Release-Identität wird durch Image-Digest, das Image-eigene Label `1ffc218adb7ce47bea56fa23a5cd7d2da6bd202c` und das persistente Deploymentjournal nachgewiesen.
 - Der eigentliche Release lief serverseitig unter exklusivem Kernel-Lock und persistentem Journal.
 - Die erste öffentliche Root-Prüfung nach Cutover hatte einen einzelnen Read-Timeout, aber keinen HTTP-404. Nach 6,116 Sekunden war die gesamte Route-Matrix erfolgreich; nach 7,305 Sekunden lag die zweite aufeinanderfolgende Bestätigung vor.
 - Der alte Container bleibt gestoppt unter `vsbzm6hi85elyqonjswadd9f-190325106707-rollback-bandora-20261028` erhalten.
