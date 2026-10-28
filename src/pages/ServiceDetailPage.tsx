@@ -19,23 +19,33 @@ export function ServiceDetailPage() {
   if (!service) return <NotFoundPage />;
   const path = `${routePath('services', lang)}/${service.slug}`;
   const relatedProjects = projects.filter((project) => service.projectSlugs.includes(project.slug));
-  const websiteGuides = service.slug === 'webentwicklung' && lang === 'de'
-    ? visibleBlogs('de').filter((blog) => blog.slug !== 'warum-kleine-unternehmen-eine-website-brauchen').slice(0, 6)
+  const websiteGuides = ['webentwicklung', 'webdesign'].includes(service.slug) && lang === 'de'
+    ? visibleBlogs('de')
+        .filter((blog) => blog.slug !== 'warum-kleine-unternehmen-eine-website-brauchen')
+        .filter((blog) => service.slug !== 'webdesign' || blog.slug !== 'webdesigner-freelancer-oder-agentur')
+        .slice(0, 6)
     : [];
-  const title = `${localized(service.title, lang)} | ${siteConfig.brandName}`;
+  const siblingService = service.slug === 'webentwicklung'
+    ? findService('webdesign')
+    : service.slug === 'webdesign'
+      ? findService('webentwicklung')
+      : undefined;
+  const title = service.seoTitle ? localized(service.seoTitle, lang) : `${localized(service.title, lang)} | ${siteConfig.brandName}`;
+  const description = service.seoDescription ? localized(service.seoDescription, lang) : localized(service.summary, lang);
 
   return (
     <>
       <SeoHead
         title={title}
-        description={localized(service.summary, lang)}
+        description={description}
         path={path}
         schema={{
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: localized(service.title, lang),
-          description: localized(service.summary, lang),
+          description,
           provider: { '@type': 'Organization', name: siteConfig.brandName, url: siteConfig.domain },
+          ...(service.areaServed && { areaServed: { '@type': 'City', name: service.areaServed } }),
           url: `${siteConfig.domain}/${lang}/${path}`,
         }}
         breadcrumbs={[
@@ -54,7 +64,7 @@ export function ServiceDetailPage() {
           <div className="tech-grid absolute inset-0" aria-hidden="true" /><div className="ambient-orb -right-20 top-0 size-80 bg-cyan/15" aria-hidden="true" />
           <div className="relative mx-auto max-w-5xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-cyan">{t('services.title')}</p>
-            <h1 className="mt-3 text-balance text-[clamp(2.25rem,10vw,4rem)] font-semibold min-[769px]:mt-4 md:text-6xl">{localized(service.title, lang)}</h1>
+            <h1 className="mt-3 break-words text-balance text-[clamp(2.1rem,9vw,4rem)] font-semibold min-[769px]:mt-4 md:text-6xl">{localized(service.title, lang)}</h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300 min-[769px]:mt-6 min-[769px]:text-lg min-[769px]:leading-8">{localized(service.summary, lang)}</p>
             <ButtonLink to={localizedUrl('contact', lang)} className="mt-6 min-[769px]:mt-8">{t('common.discussProject')}</ButtonLink>
           </div>
@@ -98,7 +108,39 @@ export function ServiceDetailPage() {
           </div>
         </section>
 
-        <section className="bg-slate-50 px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8">
+        {service.decisionTitle && service.decisionText && (
+          <section className="bg-white px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8">
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+              <div>
+                <h2 className="text-3xl font-semibold text-ink">{localized(service.decisionTitle, lang)}</h2>
+                <p className="mt-5 text-lg leading-8 text-slate-700">{localized(service.decisionText, lang)}</p>
+                {siblingService && (
+                  <Link to={`/${lang}/${routePath('services', lang)}/${siblingService.slug}`} className="mt-6 inline-flex items-center font-semibold text-cyan">
+                    {localized(siblingService.title, lang)}
+                    <ArrowRight className="ms-2 size-4" aria-hidden="true" />
+                  </Link>
+                )}
+              </div>
+              {service.pricingFactors && (
+                <div className="rounded-card border border-slate-200 bg-slate-50 p-6">
+                  <h2 className="text-xl font-semibold text-ink">
+                    {lang === 'de' ? 'Was Umfang und Kosten beeinflusst' : lang === 'ar' ? 'ما الذي يؤثر في النطاق والتكلفة' : 'What affects scope and cost'}
+                  </h2>
+                  <ul className="mt-5 space-y-4">
+                    {service.pricingFactors.map((item) => (
+                      <li key={item.de} className="flex gap-3 leading-7 text-slate-700">
+                        <CheckCircle2 className="mt-1 size-5 shrink-0 text-cyan" aria-hidden="true" />
+                        {localized(item, lang)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {relatedProjects.length > 0 && <section className="bg-slate-50 px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-3xl font-semibold text-ink">{t('serviceDetail.projects')}</h2>
             <div className="-mx-4 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 min-[769px]:mx-0 min-[769px]:mt-8 min-[769px]:grid min-[769px]:gap-5 min-[769px]:overflow-visible min-[769px]:px-0 min-[769px]:pb-0 md:grid-cols-2">
@@ -120,7 +162,7 @@ export function ServiceDetailPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section>}
 
         {websiteGuides.length > 0 && (
           <section className="bg-night px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8" aria-labelledby="website-guides-title">

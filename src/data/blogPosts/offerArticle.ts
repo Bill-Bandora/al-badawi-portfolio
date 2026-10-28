@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 
 export const offerArticle: BlogPost = {
   slug: 'webdesign-angebote-vergleichen',
@@ -10,6 +10,7 @@ export const offerArticle: BlogPost = {
   category: 'Angebotsprüfung',
   cardTitle: 'Nicht die Summe vergleichen, sondern den vereinbarten Umfang.',
   publishedAt: p1PublishedAt,
+  modifiedAt: '2026-10-28',
   publishedLabel: p1PublishedLabel,
   readingTime: '10 Min. Lesezeit',
   intro: 'Webdesign-Angebote sind erst vergleichbar, wenn sie dasselbe Ergebnis beschreiben. Prüfen Sie nicht nur Seitenzahl und Preis, sondern Ziele, Inhalte, Funktionen, technische Abnahme, Rechte, Betrieb und Kosten über mehrere Jahre. Was nicht schriftlich definiert ist, wird später zur Annahme, zum Nachtrag oder zum Streitpunkt.',
@@ -84,7 +85,7 @@ export const offerArticle: BlogPost = {
       ],
       links: [
         { label: 'Freelancer und Agenturen passend zum Projekt vergleichen', to: '/de/blogs/webdesigner-freelancer-oder-agentur' },
-        { label: 'Webentwicklung bei Bandora Development', to: webDevelopmentUrl }
+        { label: 'Webdesign und Website-Erstellung bei Bandora', to: webDesignUrl }
       ]
     }
   ],

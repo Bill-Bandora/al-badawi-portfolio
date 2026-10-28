@@ -38,7 +38,9 @@ export default defineConfig({
       ]);
       const lastModified = (url: string) => {
         const blog = blogs.find((item) => url.endsWith(`/blogs/${item.slug}`));
-        return blog?.modifiedAt ?? blog?.publishedAt ?? '2026-09-30';
+        if (blog) return blog.modifiedAt ?? blog.publishedAt;
+        const service = services.find((item) => url.endsWith(`/${item.slug}`));
+        return service?.modifiedAt ?? '2026-09-30';
       };
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source:
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

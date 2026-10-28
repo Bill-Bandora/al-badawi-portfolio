@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 
 export const processArticle: BlogPost = {
   slug: 'website-erstellen-lassen-ablauf',
@@ -10,6 +10,7 @@ export const processArticle: BlogPost = {
   category: 'Ablauf & Launch',
   cardTitle: 'Ein klarer Prozess verhindert teure Überraschungen.',
   publishedAt: p1PublishedAt,
+  modifiedAt: '2026-10-28',
   publishedLabel: p1PublishedLabel,
   readingTime: '10 Min. Lesezeit',
   intro: 'Ein professionelles Website-Projekt läuft in acht nachvollziehbaren Phasen: Zielklärung, Inventar, Struktur, Inhalte, Design, Entwicklung, Abnahme und Launch. Wie lange das dauert, hängt weniger von der Seitenzahl als von Entscheidungen, Inhaltsfreigaben, Sonderfunktionen und Feedbackwegen ab.',
@@ -86,7 +87,7 @@ export const processArticle: BlogPost = {
         'verantwortliche Person für Feedback und Freigabe',
         'gewünschter Launch-Zeitraum mit tatsächlichem Anlass'
       ],
-      links: [{ label: 'Website-Projekt mit Bandora Development besprechen', to: webDevelopmentUrl }]
+      links: [{ label: 'Webdesign-Projekt in Berlin mit Bandora besprechen', to: webDesignUrl }]
     }
   ],
   faq: [

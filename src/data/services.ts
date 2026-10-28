@@ -3,11 +3,18 @@ import type { LocalizedText } from '../types/project';
 export type Service = {
   slug: string;
   title: LocalizedText;
+  seoTitle?: LocalizedText;
+  seoDescription?: LocalizedText;
   summary: LocalizedText;
   audience: LocalizedText;
   useCases: LocalizedText[];
   benefits: LocalizedText[];
   process: LocalizedText[];
+  decisionTitle?: LocalizedText;
+  decisionText?: LocalizedText;
+  pricingFactors?: LocalizedText[];
+  areaServed?: string;
+  modifiedAt?: string;
   technologies: string[];
   projectSlugs: string[];
 };
@@ -15,9 +22,19 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: 'webentwicklung',
-    title: { de: 'Webentwicklung', en: 'Web development', ar: 'تطوير الويب' },
+    title: { de: 'Individuelle Webentwicklung in Berlin', en: 'Custom web development', ar: 'تطوير ويب مخصص' },
+    seoTitle: {
+      de: 'Webentwicklung Berlin für Unternehmen | Bandora',
+      en: 'Custom web development | Bandora Development',
+      ar: 'تطوير ويب مخصص | Bandora Development',
+    },
+    seoDescription: {
+      de: 'Individuelle Webentwicklung für Unternehmen in Berlin: Webanwendungen, Dashboards, APIs und technische Firmenwebsites – klar geplant und sauber umgesetzt.',
+      en: 'Custom web applications, dashboards, APIs and technical business websites, planned clearly and built for maintainable growth.',
+      ar: 'تطبيقات ويب ولوحات معلومات وواجهات API ومواقع شركات تقنية مخصصة، بتخطيط واضح وتنفيذ قابل للتطوير.',
+    },
     summary: {
-      de: 'Professionelle Firmenwebsites und individuelle Webanwendungen, die Informationen klar vermitteln, technisch sauber umgesetzt sind und konkrete Arbeitsabläufe digital abbilden.',
+      de: 'Individuelle Webanwendungen, Dashboards, APIs und technisch anspruchsvolle Firmenwebsites für Unternehmen in Berlin und Umgebung – passend zu realen Abläufen statt zu starren Vorlagen.',
       en: 'Custom websites and web applications that communicate clearly and support real digital workflows.',
       ar: 'مواقع وتطبيقات ويب مخصصة تعرض المعلومات بوضوح وتدعم سير العمل الرقمي الحقيقي.',
     },
@@ -41,8 +58,83 @@ export const services: Service[] = [
       { de: 'Informationsarchitektur und Oberfläche strukturieren', en: 'Structure information architecture and interface', ar: 'تنظيم بنية المعلومات والواجهة' },
       { de: 'Umsetzen, testen und für die Veröffentlichung vorbereiten', en: 'Build, test and prepare for launch', ar: 'التنفيذ والاختبار والتحضير للنشر' },
     ],
+    decisionTitle: {
+      de: 'Wann individuelle Webentwicklung sinnvoll ist',
+      en: 'When custom web development is the right fit',
+      ar: 'متى يكون تطوير الويب المخصص هو الخيار المناسب',
+    },
+    decisionText: {
+      de: 'Individuelle Entwicklung lohnt sich, wenn eine Website Daten verarbeiten, Rollen abbilden, externe Systeme anbinden oder einen besonderen Geschäftsablauf unterstützen soll. Für eine klassische Unternehmenswebsite mit Schwerpunkt auf Gestaltung und klarer Nutzerführung ist die separate Webdesign-Leistung meist der passendere Einstieg.',
+      en: 'Custom development is useful when a website must process data, model roles, connect external systems or support a specific business workflow. For a classic business website focused on design and clear user guidance, the separate web design service is usually the better starting point.',
+      ar: 'يكون التطوير المخصص مناسبا عندما يحتاج الموقع إلى معالجة البيانات أو إدارة الصلاحيات أو ربط أنظمة خارجية أو دعم سير عمل خاص. أما موقع الشركة التقليدي الذي يركز على التصميم وسهولة الاستخدام فتكون خدمة تصميم المواقع نقطة بداية أنسب.',
+    },
+    pricingFactors: [
+      { de: 'Anzahl und Komplexität der Funktionen', en: 'Number and complexity of features', ar: 'عدد الوظائف وتعقيدها' },
+      { de: 'Datenmodell, Rollen und Schnittstellen', en: 'Data model, roles and integrations', ar: 'نموذج البيانات والصلاحيات والتكاملات' },
+      { de: 'Testumfang, Betrieb und spätere Erweiterbarkeit', en: 'Testing scope, operations and future extensibility', ar: 'نطاق الاختبار والتشغيل وقابلية التوسع لاحقا' },
+    ],
+    areaServed: 'Berlin',
+    modifiedAt: '2026-10-28',
     technologies: ['React', 'TypeScript', 'Vite', 'Node.js', 'REST APIs', 'MariaDB'],
     projectSlugs: ['geraete-nachverfolgung', 'roommate-plus', 'digital-footprint-os', 'bandora-studio', 'bandora-gen8'],
+  },
+  {
+    slug: 'webdesign',
+    title: { de: 'Webdesign und Website-Erstellung in Berlin', en: 'Web design and business websites', ar: 'تصميم المواقع وإنشاء مواقع الشركات' },
+    seoTitle: {
+      de: 'Webdesign Berlin: professionelle Websites | Bandora',
+      en: 'Web design and business websites | Bandora',
+      ar: 'تصميم مواقع احترافية للشركات | Bandora',
+    },
+    seoDescription: {
+      de: 'Webdesign für Unternehmen in Berlin: klare Struktur, responsive Gestaltung, verständliche Inhalte und eine technisch saubere Website ohne unnötigen Baukasten-Ballast.',
+      en: 'Clear, responsive business websites with thoughtful structure, understandable content and a clean technical foundation.',
+      ar: 'مواقع شركات واضحة ومتجاوبة ببنية مدروسة ومحتوى مفهوم وأساس تقني نظيف.',
+    },
+    summary: {
+      de: 'Professionelle Unternehmenswebsites für Berlin und Umgebung: von Seitenstruktur und Nutzerführung über responsive Gestaltung bis zur technisch sauberen Veröffentlichung.',
+      en: 'Professional business websites, from structure and user journeys to responsive design and a technically clean launch.',
+      ar: 'مواقع شركات احترافية تبدأ من هيكل الصفحات وتجربة المستخدم وصولا إلى التصميم المتجاوب والنشر التقني السليم.',
+    },
+    audience: {
+      de: 'Für kleine Unternehmen, Selbstständige und Betriebe in Berlin, die ihre Leistungen verständlich darstellen, Vertrauen aufbauen und qualifizierte Anfragen ermöglichen möchten.',
+      en: 'For small businesses and independent professionals who want to explain their services clearly, build trust and enable qualified enquiries.',
+      ar: 'للشركات الصغيرة والمستقلين الذين يريدون عرض خدماتهم بوضوح وبناء الثقة وتسهيل الاستفسارات الجادة.',
+    },
+    useCases: [
+      { de: 'Neue Unternehmenswebsite mit klaren Leistungsseiten', en: 'New business website with clear service pages', ar: 'موقع شركة جديد بصفحات خدمات واضحة' },
+      { de: 'Relaunch einer veralteten oder unübersichtlichen Website', en: 'Relaunch of an outdated or confusing website', ar: 'إعادة بناء موقع قديم أو غير واضح' },
+      { de: 'Mehrsprachige Website oder fokussierte Landingpage', en: 'Multilingual website or focused landing page', ar: 'موقع متعدد اللغات أو صفحة هبوط مركزة' },
+    ],
+    benefits: [
+      { de: 'Individuelle Struktur passend zu Angebot und Zielgruppe', en: 'A structure tailored to the offer and audience', ar: 'هيكل مخصص للعرض والجمهور' },
+      { de: 'Responsive Bedienung auf Smartphone, Tablet und Desktop', en: 'Responsive use on phone, tablet and desktop', ar: 'استخدام متجاوب على الهاتف والجهاز اللوحي والحاسوب' },
+      { de: 'Technische SEO-Basis mit crawlbaren Inhalten und klaren Seiten', en: 'Technical SEO foundations with crawlable content and clear pages', ar: 'أساس SEO تقني بمحتوى قابل للزحف وصفحات واضحة' },
+    ],
+    process: [
+      { de: 'Ziele, Zielgruppen und vorhandene Inhalte klären', en: 'Clarify goals, audiences and existing content', ar: 'تحديد الأهداف والجمهور والمحتوى المتاح' },
+      { de: 'Seitenstruktur, Inhalte und Gestaltung ausarbeiten', en: 'Develop page structure, content and visual design', ar: 'تطوير هيكل الصفحات والمحتوى والتصميم' },
+      { de: 'Responsive umsetzen, testen und kontrolliert veröffentlichen', en: 'Build responsively, test and launch in a controlled way', ar: 'التنفيذ المتجاوب والاختبار والنشر المنظم' },
+    ],
+    decisionTitle: {
+      de: 'Webdesign oder Webentwicklung?',
+      en: 'Web design or web development?',
+      ar: 'تصميم مواقع أم تطوير ويب؟',
+    },
+    decisionText: {
+      de: 'Webdesign ist der richtige Schwerpunkt, wenn Angebot, Inhalte, Markenwirkung und Nutzerführung im Vordergrund stehen. Sobald individuelle Datenlogik, Benutzerrollen, Dashboards oder Schnittstellen benötigt werden, gehört das Vorhaben in die Webentwicklung. Beides kann in einem Projekt kombiniert werden, bleibt in der Planung aber klar getrennt.',
+      en: 'Web design is the right focus when the offer, content, brand and user journey are central. Projects that require custom data logic, user roles, dashboards or integrations belong in web development. Both can be combined while remaining clearly separated in planning.',
+      ar: 'يكون تصميم المواقع هو التركيز المناسب عندما تكون الخدمات والمحتوى والهوية وتجربة المستخدم هي الأساس. أما منطق البيانات المخصص والصلاحيات ولوحات المعلومات والتكاملات فتندرج ضمن تطوير الويب. ويمكن الجمع بينهما مع الفصل الواضح في التخطيط.',
+    },
+    pricingFactors: [
+      { de: 'Anzahl und Tiefe der benötigten Seiten', en: 'Number and depth of required pages', ar: 'عدد الصفحات وعمق محتواها' },
+      { de: 'Vorhandene Texte, Bilder und Markenmaterialien', en: 'Available copy, images and brand assets', ar: 'النصوص والصور ومواد الهوية المتاحة' },
+      { de: 'Mehrsprachigkeit, Formulare und besondere Funktionen', en: 'Languages, forms and special functions', ar: 'تعدد اللغات والنماذج والوظائف الخاصة' },
+    ],
+    areaServed: 'Berlin',
+    modifiedAt: '2026-10-28',
+    technologies: ['Figma', 'React', 'TypeScript', 'HTML', 'CSS', 'Vite'],
+    projectSlugs: [],
   },
   {
     slug: 'softwareentwicklung',

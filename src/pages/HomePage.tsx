@@ -1,6 +1,6 @@
 import { Code2, Database, Rocket, Smartphone, Workflow, Wrench } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { SeoHead } from '../components/common/SeoHead';
 import { SectionHeading } from '../components/ui/SectionHeading';
@@ -8,8 +8,10 @@ import { ButtonLink } from '../components/ui/Button';
 import { ProjectCard } from '../components/projects/ProjectCard';
 import { RevealOnScroll } from '../components/common/RevealOnScroll';
 import { ProfileVisual } from '../components/common/ProfileVisual';
-import { localizedUrl } from '../config/site';
+import { localizedUrl, routePath } from '../config/site';
 import { BrandCrest } from '../components/common/BrandCrest';
+import { findService } from '../data/services';
+import { localized } from '../utils/language';
 
 const icons = [Smartphone, Code2, Rocket, Database, Wrench, Workflow];
 
@@ -21,6 +23,7 @@ export function HomePage() {
   const process = t('home.processItems', { returnObjects: true }) as string[];
   const terminal = t('home.terminal', { returnObjects: true }) as string[];
   const featuredProjects = ['digital-footprint-os', 'bandora-studio', 'bandora-mt5-trader'].map((id) => projects.find((project) => project.id === id)).filter(Boolean) as typeof projects;
+  const coreWebServices = ['webdesign', 'webentwicklung'].map((slug) => findService(slug)).filter(Boolean) as NonNullable<ReturnType<typeof findService>>[];
 
   return (
     <>
@@ -62,6 +65,29 @@ export function HomePage() {
               <p className="mt-5 animate-pulse text-slate-300 motion-reduce:animate-none">status: MVP ready for testing</p>
             </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 bg-ink px-4 py-10 text-white sm:px-6 lg:px-8" aria-labelledby="core-web-services">
+        <div className="mx-auto max-w-7xl">
+          <h2 id="core-web-services" className="text-2xl font-semibold">
+            {lang === 'de' ? 'Webdesign und Webentwicklung für Berlin' : lang === 'ar' ? 'تصميم وتطوير الويب' : 'Web design and web development'}
+          </h2>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-300">
+            {lang === 'de'
+              ? 'Unternehmenswebsite und individuelle Webanwendung haben unterschiedliche Aufgaben. Wählen Sie den passenden Einstieg für Ihr Vorhaben.'
+              : lang === 'ar'
+                ? 'يختلف موقع الشركة عن تطبيق الويب المخصص في الهدف والنطاق. اختر نقطة البداية المناسبة لمشروعك.'
+                : 'A business website and a custom web application solve different problems. Choose the right starting point for your project.'}
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {coreWebServices.map((service) => (
+              <Link key={service.slug} to={`/${lang}/${routePath('services', lang)}/${service.slug}`} className="group rounded-card border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan">
+                <h3 className="text-xl font-semibold group-hover:text-cyan">{localized(service.title, lang)}</h3>
+                <p className="mt-3 leading-7 text-slate-300">{localized(service.summary, lang)}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

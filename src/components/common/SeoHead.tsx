@@ -35,6 +35,7 @@ export function SeoHead({ title, description, path = '', image, imageAlt, noinde
         url: siteConfig.domain,
         logo: `${siteConfig.domain}/images/brand/bandora-crest-1200.webp`,
         email: siteConfig.email,
+        areaServed: { '@type': 'City', name: siteConfig.serviceArea },
         founder: { '@type': 'Person', '@id': `${siteConfig.domain}/#founder`, name: siteConfig.developerName },
         sameAs: [siteConfig.githubUrl],
       },

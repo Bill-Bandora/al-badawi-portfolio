@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 
 export const platformArticle: BlogPost = {
   slug: 'wordpress-baukasten-oder-individuelle-website',
@@ -10,6 +10,7 @@ export const platformArticle: BlogPost = {
   category: 'Technikentscheidung',
   cardTitle: 'Das System nach dem Betrieb wählen, nicht nach dem Trend.',
   publishedAt: p1PublishedAt,
+  modifiedAt: '2026-10-28',
   publishedLabel: p1PublishedLabel,
   readingTime: '10 Min. Lesezeit',
   intro: 'Ein Baukasten passt zu einem kleinen Standardauftritt, WordPress zu regelmäßig gepflegten Inhalten mit einem passenden CMS-Setup und eine individuelle Website zu klaren Seitentypen, besonderem Design oder eigener Fachlogik. Keine dieser Lösungen ist pauschal „besser“. Entscheidend ist, wer Inhalte ändert, welche Funktionen gebraucht werden und wer den Betrieb verantwortet.',
@@ -81,7 +82,7 @@ export const platformArticle: BlogPost = {
         'Wie kann ein anderer Dienstleister das System übernehmen?'
       ],
       links: [
-        { label: 'Webentwicklung bei Bandora Development', to: webDevelopmentUrl },
+        { label: 'Webdesign und Website-Erstellung bei Bandora', to: webDesignUrl },
         { label: 'Laufende Kosten im Website-Budget berücksichtigen', to: '/de/blogs/website-erstellen-lassen-kosten-2026' }
       ]
     }

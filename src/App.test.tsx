@@ -9,7 +9,8 @@ describe('portfolio app', () => {
   it('presents the German homepage with consistent brand and organization data', async () => {
     renderWithProviders(<App />, '/de/');
     expect(screen.getByRole('heading', { name: 'Softwareentwicklung von der Idee bis zum funktionierenden Produkt.', level: 1 })).toBeInTheDocument();
-    await waitFor(() => expect(document.title).toBe('Bandora Development | Software- und Webentwicklung'));
+    expect(screen.getAllByText(/Unternehmen in Berlin und Umgebung/)).not.toHaveLength(0);
+    await waitFor(() => expect(document.title).toBe('Bandora Development | Webdesign & Software Berlin'));
     const schemas = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) => JSON.parse(script.textContent ?? '{}'));
     const organization = schemas.flatMap((schema) => schema['@graph'] ?? []).find((entry) => entry['@type'] === 'Organization');
     expect(organization).toMatchObject({
@@ -17,6 +18,7 @@ describe('portfolio app', () => {
       alternateName: 'Bandora',
       url: 'https://bandora-dev.de',
       logo: 'https://bandora-dev.de/images/brand/bandora-crest-1200.webp',
+      areaServed: { '@type': 'City', name: 'Berlin' },
       sameAs: ['https://github.com/Bill-Bandora'],
     });
   });
@@ -135,7 +137,7 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: /website erstellen lassen: kosten 2026/i, level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: 'Inhaltsübersicht' })).toBeInTheDocument();
     expect(screen.getByRole('table')).toBeInTheDocument();
-    expect(screen.getAllByRole('link', { name: /webentwicklung/i }).some((link) => link.getAttribute('href') === '/de/leistungen/webentwicklung')).toBe(true);
+    expect(screen.getAllByRole('link', { name: /webdesign/i }).some((link) => link.getAttribute('href') === '/de/leistungen/webdesign')).toBe(true);
     expect(screen.getByRole('heading', { name: 'Häufige Fragen' })).toBeInTheDocument();
   });
 
@@ -181,12 +183,20 @@ describe('portfolio app', () => {
 
   it('renders a service detail page with related projects and contact CTA', () => {
     renderWithProviders(<App />, '/de/leistungen/webentwicklung');
-    expect(screen.getByRole('heading', { name: 'Webentwicklung', level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Individuelle Webentwicklung in Berlin', level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Typische Anwendungsfälle' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Geräte-Nachverfolgung/ })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
     expect(screen.getByRole('link', { name: 'Projekt besprechen' })).toHaveAttribute('href', '/de/kontakt');
     expect(screen.getByRole('heading', { name: 'Ratgeber für Ihr Website-Projekt' })).toBeInTheDocument();
     expect(screen.getAllByRole('link', { name: /Ratgeber lesen/ })).toHaveLength(6);
+  });
+
+  it('separates the Berlin web design intent from custom web development', async () => {
+    renderWithProviders(<App />, '/de/leistungen/webdesign');
+    expect(screen.getByRole('heading', { name: 'Webdesign und Website-Erstellung in Berlin', level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Webdesign oder Webentwicklung?' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Individuelle Webentwicklung in Berlin' })).toHaveAttribute('href', '/de/leistungen/webentwicklung');
+    await waitFor(() => expect(document.title).toBe('Webdesign Berlin: professionelle Websites | Bandora'));
   });
 
   it('runs the device-tracking mock demo without external data', async () => {

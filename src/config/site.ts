@@ -14,6 +14,7 @@ export const siteConfig = {
   domain: 'https://bandora-dev.de',
   email: 'albadawi335@gmail.com',
   githubUrl: 'https://github.com/Bill-Bandora',
+  serviceArea: 'Berlin',
   contactMode: import.meta.env.VITE_CONTACT_MODE ?? 'mailto',
 };
 

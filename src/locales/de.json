@@ -27,18 +27,18 @@
     "home": "Startseite"
   },
   "seo": {
-    "homeTitle": "Bandora Development | Software- und Webentwicklung",
-    "homeDescription": "Bandora Development entwickelt individuelle Software, Webdesign, Webanwendungen, mobile Apps und MVPs für Gründer und kleine Unternehmen.",
-    "servicesTitle": "Leistungen | Bandora Development",
+    "homeTitle": "Bandora Development | Webdesign & Software Berlin",
+    "homeDescription": "Webdesign, Webentwicklung und individuelle Software für Unternehmen in Berlin und Umgebung – von der professionellen Website bis zur Webanwendung.",
+    "servicesTitle": "Webdesign & Webentwicklung Berlin | Bandora",
     "projectsTitle": "Projekte | Bandora Development",
     "blogsTitle": "Blogs | Digitalisierung für kleine Unternehmen",
     "aboutTitle": "Über Bilal Al-Badawi | Softwareentwicklung",
-    "contactTitle": "Kontakt | Projekt anfragen",
+    "contactTitle": "Webdesign & Software Berlin anfragen | Bandora",
     "legalTitle": "Rechtliches | Bandora Development"
   },
   "home": {
     "heroTitle": "Softwareentwicklung von der Idee bis zum funktionierenden Produkt.",
-    "heroText": "Bandora Development verbindet Webdesign, Webentwicklung, mobile Apps und APIs zu klar abgegrenzten digitalen Produkten und testbaren MVPs.",
+    "heroText": "Bandora Development verbindet für Unternehmen in Berlin und Umgebung Webdesign, Webentwicklung, mobile Apps und APIs zu klar abgegrenzten digitalen Produkten und testbaren MVPs.",
     "terminal": ["App", "Web", "API", "MVP"],
     "competencies": "Kernkompetenzen",
     "trust": "Kompetenzfelder",
@@ -55,7 +55,7 @@
     "title": "Leistungen",
     "heroTitle": "Software, Systeme und digitale Produkte – von der Idee bis zum Betrieb.",
     "heroIntro": "Ich entwickle nicht nur einzelne Oberflächen. Ich verbinde Produktidee, Architektur, Automatisierung und Betrieb zu einer Lösung, die verständlich, testbar und ausbaufähig bleibt.",
-    "intro": "Individuelle Softwareentwicklung mit klarem Fokus auf nutzbare Ergebnisse, verständliche Architektur und realistische MVPs.",
+    "intro": "Webdesign, Webentwicklung und individuelle Software für Unternehmen in Berlin und Umgebung – mit klarem Fokus auf nutzbare Ergebnisse, verständliche Architektur und realistische MVPs.",
     "items": [
       { "title": "Mobile App-Entwicklung", "text": "iOS- und Android-Anwendungen mit React Native und Expo.", "uses": ["Prototypen", "MVPs", "App-Store-Vorbereitung"] },
       { "title": "Individuelle Webanwendungen", "text": "Dashboards, Plattformen und interne browserbasierte Software.", "uses": ["Verwaltungssoftware", "Dashboards", "Unternehmenssoftware"] },
@@ -100,7 +100,7 @@
   },
   "contact": {
     "title": "Projekt anfragen",
-    "intro": "Beschreibe kurz dein Vorhaben. Ich melde mich mit einer ersten fachlichen Einschätzung.",
+    "intro": "Beschreibe kurz dein Webdesign-, Webentwicklungs- oder Softwarevorhaben in Berlin und Umgebung. Ich melde mich mit einer ersten fachlichen Einschätzung.",
     "mailtoInfo": "Nach erfolgreicher Prüfung wird dein lokales E-Mail-Programm geöffnet.",
     "success": "Die Anfrage wurde vorbereitet.",
     "send": "Anfrage senden",

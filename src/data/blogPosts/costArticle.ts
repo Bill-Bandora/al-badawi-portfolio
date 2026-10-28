@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 
 export const costArticle: BlogPost = {
   slug: 'website-erstellen-lassen-kosten-2026',
@@ -10,6 +10,7 @@ export const costArticle: BlogPost = {
   category: 'Kosten & Planung',
   cardTitle: 'Budget planen, bevor das Angebot kommt.',
   publishedAt: p1PublishedAt,
+  modifiedAt: '2026-10-28',
   publishedLabel: p1PublishedLabel,
   readingTime: '11 Min. Lesezeit',
   intro: 'Eine professionelle Website hat keinen sinnvollen Einheitspreis. In unserer SERP-Stichprobe vom 5. Oktober 2026 reichen veröffentlichte Anbieterpreise von sehr schlanken Paketen unter 1.000 Euro bis zu fünfstelligen Individualprojekten. Der entscheidende Unterschied ist nicht das Wort „Website“, sondern der vereinbarte Umfang: Strategie, Inhalte, Design, Funktionen, technische Qualität, Rechte und Betrieb.',
@@ -85,7 +86,7 @@ export const costArticle: BlogPost = {
         'Welche Funktionen sind zum Launch unverzichtbar?',
         'Welche Qualitätsnachweise und Übergaben erwarten Sie?'
       ],
-      links: [{ label: 'Webentwicklung und professionelle Websites bei Bandora', to: webDevelopmentUrl }]
+      links: [{ label: 'Webdesign und professionelle Websites in Berlin', to: webDesignUrl }]
     },
     {
       id: 'angebote',

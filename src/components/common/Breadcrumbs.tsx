@@ -14,8 +14,8 @@ export function Breadcrumbs({ current, parent }: { current: string; parent?: { l
           </Link>
         </li>
         {parent && <li className="flex items-center gap-2"><ChevronRight className="size-4 rtl:rotate-180" aria-hidden="true" /><Link to={parent.to} className="hover:text-cyan">{parent.label}</Link></li>}
-        <li aria-current="page" className="flex items-center gap-2 font-medium text-white"><ChevronRight className="size-4 rtl:rotate-180" aria-hidden="true" />
-          {current}
+        <li aria-current="page" className="flex min-w-0 items-center gap-2 font-medium text-white"><ChevronRight className="size-4 shrink-0 rtl:rotate-180" aria-hidden="true" />
+          <span className="min-w-0 break-words">{current}</span>
         </li>
       </ol>
     </nav>

@@ -73,6 +73,17 @@ export function BlogArticlePage() {
 
   if (!blog) return <Navigate to={localizedUrl('blogs', lang)} replace />;
 
+  const webDesignGuideSlugs = new Set([
+    'website-erstellen-lassen-kosten-2026',
+    'wordpress-baukasten-oder-individuelle-website',
+    'website-erstellen-lassen-ablauf',
+    'webdesign-angebote-vergleichen',
+  ]);
+  const serviceSlug = webDesignGuideSlugs.has(blog.slug) ? 'webdesign' : 'webentwicklung';
+  const serviceTarget = `${localizedUrl('services', lang).replace(/\/$/, '')}/${serviceSlug}`;
+  const serviceLabel = serviceSlug === 'webdesign'
+    ? lang === 'de' ? 'Mehr zum Webdesign' : lang === 'ar' ? 'المزيد عن تصميم المواقع' : 'More about web design'
+    : labels.service;
   const articleUrl = `${siteConfig.domain}/${lang}/blogs/${blog.slug}`;
   const related = visibleBlogs(lang).filter((item) => blog.relatedSlugs.includes(item.slug));
   const articleSchema: Record<string, unknown> = {
@@ -202,7 +213,7 @@ export function BlogArticlePage() {
             <h2 className="mt-3 text-2xl font-semibold">{blog.cta.title}</h2>
             <p className="mt-3 leading-7 text-slate-300">{blog.cta.text}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink to={`${localizedUrl('services', lang).replace(/\/$/, '')}/webentwicklung`} variant="dark" data-event="blog_to_service_click" onClick={() => emitBlogEvent('blog_to_service_click', blog, `${localizedUrl('services', lang).replace(/\/$/, '')}/webentwicklung`)}>{labels.service}</ButtonLink>
+              <ButtonLink to={serviceTarget} variant="dark" data-event="blog_to_service_click" onClick={() => emitBlogEvent('blog_to_service_click', blog, serviceTarget)}>{serviceLabel}</ButtonLink>
               <ButtonLink to={localizedUrl('contact', lang)} variant="dark" data-event="blog_cta_click" onClick={() => { emitBlogEvent('blog_cta_click', blog, localizedUrl('contact', lang)); emitBlogEvent('blog_to_contact_click', blog, localizedUrl('contact', lang)); }}>{blog.cta.label}</ButtonLink>
             </div>
           </aside>

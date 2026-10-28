@@ -52,3 +52,4 @@ export type BlogPost = BlogLocalizedContent & {
 export const p1PublishedAt = '2026-10-05';
 export const p1PublishedLabel = '5. Oktober 2026';
 export const webDevelopmentUrl = '/de/leistungen/webentwicklung';
+export const webDesignUrl = '/de/leistungen/webdesign';
