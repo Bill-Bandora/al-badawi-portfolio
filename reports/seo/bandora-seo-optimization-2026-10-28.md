@@ -8,7 +8,7 @@
 
 **Produktivdomain:** `https://bandora-dev.de`
 
-**Status:** Implementierung und lokale Freigabeprüfungen abgeschlossen; Produktionsdaten werden nach dem kontrollierten Deployment ergänzt.
+**Status:** Erfolgreich produktiv veröffentlicht und vollständig außenverifiziert.
 
 ## 1. Management Summary
 
@@ -199,23 +199,56 @@ Eine öffentliche Suche nach Erwähnungen von `bandora-dev.de` und der alten Dom
 | Mobile Layout | PASS – 320 und 390 px ohne horizontalen Dokumentüberlauf |
 | Arabisch/RTL | PASS – `lang=ar`, `dir=rtl`, 320/390 px ohne Überlauf |
 | Lighthouse | BLOCKED lokal – CLI nicht installiert; keine zusätzliche Abhängigkeit nur für diesen Lauf aufgenommen |
-| Bundlevergleich | JS 506,94 kB / 164,72 kB gzip; keine neue Bibliothek oder Bilddatei hinzugefügt |
+| Bundlevergleich | lokal 506,94 kB / 164,72 kB gzip; Produktionsbuild mit PHP-Kontaktmodus 507,12 kB / 164,81 kB gzip; keine neue Bibliothek oder Bilddatei hinzugefügt |
 
 Die zunächst optisch abgeschnitten wirkende 390-px-Chrome-Aufnahme wurde mit dem DevTools-Protokoll überprüft. Die erste Headless-Aufnahme unterlag der Windows-Fenster-Mindestbreite. Echte emulierte Viewports bestätigten für 320 und 390 px jeweils `scrollWidth === innerWidth`; H1 und Breadcrumb liegen vollständig innerhalb des Viewports.
 
 ## 10. Produktivdeployment
 
-Wird nach erfolgreichem kontrolliertem Rollout ergänzt:
-
 | Feld | Wert |
 |---|---|
-| Deploymentstatus | PENDING |
-| Produktiver Commit | PENDING |
-| Docker-Image | PENDING |
-| Image-Digest | PENDING |
-| Deployment-Zeitpunkt | PENDING |
+| Deploymentstatus | **ERFOLGREICH** |
+| Produktiver Commit | `1ffc218adb7ce47bea56fa23a5cd7d2da6bd202c` |
+| Docker-Image | `portfolio-blog:1ffc218-rc` |
+| Image-Digest | `sha256:7233b56e0ed6f7f8b222774b7fc13e5621da69fa783ec3d988f811e0e2e18601` |
+| Deployment-ID | `bandora-20261028T203646Z-1ffc218` |
+| Releasebeginn | 28.10.2026, 20:36:48 UTC / 21:36:48 CET |
+| Deployment abgeschlossen | 28.10.2026, 20:37:20 UTC / 21:37:20 CET |
 | Rollback-Punkt | `portfolio-blog:99c038d-rc` / `sha256:f1c35d9bff72cf7a569ed44eec72345838b7881009f3898b7c4efa1fe3873011` |
-| Externe Live-Prüfung | PENDING |
+| Produktiver Container | `7c5ca2250db3b52ce6f0d7e6297c02c6b74a7982b59c189c3559a299432e84f6` |
+| Externe Live-Prüfung | PASS |
+
+### Release-Sicherheit und Cutover
+
+- Git-Push löste kein automatisches Deployment aus; der bisherige Container blieb nach dem Push unverändert und die Coolify-Queue bei 0.
+- Der finale Dry-Run meldete `mutations: 0`, exakten Candidate-Digest, gesunden Ausgangscontainer und semantisch unveränderte Konfiguration.
+- Es wurden keine neuen Docker-Netzwerke erzeugt. Candidate-Prüfung nutzte das bestehende `bridge`-Netz, Produktion weiterhin ausschließlich `coolify`.
+- Labels, Umgebungsvariablen, Healthcheck, Restart-Policy und Traefik-Router wurden unverändert übernommen.
+- Der eigentliche Release lief serverseitig unter exklusivem Kernel-Lock und persistentem Journal.
+- Die erste öffentliche Root-Prüfung nach Cutover hatte einen einzelnen Read-Timeout, aber keinen HTTP-404. Nach 6,116 Sekunden war die gesamte Route-Matrix erfolgreich; nach 7,305 Sekunden lag die zweite aufeinanderfolgende Bestätigung vor.
+- Der alte Container bleibt gestoppt unter `vsbzm6hi85elyqonjswadd9f-190325106707-rollback-bandora-20261028` erhalten.
+
+### Vollständige Live-Abnahme
+
+| Live-Prüfung | Ergebnis |
+|---|---|
+| HTTPS-Root | HTTP 301 direkt auf `https://bandora-dev.de/de/` |
+| Sitemap | 75/75 URLs HTTP 200 |
+| Technische Indexierbarkeit | 75/75 ohne Meta-/X-Robots-Blockade |
+| Canonicals | 75/75 korrekt und selbstreferenziell |
+| hreflang | 0 fehlerhafte oder nicht reziproke Verweise |
+| Prerendering | 75/75 mit H1, `<main>` und parsebarem JSON-LD im HTML |
+| interne Links | alle geprüften Sitemap-Ziele erreichbar |
+| historische Weiterleitungen | 144/144 direkte pfadtreue 301-Ziele; Query-Parameter bleiben erhalten |
+| `al-badawi.de` eigenständig | Apex/www Root und unbekannter Privatpfad jeweils 404; keine globale Weiterleitung |
+| DE/EN/AR | Kernseiten jeweils 200; neue Webdesign-Seite in allen drei Sprachen vorhanden |
+| Arabisch/RTL | `lang=ar`, `dir=rtl`, 390 px ohne horizontalen Überlauf |
+| Mobile/Desktop | 390 px und 1440 px ohne Dokumentüberlauf; jeweils ein H1 und ein Main; 0 Runtime-/Console-Fehler |
+| Kontaktkonfiguration | 200, bestehender Mail-Fallback `mailto` aktiv |
+| Kontakt-API | GET 405, ungültiges JSON 400, Honeypot 200 ohne Mailversand, Zeit-/Spam-Schutz 429 |
+| Container | `running`, `healthy`, RestartCount 0 nach mehr als zwei Minuten |
+| Coolify-Queue | 0 aktive Einträge |
+| repräsentative Antwortzeiten | sieben Kernseiten 82–244 ms in der Stichprobe; keine kritische Regression |
 
 ## 11. Messplan
 
@@ -232,7 +265,7 @@ Festes Tracking-Set:
 - `individuelle webentwicklung berlin`
 - `website für kleine unternehmen berlin`
 
-Nach dem Deployment werden T+14 und T+28 als Vergleichsfenster berechnet. Pro Query werden Land Deutschland, Suchtyp Web, Ziel-URL, Impressionen, Klicks, CTR und durchschnittliche Position erfasst. Markenqueries werden getrennt. Eine Veränderung zählt erst nach einem nachgewiesenen Google-Crawl der betroffenen Seite; geringe Stichproben werden nicht als Trend ausgegeben.
+Der Messzeitraum beginnt am 28.10.2026 um 21:37:20 CET. **T+14 ist der 11.11.2026, T+28 der 25.11.2026.** Pro Query werden Land Deutschland, Suchtyp Web, Ziel-URL, Impressionen, Klicks, CTR und durchschnittliche Position erfasst. Markenqueries werden getrennt. Eine Veränderung zählt erst nach einem nachgewiesenen Google-Crawl der betroffenen Seite; geringe Stichproben werden nicht als Trend ausgegeben.
 
 Die aktiven Top-10-Experimente behalten ihre ursprünglichen Kontrolltermine 28.10.2026, 04.11.2026 und 18.11.2026. Dieser Release verändert ihre Baseline nicht.
 
