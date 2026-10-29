@@ -4,6 +4,9 @@ import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 export const processArticle: BlogPost = {
   slug: 'website-erstellen-lassen-ablauf',
   languages: ['de'],
+  image: '/images/blog/website-erstellen-lassen-ablauf-1280.jpg',
+  imageSrcSet: '/images/blog/website-erstellen-lassen-ablauf-640.webp 640w, /images/blog/website-erstellen-lassen-ablauf-1280.webp 1280w',
+  imageAlt: 'Website-Projekt vom ersten Entwurf über Entwicklung und Tests bis zum Launch',
   title: 'Website erstellen lassen: Ablauf von der Idee bis zum geprüften Launch',
   metaTitle: 'Website erstellen lassen: Ablauf bis Launch | Bandora',
   excerpt: 'Ein realistischer Website-Prozess mit Zielen, Struktur, Inhalten, Design, Entwicklung, Abnahme, Launch und Betrieb.',

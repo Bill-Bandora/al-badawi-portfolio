@@ -4,6 +4,9 @@ import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 export const platformArticle: BlogPost = {
   slug: 'wordpress-baukasten-oder-individuelle-website',
   languages: ['de'],
+  image: '/images/blog/wordpress-baukasten-oder-individuelle-website-1280.jpg',
+  imageSrcSet: '/images/blog/wordpress-baukasten-oder-individuelle-website-640.webp 640w, /images/blog/wordpress-baukasten-oder-individuelle-website-1280.webp 1280w',
+  imageAlt: 'Drei modulare Wege führen zu einer fertigen individuellen Unternehmenswebsite',
   title: 'WordPress, Baukasten oder individuelle Website – welche Lösung passt wirklich?',
   metaTitle: 'WordPress, Baukasten oder individuelle Website? | Bandora',
   excerpt: 'Die richtige Plattform hängt von Redaktion, Funktionen, Kontrolle, Wartung und dem gewünschten Änderungsweg ab – nicht von Glaubenssätzen.',

@@ -4,6 +4,9 @@ import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes
 export const providerArticle: BlogPost = {
   slug: 'webdesigner-freelancer-oder-agentur',
   languages: ['de'],
+  image: '/images/blog/webdesigner-freelancer-oder-agentur-1280.jpg',
+  imageSrcSet: '/images/blog/webdesigner-freelancer-oder-agentur-640.webp 640w, /images/blog/webdesigner-freelancer-oder-agentur-1280.webp 1280w',
+  imageAlt: 'Unternehmerin vergleicht die Zusammenarbeit mit einem Freelancer und einem Agenturteam',
   title: 'Webdesigner, Freelancer oder Agentur – was passt zu Ihrem Unternehmen?',
   metaTitle: 'Webdesigner, Freelancer oder Agentur? | Bandora',
   excerpt: 'Eine Entscheidungshilfe nach Projektumfang, Risiko, Ansprechpartnern, Vertretung, Betrieb und technischem Anspruch.',

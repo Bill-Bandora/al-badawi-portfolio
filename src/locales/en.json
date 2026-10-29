@@ -28,11 +28,11 @@
   },
   "seo": {
     "homeTitle": "Bandora Development | Apps, web applications and MVPs",
-    "homeDescription": "Bilal Al-Badawi builds mobile apps, custom web applications, APIs and digital MVPs for founders, individuals and small businesses.",
+    "homeDescription": "Bill Bandora builds mobile apps, custom web applications, APIs and digital MVPs for founders, individuals and small businesses.",
     "servicesTitle": "Services | Bandora Development",
     "projectsTitle": "Projects | Bandora Development",
     "blogsTitle": "Blogs | Digitalization for small businesses",
-    "aboutTitle": "About Bilal Al-Badawi | Software Development",
+    "aboutTitle": "About Bill Bandora | Software Development",
     "contactTitle": "Contact | Request a project",
     "legalTitle": "Legal | Bandora Development"
   },
@@ -44,7 +44,7 @@
     "trust": "Competence areas",
     "featured": "Selected projects",
     "process": "Working process",
-    "aboutPreview": "Bilal Al-Badawi is an application development specialist building modern web applications, mobile apps and custom software. The focus is on functional MVPs, understandable architecture and economically sensible solutions for concrete problems.",
+    "aboutPreview": "Bill Bandora is an application development specialist building modern web applications, mobile apps and custom software. The focus is on functional MVPs, understandable architecture and economically sensible solutions for concrete problems.",
     "ctaTitle": "Do you have an app or software idea?",
     "ctaText": "Briefly describe your idea. Together we can clarify a sensible technical scope and turn it into a testable MVP.",
     "competencyItems": ["Mobile apps", "Web applications", "MVP development", "APIs and backend", "Landing pages", "Automation"],
@@ -91,7 +91,7 @@
     "filters": { "mobile": "Mobile apps", "web": "Web applications", "desktop": "Desktop", "infrastructure": "Infrastructure", "automation": "Automation", "trading": "Trading engineering", "mvp": "MVP", "development": "In development", "completed": "Completed" }
   },
   "about": {
-    "title": "Bilal Al-Badawi",
+    "title": "Bill Bandora",
     "role": "Application development specialist focused on modern web applications, mobile apps, APIs, databases and MVP development.",
     "text": "I build custom software solutions that solve concrete problems in an understandable and economically sensible way.",
     "workflow": "My work combines product understanding, clean frontend and backend development, and pragmatic architecture decisions.",
@@ -113,12 +113,10 @@
   },
   "legal": {
     "imprint": "Imprint",
-    "privacy": "Privacy",
-    "placeholder": "Required information still needs to be added",
-    "privacyText": "This website does not use analytics tools, ad trackers, embedded social media widgets, marketing cookies, YouTube embeds, Google Maps or externally loaded fonts. The contact form processes submitted data only to handle the request."
+    "privacy": "Privacy"
   },
   "notFound": { "title": "Page not found", "text": "The requested page does not exist or has moved." },
-  "footer": { "text": "Bandora Development is the professional web presence of Bilal Al-Badawi." },
+  "footer": { "text": "Bandora Development is the professional web presence of Bill Bandora." },
   "projectLanding": {
     "overview": "Project overview",
     "approach": "Technical approach",

@@ -4,6 +4,9 @@ import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 export const offerArticle: BlogPost = {
   slug: 'webdesign-angebote-vergleichen',
   languages: ['de'],
+  image: '/images/blog/webdesign-angebote-vergleichen-1280.jpg',
+  imageSrcSet: '/images/blog/webdesign-angebote-vergleichen-640.webp 640w, /images/blog/webdesign-angebote-vergleichen-1280.webp 1280w',
+  imageAlt: 'Webdesign-Angebote werden anhand von Leistungsumfang und Qualitätskriterien verglichen',
   title: 'Webdesign-Angebote vergleichen: 15 Punkte, die wirklich enthalten sein müssen',
   metaTitle: 'Webdesign-Angebote vergleichen: 15 Prüfpunkte | Bandora',
   excerpt: 'So bringen Sie unterschiedliche Website-Angebote bei Umfang, Qualität, Rechten, Betrieb und Gesamtkosten auf dieselbe Vergleichsbasis.',

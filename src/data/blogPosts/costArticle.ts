@@ -4,6 +4,9 @@ import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
 export const costArticle: BlogPost = {
   slug: 'website-erstellen-lassen-kosten-2026',
   languages: ['de'],
+  image: '/images/blog/website-erstellen-lassen-kosten-2026-1280.jpg',
+  imageSrcSet: '/images/blog/website-erstellen-lassen-kosten-2026-640.webp 640w, /images/blog/website-erstellen-lassen-kosten-2026-1280.webp 1280w',
+  imageAlt: 'Unternehmer und Webberaterin prüfen gemeinsam Budget und Umfang eines Website-Projekts',
   title: 'Website erstellen lassen: Kosten 2026 – womit Unternehmen wirklich rechnen müssen',
   metaTitle: 'Website erstellen lassen: Kosten 2026 | Bandora',
   excerpt: 'Was eine Firmenwebsite kostet, welche Leistungen den Preis treiben und wie Sie Angebote vergleichen, ohne Äpfel mit Birnen zu verrechnen.',

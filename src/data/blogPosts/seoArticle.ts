@@ -4,6 +4,9 @@ import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes
 export const seoArticle: BlogPost = {
   slug: 'seo-beim-website-erstellen',
   languages: ['de'],
+  image: '/images/blog/seo-beim-website-erstellen-1280.jpg',
+  imageSrcSet: '/images/blog/seo-beim-website-erstellen-640.webp 640w, /images/blog/seo-beim-website-erstellen-1280.webp 1280w',
+  imageAlt: 'Planung von Suchintention, Seitenstruktur und technischen SEO-Signalen vor der Entwicklung',
   title: 'SEO beim Website-Erstellen: Was vor Design und Entwicklung feststehen muss',
   metaTitle: 'SEO beim Website-Erstellen von Anfang an | Bandora',
   excerpt: 'Search Intent, Seitenstruktur, URLs, Inhalte und technische Signale gehören in die Planung – nicht als Plugin kurz vor dem Launch.',

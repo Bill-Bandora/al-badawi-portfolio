@@ -32,7 +32,7 @@
     "servicesTitle": "Webdesign & Webentwicklung Berlin | Bandora",
     "projectsTitle": "Projekte | Bandora Development",
     "blogsTitle": "Blogs | Digitalisierung für kleine Unternehmen",
-    "aboutTitle": "Über Bilal Al-Badawi | Softwareentwicklung",
+    "aboutTitle": "Über Bill Bandora | Softwareentwicklung",
     "contactTitle": "Webdesign & Software Berlin anfragen | Bandora",
     "legalTitle": "Rechtliches | Bandora Development"
   },
@@ -44,7 +44,7 @@
     "trust": "Kompetenzfelder",
     "featured": "Ausgewählte Projekte",
     "process": "Arbeitsweise",
-    "aboutPreview": "Bilal Al-Badawi ist Fachinformatiker für Anwendungsentwicklung und entwickelt moderne Webanwendungen, mobile Apps und individuelle Softwarelösungen. Der Schwerpunkt liegt auf funktionalen MVPs, verständlichen Systemarchitekturen und wirtschaftlich sinnvollen Lösungen für konkrete Probleme.",
+    "aboutPreview": "Bill Bandora ist Fachinformatiker für Anwendungsentwicklung und entwickelt moderne Webanwendungen, mobile Apps und individuelle Softwarelösungen. Der Schwerpunkt liegt auf funktionalen MVPs, verständlichen Systemarchitekturen und wirtschaftlich sinnvollen Lösungen für konkrete Probleme.",
     "ctaTitle": "Du hast eine App- oder Softwareidee?",
     "ctaText": "Beschreibe kurz dein Vorhaben. Gemeinsam lässt sich klären, welcher technische Umfang sinnvoll ist und wie daraus ein testbarer MVP entstehen kann.",
     "competencyItems": ["Mobile Apps", "Webanwendungen", "MVP-Entwicklung", "APIs und Backend", "Landingpages", "Automatisierung"],
@@ -91,7 +91,7 @@
     "filters": { "mobile": "Mobile Apps", "web": "Webanwendungen", "desktop": "Desktop", "infrastructure": "Infrastruktur", "automation": "Automatisierung", "trading": "Trading Engineering", "mvp": "MVP", "development": "In Entwicklung", "completed": "Abgeschlossen" }
   },
   "about": {
-    "title": "Bilal Al-Badawi",
+    "title": "Bill Bandora",
     "role": "Fachinformatiker für Anwendungsentwicklung mit Schwerpunkt auf modernen Webanwendungen, mobilen Apps, APIs, Datenbanken und MVP-Entwicklung.",
     "text": "Ich entwickle individuelle Softwarelösungen, die konkrete Probleme verständlich und wirtschaftlich lösen. Wichtig sind klare Anforderungen, ein belastbarer technischer Umfang und eine Umsetzung, die früh testbar ist.",
     "workflow": "Meine Arbeitsweise verbindet Produktverständnis, saubere Frontend- und Backend-Entwicklung und pragmatische Architekturentscheidungen.",
@@ -126,13 +126,11 @@
   },
   "legal": {
     "imprint": "Impressum",
-    "privacy": "Datenschutz",
-    "placeholder": "Pflichtangabe noch ergänzen",
-    "privacyText": "Diese Website verwendet keine Analysewerkzeuge, Werbetracker, extern eingebetteten Social-Media-Widgets, Marketing-Cookies, YouTube-Einbettungen, Google Maps oder extern geladenen Schriftarten. Das Kontaktformular verarbeitet die eingegebenen Daten ausschließlich zur Bearbeitung der Anfrage."
+    "privacy": "Datenschutz"
   },
   "notFound": { "title": "Seite nicht gefunden", "text": "Die angeforderte Seite existiert nicht oder wurde verschoben." },
   "footer": {
-    "text": "Bandora Development ist der professionelle Webauftritt von Bilal Al-Badawi."
+    "text": "Bandora Development ist der professionelle Webauftritt von Bill Bandora."
   },
   "projectLanding": {
     "overview": "Projektüberblick",

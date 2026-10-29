@@ -8,7 +8,7 @@ import { ButtonLink } from '../components/ui/Button';
 import { ProjectCard } from '../components/projects/ProjectCard';
 import { RevealOnScroll } from '../components/common/RevealOnScroll';
 import { ProfileVisual } from '../components/common/ProfileVisual';
-import { localizedUrl, routePath } from '../config/site';
+import { localizedUrl, routePath, siteConfig } from '../config/site';
 import { BrandCrest } from '../components/common/BrandCrest';
 import { findService } from '../data/services';
 import { localized } from '../utils/language';
@@ -149,7 +149,7 @@ export function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[0.8fr_1.2fr]">
           <ProfileVisual />
           <div>
-            <h2 className="text-3xl font-semibold text-white">Bilal Al-Badawi</h2>
+            <h2 className="text-3xl font-semibold text-white">{siteConfig.developerName}</h2>
             <p className="mt-4 text-lg leading-8 text-slate-300">{t('home.aboutPreview')}</p>
           </div>
         </div>

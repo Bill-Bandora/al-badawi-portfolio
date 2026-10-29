@@ -10,7 +10,7 @@ export type LanguageCode = (typeof languages)[number]['code'];
 export const siteConfig = {
   brandName: 'Bandora Development',
   shortBrand: 'Bandora',
-  developerName: 'Bilal Al-Badawi',
+  developerName: 'Bill Bandora',
   domain: 'https://bandora-dev.de',
   email: 'albadawi335@gmail.com',
   githubUrl: 'https://github.com/Bill-Bandora',

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { siteConfig } from '../../config/site';
+import { Link } from 'react-router-dom';
+import { localizedUrl, siteConfig } from '../../config/site';
 import { buildMailto, type ContactValues, validateContact } from '../../utils/contact';
 import { Button } from '../ui/Button';
 
@@ -18,7 +19,7 @@ const initialValues: ContactValues = {
 };
 
 export function ContactForm() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [values, setValues] = useState<ContactValues>(initialValues);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState('');
@@ -108,15 +109,18 @@ export function ContactForm() {
           </span>
         </div>
       </div>
-      <label className="flex items-start gap-3 text-sm text-slate-700 max-[768px]:text-slate-300">
-        <input type="checkbox" checked={values.privacy} onChange={(event) => setValue('privacy', event.target.checked)} onBlur={() => setTouched((c) => ({ ...c, privacy: true }))} className="mt-1 size-5 rounded border-slate-300 text-cyan focus:ring-cyan" />
+      <div className="flex items-start gap-3 text-sm text-slate-700 max-[768px]:text-slate-300">
+        <input id="privacy-confirmation" type="checkbox" checked={values.privacy} onChange={(event) => setValue('privacy', event.target.checked)} onBlur={() => setTouched((c) => ({ ...c, privacy: true }))} className="mt-1 size-5 rounded border-slate-300 text-cyan focus:ring-cyan" />
         <span>
-          {t('contact.privacy')} *
+          <label htmlFor="privacy-confirmation">{t('contact.privacy')} *</label>
+          <Link className="ms-2 font-semibold text-blue underline underline-offset-4 max-[768px]:text-cyan" to={localizedUrl('privacy', i18n.language)}>
+            {t('nav.privacy')}
+          </Link>
           <span className="block text-red-700" aria-live="polite">
             {showError('privacy') || ''}
           </span>
         </span>
-      </label>
+      </div>
       <div className="flex flex-wrap items-center gap-4">
         <Button type="submit" disabled={submitting}>
           {submitting ? t('contact.sending') : t('contact.send')}

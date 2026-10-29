@@ -19,8 +19,19 @@ const viewLabels = {
 
 function BlogVisual({ blog, compact = false }: { blog: BlogPost; compact?: boolean }) {
   return (
-    <div className={`relative flex overflow-hidden bg-gradient-to-br from-ink via-blue to-cyan text-white ${compact ? 'min-h-32 items-end p-5 sm:min-h-full' : 'min-h-48 items-end p-6'}`}>
-      <div className="tech-grid absolute inset-0 opacity-30" aria-hidden="true" />
+    <div className={`relative flex overflow-hidden bg-night text-white ${compact ? 'min-h-36 items-end p-5 sm:min-h-full' : 'aspect-video items-end p-6'}`}>
+      <img
+        src={blog.image}
+        srcSet={blog.imageSrcSet}
+        sizes={compact ? '(min-width: 1024px) 240px, (min-width: 640px) 176px, 100vw' : '(min-width: 1280px) 405px, (min-width: 640px) 50vw, 100vw'}
+        alt={blog.imageAlt}
+        width="1280"
+        height="720"
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.025] motion-reduce:transform-none motion-reduce:transition-none"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-night via-night/35 to-transparent" aria-hidden="true" />
       <div className="relative">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100">{blog.category}</p>
         {!compact && <p className="mt-3 text-xl font-semibold leading-tight">{blog.cardTitle}</p>}

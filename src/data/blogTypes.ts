@@ -28,6 +28,7 @@ export type BlogLocalizedContent = {
   title: string;
   metaTitle: string;
   excerpt: string;
+  imageAlt: string;
   category: string;
   cardTitle: string;
   publishedAt: string;
@@ -46,6 +47,8 @@ export type BlogLocalizedContent = {
 export type BlogPost = BlogLocalizedContent & {
   slug: string;
   languages: BlogLanguage[];
+  image: string;
+  imageSrcSet?: string;
   translations?: Partial<Record<BlogLanguage, BlogLocalizedContent>>;
 };
 

@@ -94,6 +94,7 @@ export function BlogArticlePage() {
     ...(blog.modifiedAt ? { dateModified: blog.modifiedAt } : {}),
     inLanguage: lang,
     mainEntityOfPage: articleUrl,
+    image: `${siteConfig.domain}${blog.image}`,
     author: { '@type': 'Person', name: siteConfig.developerName, url: `${siteConfig.domain}/de/ueber-mich` },
     publisher: { '@type': 'Organization', name: siteConfig.brandName, url: siteConfig.domain },
   };
@@ -111,6 +112,8 @@ export function BlogArticlePage() {
       <SeoHead
         title={blog.metaTitle}
         description={blog.excerpt}
+        image={blog.image}
+        imageAlt={blog.imageAlt}
         path={`blogs/${blog.slug}`}
         alternateLanguages={blog.languages}
         ogType="article"
@@ -133,8 +136,21 @@ export function BlogArticlePage() {
             <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-300 min-[769px]:mt-7 min-[769px]:gap-5 min-[769px]:text-sm">
               <span className="inline-flex items-center gap-2"><CalendarDays className="size-4" aria-hidden="true" />{blog.publishedLabel}</span>
               <span className="inline-flex items-center gap-2"><Clock className="size-4" aria-hidden="true" />{blog.readingTime}</span>
-              <span>{labels.by} Bilal Al-Badawi</span>
+              <span>{labels.by} {siteConfig.developerName}</span>
             </div>
+            <figure className="mt-8 overflow-hidden rounded-[1.4rem] border border-white/10 bg-night shadow-[0_24px_70px_rgba(2,8,23,0.42)] min-[769px]:mt-12">
+              <img
+                src={blog.image}
+                srcSet={blog.imageSrcSet}
+                sizes="(min-width: 1024px) 896px, calc(100vw - 2rem)"
+                alt={blog.imageAlt}
+                width="1280"
+                height="720"
+                loading="eager"
+                decoding="async"
+                className="aspect-video h-auto w-full object-cover"
+              />
+            </figure>
           </div>
         </header>
 

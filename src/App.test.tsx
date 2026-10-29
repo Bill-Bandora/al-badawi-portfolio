@@ -10,6 +10,7 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/de/');
     expect(screen.getByRole('heading', { name: 'Softwareentwicklung von der Idee bis zum funktionierenden Produkt.', level: 1 })).toBeInTheDocument();
     expect(screen.getAllByText(/Unternehmen in Berlin und Umgebung/)).not.toHaveLength(0);
+    expect(screen.getAllByText('Bill Bandora')).not.toHaveLength(0);
     await waitFor(() => expect(document.title).toBe('Bandora Development | Webdesign & Software Berlin'));
     const schemas = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) => JSON.parse(script.textContent ?? '{}'));
     const organization = schemas.flatMap((schema) => schema['@graph'] ?? []).find((entry) => entry['@type'] === 'Organization');
@@ -20,7 +21,21 @@ describe('portfolio app', () => {
       logo: 'https://bandora-dev.de/images/brand/bandora-crest-1200.webp',
       areaServed: { '@type': 'City', name: 'Berlin' },
       sameAs: ['https://github.com/Bill-Bandora'],
+      founder: { '@type': 'Person', name: 'Bill Bandora' },
     });
+  });
+
+  it('provides expanded legal and privacy sections without development placeholders', () => {
+    const { unmount } = renderWithProviders(<App />, '/de/impressum');
+    expect(screen.getByRole('heading', { name: 'Diensteanbieter und verantwortlich für den Inhalt' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Verantwortlich für journalistisch-redaktionelle Inhalte' })).toBeInTheDocument();
+    expect(screen.queryByText(/Pflichtangabe|ergänzen|Platzhalter/i)).not.toBeInTheDocument();
+    unmount();
+
+    renderWithProviders(<App />, '/de/datenschutz');
+    expect(screen.getByRole('heading', { name: '4. Kontaktformular und E-Mail' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '6. Lokale Speicherung im Browser' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '9. Ihre Rechte' })).toBeInTheDocument();
   });
 
   it('switches language and applies RTL for Arabic', async () => {
@@ -112,6 +127,7 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/de/blogs/warum-kleine-unternehmen-eine-website-brauchen');
     expect(screen.getByRole('heading', { name: /keine website/i, level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /eine website arbeitet auch nach feierabend/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /berliner handwerksbetriebs/i })).toHaveAttribute('src', '/images/blog/warum-kleine-unternehmen-eine-website-brauchen-1280.jpg');
   });
 
   it('renders the small-business article with complete English content and links', () => {
@@ -165,6 +181,10 @@ describe('portfolio app', () => {
     expect(listButton).toHaveAttribute('aria-pressed', 'false');
     expect(results).toHaveAttribute('data-view', 'grid');
     expect(within(results as HTMLElement).getAllByRole('article')).toHaveLength(7);
+    const blogImages = within(results as HTMLElement).getAllByRole('img');
+    expect(blogImages).toHaveLength(7);
+    expect(blogImages.every((image) => image.getAttribute('src')?.startsWith('/images/blog/'))).toBe(true);
+    expect(blogImages.every((image) => Boolean(image.getAttribute('alt')))).toBe(true);
 
     listButton.focus();
     await userEvent.keyboard('{Enter}');
