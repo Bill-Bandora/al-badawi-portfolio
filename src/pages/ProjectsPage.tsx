@@ -12,7 +12,10 @@ export function ProjectsPage() {
   const { lang = 'de' } = useParams();
   const [params] = useSearchParams();
   const [filter, setFilter] = useState(params.get('filter') ?? 'all');
-  const filtered = useMemo(() => (filter === 'all' ? projects : projects.filter((project) => project.filters.includes(filter))), [filter]);
+  const filtered = useMemo(() => {
+    const matches = filter === 'all' ? projects : projects.filter((project) => project.filters.includes(filter));
+    return [...matches].sort((left, right) => Number(right.id === 'bandora-quiz') - Number(left.id === 'bandora-quiz'));
+  }, [filter]);
   return (
     <>
       <SeoHead title={t('seo.projectsTitle')} description={t('projects.intro')} path="projekte" />

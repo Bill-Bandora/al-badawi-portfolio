@@ -196,7 +196,7 @@ export const services: Service[] = [
       { de: 'Auf Geräten testen und nächste Schritte priorisieren', en: 'Test on devices and prioritize next steps', ar: 'الاختبار على الأجهزة وترتيب الخطوات التالية' },
     ],
     technologies: ['React Native', 'Expo', 'TypeScript', 'REST APIs', 'EAS Build', 'TestFlight'],
-    projectSlugs: ['buynot', 'roommate-plus'],
+    projectSlugs: ['bandora-quiz', 'buynot', 'roommate-plus'],
   },
   {
     slug: 'automatisierung',

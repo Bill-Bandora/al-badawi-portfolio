@@ -27,6 +27,7 @@ const themes: Record<string, { hero: string; number: string; reverse?: boolean }
   'bandora-mt5-trader': { hero: 'bg-[#080d18] text-white', number: 'text-gold' },
   'bandora-crypto-scanner': { hero: 'bg-[#07131b] text-white', number: 'text-cyan', reverse: true },
   'bandora-studio': { hero: 'bg-[#120e25] text-white', number: 'text-gold' },
+  'bandora-quiz': { hero: 'bg-[#071008] text-white', number: 'text-lime-300', reverse: true },
 };
 
 export function ProjectDetailPage() {
@@ -38,6 +39,10 @@ export function ProjectDetailPage() {
   const theme = themes[project.id] ?? themes['bandora-org'];
   const relatedServices = services.filter((service) => service.projectSlugs.includes(project.slug));
   const relatedProjects = (project.relatedSlugs ?? []).map((item) => projects.find((candidate) => candidate.slug === item)).filter(Boolean) as typeof projects;
+  const localLabels = {
+    technicalChallenges: lang === 'de' ? 'Technische Herausforderungen' : lang === 'ar' ? 'تحديات تقنية' : 'Technical challenges',
+    relatedProjects: lang === 'de' ? 'Ähnliche Projekte' : lang === 'ar' ? 'مشاريع مشابهة' : 'Related projects',
+  };
   const projectSchema = {
     '@context': 'https://schema.org',
     '@type': project.id === 'bandora-gen8' ? 'CreativeWork' : 'SoftwareApplication',
@@ -45,6 +50,8 @@ export function ProjectDetailPage() {
     description: localized(project.shortDescription, lang),
     applicationCategory: localized(project.category, lang),
     operatingSystem: project.id === 'bandora-gen8' ? 'Linux' : 'Cross-platform',
+    ...(project.release ? { softwareVersion: project.release.version } : {}),
+    ...(project.primaryLink ? { sameAs: project.primaryLink.url } : {}),
     creator: { '@type': 'Person', name: siteConfig.developerName },
     url: `${siteConfig.domain}/${lang}/${routePath('projects', lang)}/${project.slug}`,
   };
@@ -56,7 +63,7 @@ export function ProjectDetailPage() {
         description={localized(project.shortDescription, lang)}
         path={`${routePath('projects', lang)}/${project.slug}`}
         image={project.image}
-        imageAlt={`${project.title}: ${localized(project.category, lang)}`}
+        imageAlt={project.imageAlt ? localized(project.imageAlt, lang) : `${project.title}: ${localized(project.category, lang)}`}
         schema={projectSchema}
         breadcrumbs={[
           { name: t('common.home'), url: `${siteConfig.domain}/${lang}/` },
@@ -74,14 +81,17 @@ export function ProjectDetailPage() {
           <div className={`min-w-0 ${theme.reverse ? 'lg:order-2' : ''}`}>
             <StatusBadge label={localized(project.status, lang)} inverse />
             <p className={`mt-4 text-sm font-medium min-[769px]:mt-6 ${theme.number}`}>{localized(project.category, lang)}</p>
-            <h1 className="mt-3 break-words text-[clamp(2.35rem,11vw,4rem)] font-semibold tracking-tight min-[769px]:mt-4 min-[769px]:text-6xl lg:text-7xl">{project.title}</h1>
+            <h1 dir="auto" className="mt-3 break-words text-[clamp(2.35rem,11vw,4rem)] font-semibold tracking-tight min-[769px]:mt-4 min-[769px]:text-6xl lg:text-7xl">{project.title}</h1>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-200 min-[769px]:mt-6 min-[769px]:text-lg min-[769px]:leading-8">{localized(project.shortDescription, lang)}</p>
-            <ButtonLink to={localizedUrl('contact', lang)} variant="dark" className="mt-6 min-[769px]:mt-8">{t('projectLanding.cta')}</ButtonLink>
+            <div className="mt-6 flex flex-wrap gap-3 min-[769px]:mt-8">
+              {project.primaryLink && <a href={project.primaryLink.url} className="inline-flex min-h-11 items-center justify-center rounded-card bg-gradient-to-r from-cyan to-blue px-5 py-2.5 font-semibold text-white shadow-[0_12px_32px_rgba(8,145,178,0.28)] transition duration-300 hover:-translate-y-0.5" target="_blank" rel="noreferrer">{localized(project.primaryLink.label, lang)}</a>}
+              <ButtonLink to={localizedUrl('contact', lang)} variant="dark">{t('projectLanding.cta')}</ButtonLink>
+            </div>
           </div>
           <TiltSurface className={`min-w-0 ${theme.reverse ? 'lg:order-1' : ''}`}>
             <figure className="glow-border overflow-hidden rounded-[1.5rem] bg-night p-2 shadow-deep">
-              <div className="relative overflow-hidden rounded-[1.15rem]"><div className="scan-line absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-transparent via-cyan/10 to-transparent" aria-hidden="true" /><img src={project.image} width="960" height="600" alt={`${project.title}: ${localized(project.category, lang)}`} className="aspect-[16/10] w-full bg-paper object-cover" /></div>
-              <figcaption className="px-3 pb-2 pt-4 text-sm text-slate-400">{t('projectLanding.visual')}</figcaption>
+              <div className="relative overflow-hidden rounded-[1.15rem]"><div className="scan-line absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-transparent via-cyan/10 to-transparent" aria-hidden="true" /><img src={project.image} srcSet={project.imageSrcSet} sizes="(min-width: 1024px) 50vw, 100vw" width="960" height="600" alt={project.imageAlt ? localized(project.imageAlt, lang) : `${project.title}: ${localized(project.category, lang)}`} className={`aspect-[16/10] w-full bg-paper ${project.imageFit === 'contain' ? 'object-contain p-3 sm:p-5' : 'object-cover'}`} /></div>
+              <figcaption className="px-3 pb-2 pt-4 text-sm text-slate-400">{project.imageAlt ? localized(project.imageAlt, lang) : t('projectLanding.visual')}</figcaption>
             </figure>
           </TiltSurface>
         </div>
@@ -148,8 +158,9 @@ export function ProjectDetailPage() {
           <h2 className="text-3xl font-semibold text-ink">{t('projectLanding.evolution')}</h2>
           <div className="mt-5"><StatusBadge label={localized(project.status, lang)} /></div>
           <p className="mt-5 max-w-3xl leading-8 text-slate-700">{localized(project.developmentStatus, lang)}</p>
+          {project.release && <div className="mt-6 max-w-3xl rounded-card border border-slate-200 bg-white p-5 shadow-sm"><p className="font-semibold text-ink">Version {project.release.version} · Build {project.release.build}</p><p className="mt-2 leading-7 text-slate-700">{localized(project.release.status, lang)}</p>{project.release.appStoreUrl && <a href={project.release.appStoreUrl} className="mt-4 inline-flex font-semibold text-cyan underline underline-offset-4">App Store</a>}</div>}
           {project.disclaimer && <p className="mt-6 max-w-3xl rounded-card border border-amber-300/50 bg-amber-50 p-4 text-sm leading-6 text-amber-950">{localized(project.disclaimer, lang)}</p>}
-          {project.technicalChallenges && <div className="mt-10"><h3 className="text-xl font-semibold text-ink">Technical challenges</h3><ul className="mt-4 grid gap-3 md:grid-cols-2">{project.technicalChallenges.map((item) => <li key={item.en} className="rounded-card border border-slate-200 bg-white p-5 text-slate-700">{localized(item, lang)}</li>)}</ul></div>}
+          {project.technicalChallenges && <div className="mt-10"><h3 className="text-xl font-semibold text-ink">{localLabels.technicalChallenges}</h3><ul className="mt-4 grid gap-3 md:grid-cols-2">{project.technicalChallenges.map((item) => <li key={item.en} className="rounded-card border border-slate-200 bg-white p-5 text-slate-700">{localized(item, lang)}</li>)}</ul></div>}
           {project.futureFeatures && <ul className="mt-8 grid gap-4 md:grid-cols-2">{project.futureFeatures.map((feature) => (
             <li key={feature.en} className="rounded-card border border-dashed border-slate-300 bg-white p-5">
               <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t('projectLanding.planned')}</span>
@@ -158,7 +169,7 @@ export function ProjectDetailPage() {
           ))}</ul>}
         </div>
       </section>
-      {relatedProjects.length > 0 && <section className="bg-night px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8"><div className="mx-auto max-w-6xl"><h2 className="mb-6 text-3xl font-semibold text-white min-[769px]:mb-8">Related projects</h2><div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 min-[769px]:mx-0 min-[769px]:grid min-[769px]:gap-8 min-[769px]:overflow-visible min-[769px]:px-0 min-[769px]:pb-0">{relatedProjects.map((item) => <div key={item.id} className="w-[86vw] shrink-0 snap-center min-[769px]:w-auto"><ProjectCard project={item} /></div>)}</div></div></section>}
+      {relatedProjects.length > 0 && <section className="bg-night px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8"><div className="mx-auto max-w-6xl"><h2 className="mb-6 text-3xl font-semibold text-white min-[769px]:mb-8">{localLabels.relatedProjects}</h2><div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 min-[769px]:mx-0 min-[769px]:grid min-[769px]:gap-8 min-[769px]:overflow-visible min-[769px]:px-0 min-[769px]:pb-0">{relatedProjects.map((item) => <div key={item.id} className="w-[86vw] shrink-0 snap-center min-[769px]:w-auto"><ProjectCard project={item} /></div>)}</div></div></section>}
       <section className="bg-night px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8">
         <div className="glow-border mx-auto max-w-6xl rounded-[1.5rem] bg-navy p-8 text-white shadow-deep sm:p-12">
           <h2 className="max-w-2xl text-3xl font-semibold">{t('projectLanding.cta')}</h2>
@@ -167,6 +178,7 @@ export function ProjectDetailPage() {
             {relatedServices.map((service) => <ButtonLink key={service.slug} to={`/${lang}/${routePath('services', lang)}/${service.slug}`} variant="dark">{localized(service.title, lang)}</ButtonLink>)}
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
+            {project.primaryLink && <a href={project.primaryLink.url} className="inline-flex min-h-11 items-center justify-center rounded-card bg-gradient-to-r from-cyan to-blue px-5 py-2.5 font-semibold text-white" target="_blank" rel="noreferrer">{localized(project.primaryLink.label, lang)}</a>}
             <ButtonLink to={localizedUrl('contact', lang)} variant="dark">{t('nav.contact')}</ButtonLink>
             <ButtonLink to={localizedUrl('projects', lang)} variant="dark">{t('projectLanding.back')}</ButtonLink>
           </div>

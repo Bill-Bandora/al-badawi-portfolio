@@ -9,7 +9,7 @@ const sitemapXml = await readFile(join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const failures = [];
 
-if (urls.length !== 75 || new Set(urls).size !== 75) failures.push(`Expected 75 unique sitemap URLs, received ${urls.length}/${new Set(urls).size}.`);
+if (urls.length !== 78 || new Set(urls).size !== 78) failures.push(`Expected 78 unique sitemap URLs, received ${urls.length}/${new Set(urls).size}.`);
 
 const records = new Map();
 for (const url of urls) {

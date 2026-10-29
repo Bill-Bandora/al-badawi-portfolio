@@ -2,6 +2,99 @@ import type { Project } from '../types/project';
 
 export const bandoraProjects: Project[] = [
   {
+    id: 'bandora-quiz',
+    slug: 'bandora-quiz',
+    title: 'Bandora Quiz',
+    category: {
+      de: 'Quiz-App / Echtzeit-Multiplayer / Mobile & Web',
+      en: 'Quiz app / real-time multiplayer / mobile & web',
+      ar: 'تطبيق مسابقات / لعب جماعي فوري / الجوال والويب',
+    },
+    status: {
+      de: 'Version 1.0 · Build 10 bei Apple eingereicht',
+      en: 'Version 1.0 · Build 10 submitted to Apple',
+      ar: 'الإصدار 1.0 · البنية 10 مقدمة إلى Apple',
+    },
+    shortDescription: {
+      de: 'Eine Quizshow für die Hosentasche – mit mehr als 10.000 deutschsprachigen Fragen, Solo-Runden und Online-Lobbys für bis zu acht Personen.',
+      en: 'A quiz show in your pocket, with more than 10,000 German-language questions, solo rounds and online lobbies for up to eight players.',
+      ar: 'مسابقة في جيبك تضم أكثر من 10,000 سؤال باللغة الألمانية، مع جولات فردية وردهات عبر الإنترنت لما يصل إلى ثمانية لاعبين.',
+    },
+    description: {
+      de: 'Bandora Quiz verbindet schnelle Solo-Runden mit einer moderierten Online-Quizshow. Spieler können Lobbys erstellen, Freunde über Liste, Link oder QR-Code einladen und sich vor dem Start per Bereitschaftsstatus und Chat abstimmen. Die aktuelle Fragenbasis umfasst mehr als 10.000 deutschsprachige Fragen. App und Inhalte sind derzeit auf Deutsch ausgerichtet.',
+      en: 'Bandora Quiz combines quick solo rounds with a hosted online quiz-show experience. Players can create lobbies, invite friends from a list or via link and QR code, and coordinate through readiness states and lobby chat before a match starts. The current question bank contains more than 10,000 German-language questions, and the app and its content currently target German-speaking players.',
+      ar: 'يجمع Bandora Quiz بين الجولات الفردية السريعة وتجربة مسابقة جماعية عبر الإنترنت. يمكن للاعبين إنشاء ردهات ودعوة الأصدقاء من القائمة أو عبر رابط ورمز QR، والتنسيق قبل البدء من خلال حالة الاستعداد ودردشة الردهة. تضم قاعدة الأسئلة الحالية أكثر من 10,000 سؤال باللغة الألمانية، والتطبيق ومحتواه موجهان حاليا إلى المستخدمين الناطقين بالألمانية.',
+    },
+    problem: {
+      de: 'Viele Quiz-Apps trennen Solo-Spiel, private Runden und soziale Funktionen. Für eine gemeinsame Quizrunde entstehen dadurch Medienbrüche zwischen Einladungslink, Gruppenchat, Spielstatus und Auswertung.',
+      en: 'Many quiz apps separate solo play, private matches and social coordination. Starting a shared quiz therefore often means switching between invitation links, group chats, game state and results.',
+      ar: 'تفصل تطبيقات مسابقات كثيرة بين اللعب الفردي والمباريات الخاصة والتنسيق الاجتماعي، مما يضطر المجموعة إلى التنقل بين روابط الدعوة والمحادثات وحالة اللعب والنتائج.',
+    },
+    solution: {
+      de: 'Eine gemeinsame Anwendung bündelt Fragenkatalog, Solo-Modus, Multiplayer-Lobby und Spielauswertung. Kategorien, Schwierigkeit und Timer werden vor der Runde festgelegt; Punkte, Zeitbonus, Level und Fortschritt bleiben während des Spiels nachvollziehbar.',
+      en: 'One application brings together the question catalogue, solo mode, multiplayer lobbies and match results. Categories, difficulty and timers are configured before a round, while scores, time bonuses, levels and progress remain visible throughout the game.',
+      ar: 'يجمع تطبيق واحد بين دليل الأسئلة والوضع الفردي وردهات اللعب الجماعي ونتائج المباراة. يتم ضبط الفئات ومستوى الصعوبة والمؤقت قبل الجولة، مع إبقاء النقاط ومكافأة الوقت والمستويات والتقدم واضحة أثناء اللعب.',
+    },
+    features: [
+      { de: 'Mehr als 10.000 deutschsprachige Quizfragen', en: 'More than 10,000 German-language quiz questions', ar: 'أكثر من 10,000 سؤال مسابقات باللغة الألمانية' },
+      { de: 'Solo-Modus und Online-Runden für bis zu acht Personen', en: 'Solo mode and online matches for up to eight players', ar: 'وضع فردي ومباريات عبر الإنترنت لما يصل إلى ثمانية لاعبين' },
+      { de: 'Einladungen über Freundesliste, Link oder QR-Code', en: 'Invitations through the friends list, a link or QR code', ar: 'دعوات عبر قائمة الأصدقاء أو رابط أو رمز QR' },
+      { de: 'Lobby mit Bereitschaftsstatus und Chat', en: 'Lobby with readiness states and chat', ar: 'ردهة مع حالة الاستعداد والدردشة' },
+      { de: 'Kategorien, Schwierigkeitsgrade und einstellbare Timer', en: 'Categories, difficulty levels and configurable timers', ar: 'فئات ومستويات صعوبة ومؤقتات قابلة للضبط' },
+      { de: 'Punkte, Zeitbonus, Level und sichtbarer Fortschritt', en: 'Scores, time bonuses, levels and visible progress', ar: 'نقاط ومكافآت زمنية ومستويات وتقدم مرئي' },
+      { de: 'Avatare, Gewinneransicht und direkte Revanche', en: 'Avatars, winner view and instant rematch', ar: 'صور رمزية وعرض الفائز وإعادة مباراة مباشرة' },
+    ],
+    technologies: ['React', 'TypeScript', 'Vite', 'Capacitor', 'iOS', 'Node.js', 'Express', 'WebSocket', 'SQLite', 'Docker', 'Cloudflare'],
+    role: [
+      { de: 'Produktkonzept, UX und visuelles Spieldesign', en: 'Product concept, UX and visual game design', ar: 'مفهوم المنتج وتجربة المستخدم والتصميم البصري للعبة' },
+      { de: 'Frontend-, Backend- und Echtzeitentwicklung', en: 'Frontend, backend and real-time development', ar: 'تطوير الواجهة والخادم والاتصال الفوري' },
+      { de: 'iOS-Paketierung und App-Store-Vorbereitung', en: 'iOS packaging and App Store preparation', ar: 'تجهيز حزمة iOS والتحضير لمتجر App Store' },
+      { de: 'Containerbetrieb, Datensicherung und Release-Prozess', en: 'Container operations, backups and release workflow', ar: 'تشغيل الحاويات والنسخ الاحتياطي ومسار الإصدارات' },
+    ],
+    image: '/images/projects/bandora-quiz-icon-1024.png',
+    imageSrcSet: '/images/projects/bandora-quiz-icon-320.webp 320w, /images/projects/bandora-quiz-icon-640.webp 640w, /images/projects/bandora-quiz-icon-1024.png 1024w',
+    imageAlt: {
+      de: 'Offizielles App-Icon von Bandora Quiz mit grün beleuchteter Quizshow-Bühne',
+      en: 'Official Bandora Quiz app icon showing a green-lit quiz-show stage',
+      ar: 'أيقونة تطبيق Bandora Quiz الرسمية وتظهر منصة مسابقات بإضاءة خضراء',
+    },
+    imageFit: 'contain',
+    primaryLink: {
+      url: 'https://quiz.bandora-dev.de/',
+      label: {
+        de: 'Quiz im Browser starten',
+        en: 'Start the quiz in your browser',
+        ar: 'ابدأ المسابقة في المتصفح',
+      },
+    },
+    release: {
+      version: '1.0',
+      build: '10',
+      status: {
+        de: 'Am 29. Oktober 2026 zur App-Prüfung eingereicht; Veröffentlichung bleibt manuell.',
+        en: 'Submitted for App Review on 29 October 2026; release remains manual.',
+        ar: 'تم تقديمه لمراجعة App Store في 29 أكتوبر 2026؛ وسيبقى النشر يدويا.',
+      },
+    },
+    architectureNotes: {
+      de: 'Das React-/TypeScript-Frontend läuft im Browser und wird mit Capacitor für iOS paketiert. Ein Node.js-/Express-Backend koordiniert Konten, Lobbys und Spielzustände; WebSockets übertragen Echtzeitereignisse. Persistente Daten liegen in SQLite. Die Anwendung wird containerisiert auf Bandora Gen8 betrieben, über Cloudflare abgesichert und automatisiert gesichert.',
+      en: 'The React and TypeScript frontend runs in the browser and is packaged for iOS with Capacitor. A Node.js and Express backend coordinates accounts, lobbies and game state, while WebSockets carry real-time events. Persistent data is stored in SQLite. The application runs in a container on Bandora Gen8, is protected through Cloudflare and uses automated backups.',
+      ar: 'تعمل واجهة React وTypeScript في المتصفح ويتم تغليفها لنظام iOS باستخدام Capacitor. ينسق خادم Node.js وExpress الحسابات والردهات وحالة اللعب، بينما تنقل WebSocket الأحداث الفورية. تُحفظ البيانات الدائمة في SQLite. يعمل التطبيق داخل حاوية على Bandora Gen8، وهو محمي عبر Cloudflare وتُنشأ له نسخ احتياطية آلية.',
+    },
+    developmentStatus: {
+      de: 'Die Web-App ist produktiv nutzbar. Version 1.0, Build 10 wurde zur App-Store-Prüfung eingereicht und wartet auf Apples Prüfung. Das ist noch keine öffentliche App-Store-Verfügbarkeit.',
+      en: 'The web app is live. Version 1.0, Build 10 has been submitted for App Review and is awaiting Apple’s review. This does not mean that the app is publicly available in the App Store yet.',
+      ar: 'تطبيق الويب متاح للاستخدام. تم تقديم الإصدار 1.0، البنية 10 إلى مراجعة App Store وهو بانتظار مراجعة Apple. هذا لا يعني أن التطبيق متاح للعامة في App Store حتى الآن.',
+    },
+    technicalChallenges: [
+      { de: 'Synchroner Spielzustand für Lobbys mit bis zu acht Personen', en: 'Synchronized match state for lobbies with up to eight players', ar: 'مزامنة حالة المباراة لردهات تضم حتى ثمانية لاعبين' },
+      { de: 'Eine gemeinsame Codebasis für Web-App und iOS-Paket', en: 'A shared codebase for the web app and iOS package', ar: 'قاعدة برمجية مشتركة لتطبيق الويب وحزمة iOS' },
+    ],
+    relatedSlugs: ['bandora-gen8', 'buynot'],
+    filters: ['mobile', 'web', 'development', 'completed'],
+    visualTheme: 'infrastructure',
+  },
+  {
     id: 'bandora-gen8',
     slug: 'bandora-gen8',
     title: 'Bandora Gen8',

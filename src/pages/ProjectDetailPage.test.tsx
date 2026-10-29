@@ -18,10 +18,24 @@ describe('project landing pages', () => {
         expect(within(main).getAllByRole('heading', { level: 2 }).length).toBeGreaterThanOrEqual(7);
         expect(main.querySelector(`a[href="/${lang}/${lang === 'de' ? 'kontakt' : 'contact'}"]`)).not.toBeNull();
         expect(main.querySelector(`nav a[href="/${lang}/${lang === 'de' ? 'projekte' : 'projects'}"]`)).not.toBeNull();
-        expect(main.querySelector('a[target="_blank"]')).toBeNull();
+        if (project.primaryLink) {
+          expect(main.querySelector(`a[target="_blank"][href="${project.primaryLink.url}"]`)).not.toBeNull();
+        } else {
+          expect(main.querySelector('a[target="_blank"]')).toBeNull();
+        }
       });
     }
   }
+  it('presents Bandora Quiz with the verified icon, localized browser CTA and review status', () => {
+    renderWithProviders(<App />, '/de/projekte/bandora-quiz');
+    const icon = screen.getByAltText('Offizielles App-Icon von Bandora Quiz mit grün beleuchteter Quizshow-Bühne');
+    expect(icon).toHaveAttribute('src', '/images/projects/bandora-quiz-icon-1024.png');
+    expect(icon).toHaveClass('object-contain');
+    expect(screen.getAllByRole('link', { name: 'Quiz im Browser starten' })[0]).toHaveAttribute('href', 'https://quiz.bandora-dev.de/');
+    expect(screen.getByText('Version 1.0 · Build 10')).toBeInTheDocument();
+    expect(screen.getByText(/noch keine öffentliche App-Store-Verfügbarkeit/)).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: 'App Store' })).not.toBeInTheDocument();
+  });
   it('keeps Bandora planned capabilities separate and does not invent a technology stack', () => {
     renderWithProviders(<App />, '/de/projekte/bandora-org');
     expect(screen.getAllByText('Geplant')).toHaveLength(5);

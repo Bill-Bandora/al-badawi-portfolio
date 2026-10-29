@@ -18,6 +18,19 @@ export interface Project {
   technologies: string[];
   role: LocalizedText[];
   image: string;
+  imageSrcSet?: string;
+  imageAlt?: LocalizedText;
+  imageFit?: 'cover' | 'contain';
+  primaryLink?: {
+    url: string;
+    label: LocalizedText;
+  };
+  release?: {
+    version: string;
+    build: string;
+    status: LocalizedText;
+    appStoreUrl?: string;
+  };
   architectureNotes: LocalizedText;
   developmentStatus: LocalizedText;
   technicalChallenges?: LocalizedText[];

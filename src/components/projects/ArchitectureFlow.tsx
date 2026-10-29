@@ -10,6 +10,7 @@ const flows: Record<string, string[]> = {
   'bandora-mt5-trader': ['Strategiesignal', 'Risk Engine', 'Execution Engine', 'MT5 / Broker', 'Positionsstatus'],
   'bandora-crypto-scanner': ['Bitget WebSocket', 'Market Data', 'Indikatoren', 'Pattern Engine', 'Qualitätsfilter'],
   'bandora-studio': ['Businessprofil', 'Inhalte', 'Bandora Studio', 'Designfamilie', 'Deployment'],
+  'bandora-quiz': ['React + Capacitor', 'Node.js + Express', 'WebSocket', 'SQLite', 'Docker + Cloudflare'],
 };
 
 const icons = [MonitorSmartphone, Server, Database, ShieldCheck];

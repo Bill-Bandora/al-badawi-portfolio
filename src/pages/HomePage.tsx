@@ -22,7 +22,7 @@ export function HomePage() {
   const trust = t('home.trustItems', { returnObjects: true }) as string[];
   const process = t('home.processItems', { returnObjects: true }) as string[];
   const terminal = t('home.terminal', { returnObjects: true }) as string[];
-  const featuredProjects = ['digital-footprint-os', 'bandora-studio', 'bandora-mt5-trader'].map((id) => projects.find((project) => project.id === id)).filter(Boolean) as typeof projects;
+  const featuredProjects = ['bandora-quiz', 'digital-footprint-os', 'bandora-studio', 'bandora-mt5-trader'].map((id) => projects.find((project) => project.id === id)).filter(Boolean) as typeof projects;
   const coreWebServices = ['webdesign', 'webentwicklung'].map((slug) => findService(slug)).filter(Boolean) as NonNullable<ReturnType<typeof findService>>[];
 
   return (

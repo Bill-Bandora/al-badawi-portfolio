@@ -17,7 +17,17 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="contents">
       <div className="relative min-h-52 overflow-hidden border-b border-white/10 bg-slate-950 sm:min-h-64 md:min-h-72 md:border-b-0 md:border-e">
         <div className="tech-grid absolute inset-0" aria-hidden="true" />
-        <img src={project.image} alt={`${project.title}: ${localized(project.category, lang)}`} width="960" height="600" className="relative h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.035] motion-reduce:transform-none" loading="lazy" decoding="async" />
+        <img
+          src={project.image}
+          srcSet={project.imageSrcSet}
+          sizes="(min-width: 768px) 54vw, 100vw"
+          alt={project.imageAlt ? localized(project.imageAlt, lang) : `${project.title}: ${localized(project.category, lang)}`}
+          width="960"
+          height="600"
+          className={`relative h-full min-h-72 w-full transition duration-700 group-hover:scale-[1.035] motion-reduce:transform-none ${project.imageFit === 'contain' ? 'object-contain p-3 sm:p-5' : 'object-cover'}`}
+          loading="lazy"
+          decoding="async"
+        />
         <span className="absolute bottom-5 left-5 rounded-full border border-white/15 bg-night/75 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-cyan backdrop-blur">Case Study</span>
       </div>
       <div className="grid content-center gap-5 p-6 sm:p-8">
@@ -26,7 +36,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <span className="text-sm text-slate-400">{localized(project.category, lang)}</span>
         </div>
         <div>
-          <h3 className="text-3xl font-semibold text-white">{project.title}</h3>
+          <h3 dir="auto" className="text-3xl font-semibold text-white">{project.title}</h3>
           <p className="mobile-line-clamp mt-3 leading-7 text-slate-300 min-[769px]:line-clamp-none">{localized(project.shortDescription, lang)}</p>
         </div>
         <div className="flex flex-wrap gap-2">

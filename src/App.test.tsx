@@ -44,6 +44,7 @@ describe('portfolio app', () => {
     expect(screen.getByText('Bandora Org')).toBeInTheDocument();
     expect(screen.getByText('Bandora Gen8')).toBeInTheDocument();
     expect(screen.getByText('Bandora Studio')).toBeInTheDocument();
+    expect(screen.getByText('Bandora Quiz')).toBeInTheDocument();
     expect(screen.queryByText('BuyNot')).not.toBeInTheDocument();
   });
 
@@ -52,8 +53,8 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: 'Bandora Org' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'IT-Geräte-Nachverfolgung mit Standort- und Statushistorie' })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
     const links = screen.getAllByRole('link', { name: /Projekt ansehen/ });
-    expect(links).toHaveLength(9);
-    expect(links[0]).toHaveAttribute('href', '/de/projekte/bandora-org');
+    expect(links).toHaveLength(10);
+    expect(links[0]).toHaveAttribute('href', '/de/projekte/bandora-quiz');
     for (const link of links) expect(link.getAttribute('href')).toMatch(/^\/de\/projekte\//);
     expect(screen.queryByText(/Landingpage in Vorbereitung/)).not.toBeInTheDocument();
   });
