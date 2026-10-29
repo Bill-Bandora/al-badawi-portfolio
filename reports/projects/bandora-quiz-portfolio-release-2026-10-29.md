@@ -1,8 +1,11 @@
 # Bandora Quiz – Portfolio-Integration und Produktionsrelease
 
-**Abschlussstatus:** erfolgreich  
-**Produktivdomain:** `https://bandora-dev.de`  
-**Deployment-ID:** `bandora-20261029T101306Z-29ebbd1`  
+**Abschlussstatus:** erfolgreich
+
+**Produktivdomain:** `https://bandora-dev.de`
+
+**Deployment-ID:** `bandora-20261029T101306Z-29ebbd1`
+
 **Produktiver Commit:** `29ebbd17eed14ac30d74cb15dc699aeee2eadd75`
 
 ## Ergebnis
