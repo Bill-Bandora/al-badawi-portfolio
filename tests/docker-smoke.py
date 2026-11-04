@@ -104,7 +104,7 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
             '/de/about': '/de/ueber-mich',
         }
         for alias, canonical in canonical_aliases.items():
-            status, _, headers = request(alias)
+            status, _, headers = request(alias, follow_redirects=False)
             assert status == 301
             assert headers.get('Location') == canonical
 
