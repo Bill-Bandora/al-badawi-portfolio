@@ -1,12 +1,14 @@
 # Bandora Development – SEO-Problembehebung und Produktionsverifikation
 
-**Stichtag:** 04.11.2026  
-**Produktivdomain:** `https://bandora-dev.de`  
-**Produktiver Commit:** `8460db00a66acd3b00d02c7d04e4b8915be629f4`  
-**Produktivimage:** `portfolio-blog:8460db0-rc`  
-**Image-Digest:** `sha256:4fc9fb2b3f9bb54f8844ce7231c42e2a73933a15c37316d4c564eefd87e1aa53`  
-**Deployment abgeschlossen:** 04.11.2026, 08:45:16 UTC / 09:45:16 CET  
-**Abschlussstatus:** erfolgreich
+| Feld | Wert |
+|---|---|
+| Stichtag | 04.11.2026 |
+| Produktivdomain | `https://bandora-dev.de` |
+| Produktiver Commit | `8460db00a66acd3b00d02c7d04e4b8915be629f4` |
+| Produktivimage | `portfolio-blog:8460db0-rc` |
+| Image-Digest | `sha256:4fc9fb2b3f9bb54f8844ce7231c42e2a73933a15c37316d4c564eefd87e1aa53` |
+| Deployment abgeschlossen | 04.11.2026, 08:45:16 UTC / 09:45:16 CET |
+| Abschlussstatus | erfolgreich |
 
 ## Kurzfazit
 
@@ -233,4 +235,3 @@ Je Zielseite und Query werden Deutschland, Websuche, Impressionen, Klicks, CTR, 
 - [Google: Canonical-Probleme untersuchen](https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting)
 - [Google: Redirects und Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects)
 - [Google: hreflang und lokalisierte Versionen](https://developers.google.com/search/docs/specialty/international/localized-versions)
-
