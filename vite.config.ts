@@ -21,22 +21,22 @@ export default defineConfig({
       this.emitFile({ type: 'asset', fileName: 'project-routes.conf', source:
         `# Generated canonical route redirects and detail-route allowlists.\n` +
         `# Do not expose English route aliases below /de/ or German aliases below /en/ and /ar/.\n` +
-        `RewriteRule ^de/services$ /de/leistungen [R=301,END,NE]\n` +
-        `RewriteRule ^de/services/(.+)$ /de/leistungen/$1 [R=301,END,NE]\n` +
-        `RewriteRule ^de/projects$ /de/projekte [R=301,END,NE]\n` +
-        `RewriteRule ^de/projects/(.+)$ /de/projekte/$1 [R=301,END,NE]\n` +
-        `RewriteRule ^de/about$ /de/ueber-mich [R=301,END,NE]\n` +
-        `RewriteRule ^de/contact$ /de/kontakt [R=301,END,NE]\n` +
-        `RewriteRule ^de/imprint$ /de/impressum [R=301,END,NE]\n` +
-        `RewriteRule ^de/privacy$ /de/datenschutz [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/leistungen$ /$1/services [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/leistungen/(.+)$ /$1/services/$2 [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/projekte$ /$1/projects [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/projekte/(.+)$ /$1/projects/$2 [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/ueber-mich$ /$1/about [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/kontakt$ /$1/contact [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/impressum$ /$1/imprint [R=301,END,NE]\n` +
-        `RewriteRule ^(en|ar)/datenschutz$ /$1/privacy [R=301,END,NE]\n` +
+        `RewriteRule ^de/services$ https://bandora-dev.de/de/leistungen [R=301,END,NE]\n` +
+        `RewriteRule ^de/services/(.+)$ https://bandora-dev.de/de/leistungen/$1 [R=301,END,NE]\n` +
+        `RewriteRule ^de/projects$ https://bandora-dev.de/de/projekte [R=301,END,NE]\n` +
+        `RewriteRule ^de/projects/(.+)$ https://bandora-dev.de/de/projekte/$1 [R=301,END,NE]\n` +
+        `RewriteRule ^de/about$ https://bandora-dev.de/de/ueber-mich [R=301,END,NE]\n` +
+        `RewriteRule ^de/contact$ https://bandora-dev.de/de/kontakt [R=301,END,NE]\n` +
+        `RewriteRule ^de/imprint$ https://bandora-dev.de/de/impressum [R=301,END,NE]\n` +
+        `RewriteRule ^de/privacy$ https://bandora-dev.de/de/datenschutz [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/leistungen$ https://bandora-dev.de/$1/services [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/leistungen/(.+)$ https://bandora-dev.de/$1/services/$2 [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/projekte$ https://bandora-dev.de/$1/projects [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/projekte/(.+)$ https://bandora-dev.de/$1/projects/$2 [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/ueber-mich$ https://bandora-dev.de/$1/about [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/kontakt$ https://bandora-dev.de/$1/contact [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/impressum$ https://bandora-dev.de/$1/imprint [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/datenschutz$ https://bandora-dev.de/$1/privacy [R=301,END,NE]\n` +
         `# Unknown detail URLs return a real 404.\n` +
         `RewriteRule ^(?:de|en|ar)/(?:projekte|projects)/(?!(?:${slugs.join('|')})/?$).+ - [R=404,END]\n` +
         `RewriteRule ^de/blogs/(?!(?:${blogSlugs.join('|')})/?$).+ - [R=404,END]\n` +
