@@ -11,9 +11,9 @@ export const bandoraProjects: Project[] = [
       ar: 'تطبيق مسابقات / لعب جماعي فوري / الجوال والويب',
     },
     status: {
-      de: 'Version 1.0 · Build 10 bei Apple eingereicht',
-      en: 'Version 1.0 · Build 10 submitted to Apple',
-      ar: 'الإصدار 1.0 · البنية 10 مقدمة إلى Apple',
+      de: 'Jetzt im App Store verfügbar',
+      en: 'Now available on the App Store',
+      ar: 'متاح الآن على App Store',
     },
     shortDescription: {
       de: 'Eine Quizshow für die Hosentasche – mit mehr als 10.000 deutschsprachigen Fragen, Solo-Runden und Online-Lobbys für bis zu acht Personen.',
@@ -48,7 +48,7 @@ export const bandoraProjects: Project[] = [
     role: [
       { de: 'Produktkonzept, UX und visuelles Spieldesign', en: 'Product concept, UX and visual game design', ar: 'مفهوم المنتج وتجربة المستخدم والتصميم البصري للعبة' },
       { de: 'Frontend-, Backend- und Echtzeitentwicklung', en: 'Frontend, backend and real-time development', ar: 'تطوير الواجهة والخادم والاتصال الفوري' },
-      { de: 'iOS-Paketierung und App-Store-Vorbereitung', en: 'iOS packaging and App Store preparation', ar: 'تجهيز حزمة iOS والتحضير لمتجر App Store' },
+      { de: 'iOS-Paketierung und App-Store-Veröffentlichung', en: 'iOS packaging and App Store release', ar: 'تجهيز حزمة iOS والنشر على App Store' },
       { de: 'Containerbetrieb, Datensicherung und Release-Prozess', en: 'Container operations, backups and release workflow', ar: 'تشغيل الحاويات والنسخ الاحتياطي ومسار الإصدارات' },
     ],
     image: '/images/projects/bandora-quiz-icon-1024.png',
@@ -68,12 +68,13 @@ export const bandoraProjects: Project[] = [
       },
     },
     release: {
+      appStoreUrl: 'https://apps.apple.com/de/app/bandora-quiz/id6827739354',
       version: '1.0',
       build: '10',
       status: {
-        de: 'Am 29. Oktober 2026 zur App-Prüfung eingereicht; Veröffentlichung bleibt manuell.',
-        en: 'Submitted for App Review on 29 October 2026; release remains manual.',
-        ar: 'تم تقديمه لمراجعة App Store في 29 أكتوبر 2026؛ وسيبقى النشر يدويا.',
+        de: 'Kostenlos für iPhone im deutschen App Store verfügbar.',
+        en: 'Available free for iPhone on the German App Store.',
+        ar: 'متاح مجانا لأجهزة iPhone على App Store الألماني.',
       },
     },
     architectureNotes: {
@@ -82,9 +83,9 @@ export const bandoraProjects: Project[] = [
       ar: 'تعمل واجهة React وTypeScript في المتصفح ويتم تغليفها لنظام iOS باستخدام Capacitor. ينسق خادم Node.js وExpress الحسابات والردهات وحالة اللعب، بينما تنقل WebSocket الأحداث الفورية. تُحفظ البيانات الدائمة في SQLite. يعمل التطبيق داخل حاوية على Bandora Gen8، وهو محمي عبر Cloudflare وتُنشأ له نسخ احتياطية آلية.',
     },
     developmentStatus: {
-      de: 'Die Web-App ist produktiv nutzbar. Version 1.0, Build 10 wurde zur App-Store-Prüfung eingereicht und wartet auf Apples Prüfung. Das ist noch keine öffentliche App-Store-Verfügbarkeit.',
-      en: 'The web app is live. Version 1.0, Build 10 has been submitted for App Review and is awaiting Apple’s review. This does not mean that the app is publicly available in the App Store yet.',
-      ar: 'تطبيق الويب متاح للاستخدام. تم تقديم الإصدار 1.0، البنية 10 إلى مراجعة App Store وهو بانتظار مراجعة Apple. هذا لا يعني أن التطبيق متاح للعامة في App Store حتى الآن.',
+      de: 'Bandora Quiz ist kostenlos für iPhone im deutschen App Store veröffentlicht. Die Web-App bleibt zusätzlich direkt im Browser nutzbar.',
+      en: 'Bandora Quiz is available free for iPhone on the German App Store. The web app also remains available directly in your browser.',
+      ar: 'تم نشر Bandora Quiz مجانا لأجهزة iPhone على App Store الألماني. ويظل تطبيق الويب متاحا أيضا مباشرة في المتصفح.',
     },
     technicalChallenges: [
       { de: 'Synchroner Spielzustand für Lobbys mit bis zu acht Personen', en: 'Synchronized match state for lobbies with up to eight players', ar: 'مزامنة حالة المباراة لردهات تضم حتى ثمانية لاعبين' },

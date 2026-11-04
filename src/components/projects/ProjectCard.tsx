@@ -1,3 +1,4 @@
+import { AppStoreLink } from './AppStoreLink';
 import { ArrowUpRight } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -45,6 +46,7 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         <div className="flex flex-wrap gap-3 pt-2">
+          {project.release?.appStoreUrl && <AppStoreLink url={project.release.appStoreUrl} lang={lang} />}
           <Link to={`/${lang}/${routePath('projects', lang)}/${project.slug}`} className="inline-flex min-h-11 items-center rounded-card bg-gradient-to-r from-cyan to-blue px-4 py-2 font-semibold text-white shadow-[0_12px_30px_rgba(8,145,178,0.2)] transition hover:-translate-y-0.5">
             {t('common.viewProject')} <ArrowUpRight className="ms-2 size-4 rtl:rotate-180" />
           </Link>

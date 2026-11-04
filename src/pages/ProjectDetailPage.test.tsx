@@ -26,15 +26,15 @@ describe('project landing pages', () => {
       });
     }
   }
-  it('presents Bandora Quiz with the verified icon, localized browser CTA and review status', () => {
+  it('presents Bandora Quiz with the verified icon, localized browser CTA and App Store download', () => {
     renderWithProviders(<App />, '/de/projekte/bandora-quiz');
     const icon = screen.getByAltText('Offizielles App-Icon von Bandora Quiz mit grün beleuchteter Quizshow-Bühne');
     expect(icon).toHaveAttribute('src', '/images/projects/bandora-quiz-icon-1024.png');
     expect(icon).toHaveClass('object-contain');
     expect(screen.getAllByRole('link', { name: 'Quiz im Browser starten' })[0]).toHaveAttribute('href', 'https://quiz.bandora-dev.de/');
     expect(screen.getByText('Version 1.0 · Build 10')).toBeInTheDocument();
-    expect(screen.getByText(/noch keine öffentliche App-Store-Verfügbarkeit/)).toBeInTheDocument();
-    expect(screen.queryByRole('link', { name: 'App Store' })).not.toBeInTheDocument();
+    expect(screen.queryByText(/noch keine öffentliche App-Store-Verfügbarkeit/)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: 'Im App Store herunterladen' })[0]).toHaveAttribute('href', 'https://apps.apple.com/de/app/bandora-quiz/id6827739354');
   });
   it('keeps Bandora planned capabilities separate and does not invent a technology stack', () => {
     renderWithProviders(<App />, '/de/projekte/bandora-org');

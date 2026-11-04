@@ -1,3 +1,4 @@
+import { AppStoreLink } from '../components/projects/AppStoreLink';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -84,6 +85,7 @@ export function ProjectDetailPage() {
             <h1 dir="auto" className="mt-3 break-words text-[clamp(2.35rem,11vw,4rem)] font-semibold tracking-tight min-[769px]:mt-4 min-[769px]:text-6xl lg:text-7xl">{project.title}</h1>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-200 min-[769px]:mt-6 min-[769px]:text-lg min-[769px]:leading-8">{localized(project.shortDescription, lang)}</p>
             <div className="mt-6 flex flex-wrap gap-3 min-[769px]:mt-8">
+              {project.release?.appStoreUrl && <AppStoreLink url={project.release.appStoreUrl} lang={lang} />}
               {project.primaryLink && <a href={project.primaryLink.url} className="inline-flex min-h-11 items-center justify-center rounded-card bg-gradient-to-r from-cyan to-blue px-5 py-2.5 font-semibold text-white shadow-[0_12px_32px_rgba(8,145,178,0.28)] transition duration-300 hover:-translate-y-0.5" target="_blank" rel="noreferrer">{localized(project.primaryLink.label, lang)}</a>}
               <ButtonLink to={localizedUrl('contact', lang)} variant="dark">{t('projectLanding.cta')}</ButtonLink>
             </div>
@@ -178,6 +180,7 @@ export function ProjectDetailPage() {
             {relatedServices.map((service) => <ButtonLink key={service.slug} to={`/${lang}/${routePath('services', lang)}/${service.slug}`} variant="dark">{localized(service.title, lang)}</ButtonLink>)}
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
+            {project.release?.appStoreUrl && <AppStoreLink url={project.release.appStoreUrl} lang={lang} />}
             {project.primaryLink && <a href={project.primaryLink.url} className="inline-flex min-h-11 items-center justify-center rounded-card bg-gradient-to-r from-cyan to-blue px-5 py-2.5 font-semibold text-white" target="_blank" rel="noreferrer">{localized(project.primaryLink.label, lang)}</a>}
             <ButtonLink to={localizedUrl('contact', lang)} variant="dark">{t('nav.contact')}</ButtonLink>
             <ButtonLink to={localizedUrl('projects', lang)} variant="dark">{t('projectLanding.back')}</ButtonLink>
