@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl, webDevelopmentUrl } from '../blogTypes';
 
 export const costArticle: BlogPost = {
   slug: 'website-erstellen-lassen-kosten-2026',
@@ -13,7 +13,7 @@ export const costArticle: BlogPost = {
   category: 'Kosten & Planung',
   cardTitle: 'Budget planen, bevor das Angebot kommt.',
   publishedAt: p1PublishedAt,
-  modifiedAt: '2026-10-28',
+  modifiedAt: '2026-11-04',
   publishedLabel: p1PublishedLabel,
   readingTime: '11 Min. Lesezeit',
   intro: 'Eine professionelle Website hat keinen sinnvollen Einheitspreis. In unserer SERP-Stichprobe vom 5. Oktober 2026 reichen veröffentlichte Anbieterpreise von sehr schlanken Paketen unter 1.000 Euro bis zu fünfstelligen Individualprojekten. Der entscheidende Unterschied ist nicht das Wort „Website“, sondern der vereinbarte Umfang: Strategie, Inhalte, Design, Funktionen, technische Qualität, Rechte und Betrieb.',
@@ -45,7 +45,8 @@ export const costArticle: BlogPost = {
           ['SEO & Qualität', 'Titles, Canonicals, Sitemap, strukturierte Daten, Performance, 404 und Redirects'],
           ['Launch & Betrieb', 'Hosting, Domain, Monitoring, Backups, Wartung, Support und Übergabe']
         ]
-      }
+      },
+      links: [{ label: 'Individuelle Webentwicklung für Portale, Rollen und Fachlogik', to: webDevelopmentUrl }]
     },
     {
       id: 'kostentreiber',

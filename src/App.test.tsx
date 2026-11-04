@@ -206,6 +206,9 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/de/leistungen/webentwicklung');
     expect(screen.getByRole('heading', { name: 'Individuelle Webentwicklung in Berlin', level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Typische Anwendungsfälle' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Was bei einem Webentwicklungsprojekt konkret entsteht' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Häufige Fragen' })).toBeInTheDocument();
+    expect(screen.getByText('Was kostet individuelle Webentwicklung?')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Geräte-Nachverfolgung/ })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
     expect(screen.getByRole('link', { name: 'Projekt besprechen' })).toHaveAttribute('href', '/de/kontakt');
     expect(screen.getByRole('heading', { name: 'Ratgeber für Ihr Website-Projekt' })).toBeInTheDocument();
@@ -216,6 +219,10 @@ describe('portfolio app', () => {
     renderWithProviders(<App />, '/de/leistungen/webdesign');
     expect(screen.getByRole('heading', { name: 'Webdesign und Website-Erstellung in Berlin', level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Webdesign oder Webentwicklung?' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Was in einer professionellen Firmenwebsite enthalten sein kann' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Was Bandora anders macht' })).toBeInTheDocument();
+    expect(screen.getByText('Was kostet eine professionelle Website bei Bandora?')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Bandora Studio/ })).toHaveAttribute('href', '/de/projekte/bandora-studio');
     expect(screen.getByRole('link', { name: 'Individuelle Webentwicklung in Berlin' })).toHaveAttribute('href', '/de/leistungen/webentwicklung');
     await waitFor(() => expect(document.title).toBe('Webdesign Berlin: professionelle Websites | Bandora'));
   });

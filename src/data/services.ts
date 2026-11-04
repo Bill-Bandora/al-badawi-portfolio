@@ -13,6 +13,13 @@ export type Service = {
   decisionTitle?: LocalizedText;
   decisionText?: LocalizedText;
   pricingFactors?: LocalizedText[];
+  pricingIntro?: LocalizedText;
+  deliverablesTitle?: LocalizedText;
+  deliverablesIntro?: LocalizedText;
+  deliverables?: LocalizedText[];
+  differentiatorsTitle?: LocalizedText;
+  differentiators?: LocalizedText[];
+  faq?: { question: LocalizedText; answer: LocalizedText }[];
   areaServed?: string;
   modifiedAt?: string;
   technologies: string[];
@@ -73,8 +80,47 @@ export const services: Service[] = [
       { de: 'Datenmodell, Rollen und Schnittstellen', en: 'Data model, roles and integrations', ar: 'نموذج البيانات والصلاحيات والتكاملات' },
       { de: 'Testumfang, Betrieb und spätere Erweiterbarkeit', en: 'Testing scope, operations and future extensibility', ar: 'نطاق الاختبار والتشغيل وقابلية التوسع لاحقا' },
     ],
+    pricingIntro: {
+      de: 'Für individuelle Webentwicklung gibt es keinen seriösen Pauschalpreis ohne geklärten Funktionsumfang. Vor einem Angebot werden Kernabläufe, Rollen, Daten, Schnittstellen, Abnahmekriterien und Betrieb gemeinsam abgegrenzt. Das Angebot trennt den notwendigen MVP, optionale Ausbaustufen und laufende Leistungen, damit Änderungen nicht unbemerkt in den Projektpreis rutschen.',
+      en: 'Custom web development cannot be priced responsibly before the functional scope is clear. Core workflows, roles, data, integrations, acceptance criteria and operations are defined before a proposal. The proposal separates the required MVP, optional stages and recurring services.',
+      ar: 'لا يمكن تسعير تطوير ويب مخصص بصورة مسؤولة قبل تحديد النطاق الوظيفي. تُحدّد مسارات العمل والأدوار والبيانات والتكاملات ومعايير القبول والتشغيل قبل العرض، مع فصل النسخة الأساسية عن مراحل التوسعة والخدمات المستمرة.',
+    },
+    deliverablesTitle: {
+      de: 'Was bei einem Webentwicklungsprojekt konkret entsteht',
+      en: 'What a web development project actually delivers',
+      ar: 'ما الذي ينتج فعليا عن مشروع تطوير الويب',
+    },
+    deliverablesIntro: {
+      de: 'Der genaue Umfang wird im Angebot festgelegt. Typische Bausteine sind:',
+      en: 'The exact scope is defined in the proposal. Typical building blocks include:',
+      ar: 'يُحدّد النطاق الدقيق في العرض. وتشمل المكونات المعتادة:',
+    },
+    deliverables: [
+      { de: 'Anforderungs- und MVP-Scope mit klaren Annahmen und Ausschlüssen', en: 'Requirements and MVP scope with explicit assumptions and exclusions', ar: 'نطاق متطلبات ونسخة أساسية مع افتراضات واستثناءات واضحة' },
+      { de: 'Responsives Frontend sowie Datenmodell, API oder Backend nach Bedarf', en: 'Responsive frontend plus data model, API or backend where required', ar: 'واجهة متجاوبة مع نموذج بيانات أو API أو خلفية حسب الحاجة' },
+      { de: 'Rollen, Validierung und Fehlerfälle passend zum tatsächlichen Ablauf', en: 'Roles, validation and error handling aligned with the real workflow', ar: 'أدوار وتحقق ومعالجة أخطاء ملائمة لمسار العمل الحقيقي' },
+      { de: 'Tests, technische Abnahme und dokumentierter Deploymentweg', en: 'Tests, technical acceptance and a documented deployment path', ar: 'اختبارات وقبول تقني ومسار نشر موثق' },
+      { de: 'Übergabe von Repository, Zugängen und technischer Dokumentation im vereinbarten Umfang', en: 'Handover of repository, access and technical documentation within the agreed scope', ar: 'تسليم المستودع وبيانات الوصول والتوثيق التقني ضمن النطاق المتفق عليه' },
+    ],
+    differentiatorsTitle: {
+      de: 'Warum Bandora für individuelle Webanwendungen',
+      en: 'Why Bandora for custom web applications',
+      ar: 'لماذا Bandora لتطبيقات الويب المخصصة',
+    },
+    differentiators: [
+      { de: 'Direkter technischer Ansprechpartner von der Anforderung bis zum Deployment', en: 'One direct technical contact from requirements through deployment', ar: 'جهة تقنية مباشرة واحدة من المتطلبات حتى النشر' },
+      { de: 'Frontend, Backend, API, Datenbank und Betrieb werden zusammen geplant', en: 'Frontend, backend, API, database and operations are planned together', ar: 'تخطيط الواجهة والخلفية وAPI وقاعدة البيانات والتشغيل كوحدة واحدة' },
+      { de: 'Eigene Projekte belegen Rollenmodelle, Statusverläufe, Mehrsprachigkeit und selbst betriebenes Hosting', en: 'Own projects demonstrate role models, status histories, multilingual delivery and self-operated hosting', ar: 'مشاريع فعلية توضح الأدوار وسجل الحالات وتعدد اللغات والاستضافة الذاتية' },
+      { de: 'Der erste Release bleibt bewusst testbar und erweiterbar statt unnötig groß', en: 'The first release stays deliberately testable and extensible rather than unnecessarily large', ar: 'يبقى الإصدار الأول قابلا للاختبار والتوسعة بدلا من تضخيمه دون حاجة' },
+    ],
+    faq: [
+      { question: { de: 'Was kostet individuelle Webentwicklung?', en: 'What does custom web development cost?', ar: 'ما تكلفة تطوير ويب مخصص؟' }, answer: { de: 'Der Preis hängt vor allem von Funktionen, Datenmodell, Rollen, Schnittstellen, Testumfang und Betrieb ab. Nach einer kurzen Anforderungsanalyse wird ein abgegrenzter MVP oder ein klarer Aufwandsschätzbereich angeboten; pauschale Fantasiepreise ohne Scope nennt Bandora nicht.', en: 'Cost mainly depends on features, data model, roles, integrations, testing and operations. After a short requirements analysis, Bandora proposes a bounded MVP or a transparent effort range rather than an invented flat price.', ar: 'تعتمد التكلفة أساسا على الوظائف ونموذج البيانات والأدوار والتكاملات والاختبارات والتشغيل. بعد تحليل مختصر تُقدّم نسخة أساسية محددة أو تقدير جهد واضح بدلا من سعر افتراضي.' } },
+      { question: { de: 'Wann reicht eine normale Website nicht mehr?', en: 'When is a normal website no longer enough?', ar: 'متى لا يعود الموقع العادي كافيا؟' }, answer: { de: 'Sobald Benutzerrollen, gespeicherte Fachdaten, Statusabläufe, Dashboards, Automatisierungen oder externe Schnittstellen benötigt werden, ist das Vorhaben eine Webanwendung und sollte entsprechend geplant werden.', en: 'Once user roles, persistent business data, status workflows, dashboards, automation or external integrations are required, the project is a web application and should be planned as one.', ar: 'عند الحاجة إلى أدوار مستخدمين أو بيانات عمل محفوظة أو حالات أو لوحات أو أتمتة أو تكاملات خارجية يصبح المشروع تطبيق ويب ويجب تخطيطه كذلك.' } },
+      { question: { de: 'Kann ein vorhandenes System erweitert werden?', en: 'Can an existing system be extended?', ar: 'هل يمكن توسيع نظام قائم؟' }, answer: { de: 'Ja, wenn Codebasis, Datenmodell, Zugänge und technische Risiken zunächst geprüft werden können. Danach lässt sich entscheiden, ob eine Erweiterung wirtschaftlicher ist als ein sauber abgegrenzter Neubau.', en: 'Yes, provided the codebase, data model, access and technical risks can be reviewed first. That review determines whether extending the system is more sensible than a clearly scoped rebuild.', ar: 'نعم، بعد فحص قاعدة الشفرة ونموذج البيانات والوصول والمخاطر التقنية، ثم تحديد ما إذا كان التوسيع أنسب من إعادة بناء محددة.' } },
+      { question: { de: 'Wer besitzt Quellcode und Zugänge?', en: 'Who owns the source code and access credentials?', ar: 'من يملك الشفرة وبيانات الوصول؟' }, answer: { de: 'Eigentum, Nutzungsrechte, Repository, Domain- und Infrastrukturzugänge werden vor Projektstart im Angebot eindeutig geregelt. Die vereinbarte Übergabe wird nicht erst beim Projektende improvisiert.', en: 'Ownership, usage rights, repository, domain and infrastructure access are defined in the proposal before work starts. The agreed handover is not improvised at the end.', ar: 'تُحدّد الملكية وحقوق الاستخدام والمستودع ووصول النطاق والبنية التحتية في العرض قبل البدء، ولا يُترك التسليم لنهاية المشروع دون خطة.' } },
+    ],
     areaServed: 'Berlin',
-    modifiedAt: '2026-10-28',
+    modifiedAt: '2026-11-04',
     technologies: ['React', 'TypeScript', 'Vite', 'Node.js', 'REST APIs', 'MariaDB'],
     projectSlugs: ['geraete-nachverfolgung', 'roommate-plus', 'digital-footprint-os', 'bandora-studio', 'bandora-gen8'],
   },
@@ -131,10 +177,50 @@ export const services: Service[] = [
       { de: 'Vorhandene Texte, Bilder und Markenmaterialien', en: 'Available copy, images and brand assets', ar: 'النصوص والصور ومواد الهوية المتاحة' },
       { de: 'Mehrsprachigkeit, Formulare und besondere Funktionen', en: 'Languages, forms and special functions', ar: 'تعدد اللغات والنماذج والوظائف الخاصة' },
     ],
+    pricingIntro: {
+      de: 'Bandora verwendet keine pauschale Paketnummer, solange Seitenumfang und Lieferleistungen offen sind. Für das Angebot werden Seitentypen, Inhaltsarbeit, Designzustände, Sprachen, Formulare, Migration, technische Abnahme und Betrieb einzeln geklärt. So ist sichtbar, was einmalig entsteht, was optional ist und welche Kosten erst nach dem Launch anfallen.',
+      en: 'Bandora does not quote a generic package while page scope and deliverables remain unclear. Page types, content work, design states, languages, forms, migration, technical acceptance and operations are clarified individually.',
+      ar: 'لا تقدم Bandora رقما عاما للحزمة ما دام نطاق الصفحات والتسليمات غير واضح. تُحدّد أنواع الصفحات والمحتوى وحالات التصميم واللغات والنماذج والترحيل والقبول التقني والتشغيل بشكل منفصل.',
+    },
+    deliverablesTitle: {
+      de: 'Was in einer professionellen Firmenwebsite enthalten sein kann',
+      en: 'What a professional business website can include',
+      ar: 'ما الذي يمكن أن يتضمنه موقع شركة احترافي',
+    },
+    deliverablesIntro: {
+      de: 'Der vereinbarte Scope entscheidet. Typische Lieferleistungen sind:',
+      en: 'The agreed scope is decisive. Typical deliverables are:',
+      ar: 'النطاق المتفق عليه هو الأساس. وتشمل التسليمات المعتادة:',
+    },
+    deliverables: [
+      { de: 'Seitenplan, Nutzerwege und Inhaltsstruktur für Leistungen und Kontaktziele', en: 'Site map, user journeys and content structure for services and enquiry goals', ar: 'خريطة صفحات ومسارات مستخدم وبنية محتوى للخدمات وأهداف التواصل' },
+      { de: 'Individuelles responsives Designsystem für Smartphone, Tablet und Desktop', en: 'A custom responsive design system for phone, tablet and desktop', ar: 'نظام تصميم متجاوب ومخصص للهاتف والجهاز اللوحي والحاسوب' },
+      { de: 'Technische Umsetzung mit crawlbarem HTML, Metadaten, Sitemap und echten 404-Seiten', en: 'Technical implementation with crawlable HTML, metadata, sitemap and real 404 responses', ar: 'تنفيذ تقني مع HTML قابل للزحف وبيانات وصفية وخريطة موقع واستجابات 404 حقيقية' },
+      { de: 'Kontaktformular, Mehrsprachigkeit oder Migration vorhandener URLs nach Vereinbarung', en: 'Contact form, multilingual delivery or migration of existing URLs where agreed', ar: 'نموذج تواصل وتعدد لغات أو ترحيل الروابط الحالية حسب الاتفاق' },
+      { de: 'Mobile und technische Abnahme sowie kontrollierte Veröffentlichung', en: 'Mobile and technical acceptance plus a controlled launch', ar: 'قبول للجوال والجوانب التقنية مع نشر منظم' },
+    ],
+    differentiatorsTitle: {
+      de: 'Was Bandora anders macht',
+      en: 'What makes Bandora different',
+      ar: 'ما الذي يميز Bandora',
+    },
+    differentiators: [
+      { de: 'Direkte Abstimmung mit der Person, die Struktur, Design und Umsetzung verantwortet', en: 'Direct coordination with the person responsible for structure, design and implementation', ar: 'تواصل مباشر مع الشخص المسؤول عن الهيكل والتصميم والتنفيذ' },
+      { de: 'Mehrsprachigkeit einschließlich arabischer RTL-Oberflächen aus eigener Projekterfahrung', en: 'Multilingual delivery including Arabic RTL interfaces from hands-on project experience', ar: 'خبرة عملية في تعدد اللغات بما في ذلك الواجهات العربية من اليمين إلى اليسار' },
+      { de: 'SEO-Grundlagen, Performance, Formulare und Deployment sind Teil der technischen Planung', en: 'SEO foundations, performance, forms and deployment are part of technical planning', ar: 'أساسيات SEO والأداء والنماذج والنشر جزء من التخطيط التقني' },
+      { de: 'Keine fiktiven Referenzen oder Erfolgsversprechen: gezeigt werden nur belegbare eigene Projekte', en: 'No invented references or success promises: only verifiable own projects are shown', ar: 'لا مراجع مختلقة ولا وعود نتائج؛ تُعرض فقط مشاريع فعلية قابلة للتحقق' },
+    ],
+    faq: [
+      { question: { de: 'Was kostet eine professionelle Website bei Bandora?', en: 'What does a professional website cost at Bandora?', ar: 'ما تكلفة موقع احترافي لدى Bandora؟' }, answer: { de: 'Ein verbindlicher Preis entsteht erst aus einem definierten Umfang. Entscheidend sind Seitentypen, Inhalte, individuelles Design, Sprachen, Formulare, Migration und gewünschter Betrieb. Nach dem Erstgespräch folgt deshalb eine nachvollziehbare Leistungsabgrenzung statt eines Lockpreises.', en: 'A binding price requires a defined scope. Page types, content, custom design, languages, forms, migration and operations are the main factors, so the first discussion is followed by a transparent scope rather than a teaser price.', ar: 'يتطلب السعر الملزم نطاقا محددا. والعوامل الأساسية هي أنواع الصفحات والمحتوى والتصميم واللغات والنماذج والترحيل والتشغيل، لذلك يأتي عرض واضح بعد النقاش الأول بدلا من سعر دعائي.' } },
+      { question: { de: 'Wie lange dauert die Erstellung?', en: 'How long does a website project take?', ar: 'كم يستغرق إنشاء الموقع؟' }, answer: { de: 'Die Dauer hängt besonders von Umfang, Inhaltsfreigaben und Feedback ab. Im Angebot werden Meilensteine und Abhängigkeiten festgehalten; ohne geklärte Inhalte nennt Bandora keinen künstlich festen Termin.', en: 'Timing depends mainly on scope, content approvals and feedback. Milestones and dependencies are documented in the proposal instead of promising an artificial fixed date before content is clear.', ar: 'تعتمد المدة أساسا على النطاق واعتماد المحتوى والملاحظات. تُوثق المراحل والاعتماديات في العرض دون وعد بموعد غير واقعي قبل وضوح المحتوى.' } },
+      { question: { de: 'Muss ich Texte und Bilder fertig liefern?', en: 'Do I need to provide finished copy and images?', ar: 'هل يجب أن أقدم النصوص والصور جاهزة؟' }, answer: { de: 'Nicht zwingend. Vor dem Angebot wird aber festgelegt, welche Inhalte vorhanden sind, wer fehlende Inhalte erstellt und wie viele Abstimmungsrunden dazugehören. So bleibt Inhaltsarbeit sichtbar und planbar.', en: 'Not necessarily, but the proposal states which assets already exist, who creates missing content and how many review rounds are included so content work remains visible and plannable.', ar: 'ليس بالضرورة، لكن العرض يحدد المواد المتاحة ومن ينشئ المحتوى الناقص وعدد جولات المراجعة حتى يبقى العمل واضحا وقابلا للتخطيط.' } },
+      { question: { de: 'WordPress, Baukasten oder individuelle Umsetzung?', en: 'WordPress, website builder or custom implementation?', ar: 'ووردبريس أم أداة بناء أم تنفيذ مخصص؟' }, answer: { de: 'Die Technik folgt dem Pflegebedarf, den Funktionen, dem Budget und der gewünschten Unabhängigkeit. Bandora empfiehlt keine Plattform pauschal, sondern grenzt zuerst Inhalte, Bedienung, Erweiterungen und Betrieb ab.', en: 'The technology follows editing needs, functions, budget and the desired independence. Bandora does not prescribe one platform before content, operation and future extensions are understood.', ar: 'تتبع التقنية احتياجات الإدارة والوظائف والميزانية والاستقلالية المطلوبة. لا تُفرض منصة واحدة قبل فهم المحتوى والتشغيل والتوسعات.' } },
+      { question: { de: 'Ist technische SEO enthalten?', en: 'Is technical SEO included?', ar: 'هل يشمل العمل SEO التقني؟' }, answer: { de: 'Die technische Basis umfasst im vereinbarten Umfang crawlbares HTML, eindeutige Seitentitel und Canonicals, Sitemap, mobile Nutzbarkeit, Statuscodes und strukturierte Daten. Laufende Content- oder Offpage-SEO ist eine separate Leistung und wird nicht als Rankinggarantie verkauft.', en: 'Within the agreed scope, the technical foundation covers crawlable HTML, clear titles and canonicals, sitemap, mobile usability, status codes and structured data. Ongoing content or off-page SEO is separate and is never sold as a ranking guarantee.', ar: 'ضمن النطاق المتفق عليه يشمل الأساس HTML قابلا للزحف وعناوين وCanonical واضحة وخريطة الموقع والجوال ورموز الحالة والبيانات المنظمة. أما SEO المستمر للمحتوى أو الروابط فهو منفصل ولا يتضمن ضمان ترتيب.' } },
+    ],
     areaServed: 'Berlin',
-    modifiedAt: '2026-10-28',
+    modifiedAt: '2026-11-04',
     technologies: ['Figma', 'React', 'TypeScript', 'HTML', 'CSS', 'Vite'],
-    projectSlugs: [],
+    projectSlugs: ['bandora-studio'],
   },
   {
     slug: 'softwareentwicklung',

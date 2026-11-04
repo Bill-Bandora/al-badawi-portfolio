@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDevelopmentUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl, webDevelopmentUrl } from '../blogTypes';
 
 export const seoArticle: BlogPost = {
   slug: 'seo-beim-website-erstellen',
@@ -13,6 +13,7 @@ export const seoArticle: BlogPost = {
   category: 'SEO & Technik',
   cardTitle: 'SEO beginnt mit dem Seitenplan, nicht mit dem Plugin.',
   publishedAt: p1PublishedAt,
+  modifiedAt: '2026-11-04',
   publishedLabel: p1PublishedLabel,
   readingTime: '11 Min. Lesezeit',
   intro: 'SEO beginnt vor dem ersten Layout. Suchintention, Themenarchitektur, URLs, interne Links und Inhalte bestimmen, welche Seiten überhaupt entstehen müssen. Entwicklung sorgt anschließend dafür, dass Suchmaschinen diese Inhalte laden, verstehen und sauber indexieren können.',
@@ -76,6 +77,7 @@ export const seoArticle: BlogPost = {
       ],
       links: [
         { label: 'Webdesign-Angebote auf SEO-Lieferleistungen prüfen', to: '/de/blogs/webdesign-angebote-vergleichen' },
+        { label: 'Webdesign und professionelle Firmenwebsites in Berlin', to: webDesignUrl },
         { label: 'Webentwicklung und technische Websites', to: webDevelopmentUrl }
       ]
     },

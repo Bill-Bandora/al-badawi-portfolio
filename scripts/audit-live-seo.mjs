@@ -90,11 +90,34 @@ if (!robots.response.ok || !robots.text.includes(`Sitemap: ${sitemapUrl}`) || !r
   failures.push('robots.txt is unavailable or missing the sitemap/API rules.');
 }
 
+const unknownPaths = ['/wp/', '/press/wp-json/', '/news/?rest_route=/', '/two-factor-challenge'];
+for (const path of unknownPaths) {
+  const unknown = await fetchText(`${baseUrl}${path}`, 'manual');
+  if (unknown.response.status !== 404) failures.push(`${path}: expected HTTP 404, received ${unknown.response.status}.`);
+}
+
+const canonicalAliases = new Map([
+  ['/de/projects/bandora-studio', '/de/projekte/bandora-studio'],
+  ['/de/services/webentwicklung', '/de/leistungen/webentwicklung'],
+  ['/en/projekte/bandora-studio', '/en/projects/bandora-studio'],
+  ['/ar/leistungen/webdesign', '/ar/services/webdesign'],
+  ['/de/about', '/de/ueber-mich'],
+]);
+for (const [alias, canonical] of canonicalAliases) {
+  const response = await fetchText(`${baseUrl}${alias}`, 'manual');
+  const expected = `${baseUrl}${canonical}`;
+  if (response.response.status !== 301 || response.response.headers.get('location') !== expected) {
+    failures.push(`${alias}: expected direct HTTP 301 to ${expected}.`);
+  }
+}
+
 const summary = {
   baseUrl,
   checkedAt: new Date().toISOString(),
   sitemapUrls: urls.length,
   htmlPagesChecked: records.size,
+  unknownPathsChecked: unknownPaths.length,
+  canonicalAliasesChecked: canonicalAliases.size,
   rootRedirect: { status: root.response.status, location: root.response.headers.get('location') },
   failures,
 };

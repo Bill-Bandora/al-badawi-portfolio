@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl, webDevelopmentUrl } from '../blogTypes';
 
 export const platformArticle: BlogPost = {
   slug: 'wordpress-baukasten-oder-individuelle-website',
@@ -13,7 +13,7 @@ export const platformArticle: BlogPost = {
   category: 'Technikentscheidung',
   cardTitle: 'Das System nach dem Betrieb wählen, nicht nach dem Trend.',
   publishedAt: p1PublishedAt,
-  modifiedAt: '2026-10-28',
+  modifiedAt: '2026-11-04',
   publishedLabel: p1PublishedLabel,
   readingTime: '10 Min. Lesezeit',
   intro: 'Ein Baukasten passt zu einem kleinen Standardauftritt, WordPress zu regelmäßig gepflegten Inhalten mit einem passenden CMS-Setup und eine individuelle Website zu klaren Seitentypen, besonderem Design oder eigener Fachlogik. Keine dieser Lösungen ist pauschal „besser“. Entscheidend ist, wer Inhalte ändert, welche Funktionen gebraucht werden und wer den Betrieb verantwortet.',
@@ -67,6 +67,7 @@ export const platformArticle: BlogPost = {
         'Eigene Projekte wie Digital Footprint OS oder Geräte-Nachverfolgung zeigen diesen Unterschied: Nicht das Layout, sondern Zustände, Daten und nachvollziehbare Abläufe bestimmen die Architektur.'
       ],
       links: [
+        { label: 'Individuelle Webentwicklung für Rollen, Daten und Abläufe', to: webDevelopmentUrl },
         { label: 'Digital Footprint OS als Webanwendungsprojekt', to: '/de/projekte/digital-footprint-os' },
         { label: 'Geräte-Nachverfolgung mit Daten- und Statuslogik', to: '/de/projekte/geraete-nachverfolgung' }
       ]

@@ -1,5 +1,5 @@
 import type { BlogPost } from '../blogTypes';
-import { p1PublishedAt, p1PublishedLabel, webDesignUrl } from '../blogTypes';
+import { p1PublishedAt, p1PublishedLabel, webDesignUrl, webDevelopmentUrl } from '../blogTypes';
 
 export const processArticle: BlogPost = {
   slug: 'website-erstellen-lassen-ablauf',
@@ -13,7 +13,7 @@ export const processArticle: BlogPost = {
   category: 'Ablauf & Launch',
   cardTitle: 'Ein klarer Prozess verhindert teure Überraschungen.',
   publishedAt: p1PublishedAt,
-  modifiedAt: '2026-10-28',
+  modifiedAt: '2026-11-04',
   publishedLabel: p1PublishedLabel,
   readingTime: '10 Min. Lesezeit',
   intro: 'Ein professionelles Website-Projekt läuft in acht nachvollziehbaren Phasen: Zielklärung, Inventar, Struktur, Inhalte, Design, Entwicklung, Abnahme und Launch. Wie lange das dauert, hängt weniger von der Seitenzahl als von Entscheidungen, Inhaltsfreigaben, Sonderfunktionen und Feedbackwegen ab.',
@@ -68,7 +68,10 @@ export const processArticle: BlogPost = {
         'Eine Vorschau, die auf einem Laptop gut aussieht, ist noch kein abnahmefähiges Produkt. Formulare, Tastaturbedienung, mobile Navigation, 404-Seiten, Metadaten, Social Previews, Canonicals, strukturierte Daten und reale Ladebedingungen brauchen eigene Tests.',
         'Bei der eigenen Portfolioseite prüft Bandora unter anderem TypeScript, Lint, Komponententests, Prerendering, mobile Viewports, Desktop-Regression, Sitemap, strukturierte Daten und echte Serverrouten. Diese Liste wird je Projekt angepasst; sie zeigt aber, was „fertig“ technisch bedeuten kann.'
       ],
-      links: [{ label: 'Webdesign-Angebote auf konkrete Qualitätsnachweise prüfen', to: '/de/blogs/webdesign-angebote-vergleichen' }]
+      links: [
+        { label: 'Webdesign-Angebote auf konkrete Qualitätsnachweise prüfen', to: '/de/blogs/webdesign-angebote-vergleichen' },
+        { label: 'Webentwicklung für Websites mit Rollen, Daten oder Schnittstellen', to: webDevelopmentUrl }
+      ]
     },
     {
       id: 'launch',

@@ -91,8 +91,22 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
                 assert body != home  # Known routes serve their route-specific prerendered HTML.
             assert request(prefix + '/unknown-project')[0] == 404
             assert request(prefix + '/unknown-project')[1] == home
-        assert request('/project-routes.conf')[0] == 200  # SPA fallback, never the Apache configuration
+        assert request('/project-routes.conf')[0] == 404
         assert 'RewriteRule' not in request('/project-routes.conf')[1]
+        for path in ['/wp/', '/press/wp-json/', '/news/?rest_route=/', '/two-factor-challenge']:
+            assert request(path)[0] == 404
+
+        canonical_aliases = {
+            '/de/projects/bandora-studio': '/de/projekte/bandora-studio',
+            '/de/services/webentwicklung': '/de/leistungen/webentwicklung',
+            '/en/projekte/bandora-studio': '/en/projects/bandora-studio',
+            '/ar/leistungen/webdesign': '/ar/services/webdesign',
+            '/de/about': '/de/ueber-mich',
+        }
+        for alias, canonical in canonical_aliases.items():
+            status, _, headers = request(alias)
+            assert status == 301
+            assert headers.get('Location') == canonical
 
         for route in ['/de/kontakt', '/en/services', '/ar/projects']:
             status, body, _ = request(route)
@@ -146,7 +160,7 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
                'printf "broken" > /var/lib/contact/rate-limit.json')
         assert request('/api/contact.php', valid)[0] == 503
         print('PASS: root 301, localized SPA/API routing, PHP/mbstring, honeypot, timing, validation,')
-        print('      mail headers, IP limit/spoof protection, mail/storage failures,')
+        print('      true top-level 404s, canonical alias redirects, mail headers, IP limit/spoof protection, mail/storage failures,')
         print('      msmtp config/permissions and no Node runtime.')
     finally:
         docker('rm', '-f', cid)

@@ -32,6 +32,22 @@ export function ServiceDetailPage() {
       : undefined;
   const title = service.seoTitle ? localized(service.seoTitle, lang) : `${localized(service.title, lang)} | ${siteConfig.brandName}`;
   const description = service.seoDescription ? localized(service.seoDescription, lang) : localized(service.summary, lang);
+  const serviceSchema = {
+    '@type': 'Service',
+    name: localized(service.title, lang),
+    description,
+    provider: { '@type': 'Organization', name: siteConfig.brandName, url: siteConfig.domain },
+    ...(service.areaServed && { areaServed: { '@type': 'City', name: service.areaServed } }),
+    url: `${siteConfig.domain}/${lang}/${path}`,
+  };
+  const faqSchema = service.faq?.length ? {
+    '@type': 'FAQPage',
+    mainEntity: service.faq.map((item) => ({
+      '@type': 'Question',
+      name: localized(item.question, lang),
+      acceptedAnswer: { '@type': 'Answer', text: localized(item.answer, lang) },
+    })),
+  } : undefined;
 
   return (
     <>
@@ -39,15 +55,7 @@ export function ServiceDetailPage() {
         title={title}
         description={description}
         path={path}
-        schema={{
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          name: localized(service.title, lang),
-          description,
-          provider: { '@type': 'Organization', name: siteConfig.brandName, url: siteConfig.domain },
-          ...(service.areaServed && { areaServed: { '@type': 'City', name: service.areaServed } }),
-          url: `${siteConfig.domain}/${lang}/${path}`,
-        }}
+        schema={{ '@context': 'https://schema.org', '@graph': faqSchema ? [serviceSchema, faqSchema] : [serviceSchema] }}
         breadcrumbs={[
           { name: t('common.home'), url: `${siteConfig.domain}/${lang}/` },
           { name: t('services.title'), url: `${siteConfig.domain}${localizedUrl('services', lang)}` },
@@ -105,6 +113,35 @@ export function ServiceDetailPage() {
             </ol>
             <h2 className="mt-14 text-2xl font-semibold text-white">{t('serviceDetail.technologies')}</h2>
             <div className="mt-5 flex flex-wrap gap-2">{service.technologies.map((technology) => <TechnologyTag key={technology} label={technology} />)}</div>
+            {service.deliverables && service.deliverablesTitle && (
+              <div className="mt-14 grid gap-5 lg:grid-cols-2">
+                <div className="glass-panel rounded-card p-6 min-[769px]:p-8">
+                  <h2 className="text-2xl font-semibold text-white">{localized(service.deliverablesTitle, lang)}</h2>
+                  {service.deliverablesIntro && <p className="mt-4 leading-7 text-slate-300">{localized(service.deliverablesIntro, lang)}</p>}
+                  <ul className="mt-5 space-y-4">
+                    {service.deliverables.map((item) => (
+                      <li key={item.de} className="flex gap-3 leading-7 text-slate-200">
+                        <CheckCircle2 className="mt-1 size-5 shrink-0 text-cyan" aria-hidden="true" />
+                        {localized(item, lang)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {service.differentiators && service.differentiatorsTitle && (
+                  <div className="glass-panel rounded-card p-6 min-[769px]:p-8">
+                    <h2 className="text-2xl font-semibold text-white">{localized(service.differentiatorsTitle, lang)}</h2>
+                    <ul className="mt-5 space-y-4">
+                      {service.differentiators.map((item) => (
+                        <li key={item.de} className="flex gap-3 leading-7 text-slate-200">
+                          <CheckCircle2 className="mt-1 size-5 shrink-0 text-cyan" aria-hidden="true" />
+                          {localized(item, lang)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </section>
 
@@ -126,6 +163,7 @@ export function ServiceDetailPage() {
                   <h2 className="text-xl font-semibold text-ink">
                     {lang === 'de' ? 'Was Umfang und Kosten beeinflusst' : lang === 'ar' ? 'ما الذي يؤثر في النطاق والتكلفة' : 'What affects scope and cost'}
                   </h2>
+                  {service.pricingIntro && <p className="mt-4 leading-7 text-slate-700">{localized(service.pricingIntro, lang)}</p>}
                   <ul className="mt-5 space-y-4">
                     {service.pricingFactors.map((item) => (
                       <li key={item.de} className="flex gap-3 leading-7 text-slate-700">
@@ -163,6 +201,30 @@ export function ServiceDetailPage() {
             </div>
           </div>
         </section>}
+
+        {service.faq && service.faq.length > 0 && (
+          <section className="bg-white px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8" aria-labelledby="service-faq-title">
+            <div className="mx-auto max-w-4xl">
+              <p className="text-sm font-semibold uppercase tracking-widest text-cyan">
+                {lang === 'de' ? 'Entscheidungshilfe' : lang === 'ar' ? 'مساعدة في القرار' : 'Decision support'}
+              </p>
+              <h2 id="service-faq-title" className="mt-3 text-3xl font-semibold text-ink">
+                {lang === 'de' ? 'Häufige Fragen' : lang === 'ar' ? 'الأسئلة الشائعة' : 'Frequently asked questions'}
+              </h2>
+              <div className="mt-7 grid gap-3">
+                {service.faq.map((item) => (
+                  <details key={item.question.de} className="group rounded-card border border-slate-200 bg-slate-50 p-5 open:shadow-sm">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink">
+                      {localized(item.question, lang)}
+                      <span className="text-cyan transition group-open:rotate-45" aria-hidden="true">+</span>
+                    </summary>
+                    <p className="mt-4 leading-7 text-slate-700">{localized(item.answer, lang)}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {websiteGuides.length > 0 && (
           <section className="bg-night px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8" aria-labelledby="website-guides-title">

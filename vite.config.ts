@@ -19,7 +19,25 @@ export default defineConfig({
       if (blogSlugs.some((slug) => !/^[a-z0-9-]+$/.test(slug))) throw new Error('Invalid blog slug');
       if (serviceSlugs.some((slug) => !/^[a-z0-9-]+$/.test(slug))) throw new Error('Invalid service slug');
       this.emitFile({ type: 'asset', fileName: 'project-routes.conf', source:
-        `# Generated detail-route allowlists. Unknown detail URLs return a real 404.\n` +
+        `# Generated canonical route redirects and detail-route allowlists.\n` +
+        `# Do not expose English route aliases below /de/ or German aliases below /en/ and /ar/.\n` +
+        `RewriteRule ^de/services$ /de/leistungen [R=301,END,NE]\n` +
+        `RewriteRule ^de/services/(.+)$ /de/leistungen/$1 [R=301,END,NE]\n` +
+        `RewriteRule ^de/projects$ /de/projekte [R=301,END,NE]\n` +
+        `RewriteRule ^de/projects/(.+)$ /de/projekte/$1 [R=301,END,NE]\n` +
+        `RewriteRule ^de/about$ /de/ueber-mich [R=301,END,NE]\n` +
+        `RewriteRule ^de/contact$ /de/kontakt [R=301,END,NE]\n` +
+        `RewriteRule ^de/imprint$ /de/impressum [R=301,END,NE]\n` +
+        `RewriteRule ^de/privacy$ /de/datenschutz [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/leistungen$ /$1/services [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/leistungen/(.+)$ /$1/services/$2 [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/projekte$ /$1/projects [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/projekte/(.+)$ /$1/projects/$2 [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/ueber-mich$ /$1/about [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/kontakt$ /$1/contact [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/impressum$ /$1/imprint [R=301,END,NE]\n` +
+        `RewriteRule ^(en|ar)/datenschutz$ /$1/privacy [R=301,END,NE]\n` +
+        `# Unknown detail URLs return a real 404.\n` +
         `RewriteRule ^(?:de|en|ar)/(?:projekte|projects)/(?!(?:${slugs.join('|')})/?$).+ - [R=404,END]\n` +
         `RewriteRule ^de/blogs/(?!(?:${blogSlugs.join('|')})/?$).+ - [R=404,END]\n` +
         `RewriteRule ^(?:en|ar)/blogs/(?!(?:${multilingualBlogSlugs.join('|')})/?$).+ - [R=404,END]\n` +
