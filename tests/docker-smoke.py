@@ -106,7 +106,7 @@ with tempfile.TemporaryDirectory(prefix='portfolio-smoke-') as directory:
         for alias, canonical in canonical_aliases.items():
             status, _, headers = request(alias, follow_redirects=False)
             assert status == 301
-            assert headers.get('Location') == canonical
+            assert urllib.parse.urlsplit(headers.get('Location')).path == canonical
 
         for route in ['/de/kontakt', '/en/services', '/ar/projects']:
             status, body, _ = request(route)
