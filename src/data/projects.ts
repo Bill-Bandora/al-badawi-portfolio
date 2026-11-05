@@ -230,6 +230,51 @@ export const projects: Project[] = [
       { de: 'Frontend- und Backend-Entwicklung', en: 'Frontend and backend development', ar: 'تطوير الواجهة والخلفية' },
       { de: 'Testplanung und technische Dokumentation', en: 'Test planning and technical documentation', ar: 'تخطيط الاختبارات والتوثيق التقني' },
     ],
+    caseStudySections: [
+      {
+        title: { de: 'Datenmodell und nachvollziehbare Zustände', en: 'Data model and traceable states', ar: 'نموذج البيانات والحالات القابلة للتتبع' },
+        body: {
+          de: 'Das MVP trennt die Stammdaten eines Geräts von seinem aktuellen Standort, Bearbeitungsstatus, der verantwortlichen Abteilung und der zugewiesenen Person. Änderungen werden nicht nur am aktuellen Datensatz gespeichert, sondern zusätzlich als chronologische Historie festgehalten. Dadurch bleibt erkennbar, welcher Zustand vor einer Änderung galt.',
+          en: 'The MVP separates a device’s master data from its current location, processing state, responsible department and assigned person. Changes are not stored only on the current record; they are also appended to a chronological history so the previous state remains traceable.',
+          ar: 'يفصل النموذج الأولي البيانات الأساسية للجهاز عن موقعه الحالي وحالة المعالجة والقسم المسؤول والشخص المعيّن. لا تُحفظ التغييرات في السجل الحالي فقط، بل تُضاف أيضا إلى سجل زمني حتى تبقى الحالة السابقة قابلة للتتبع.',
+        },
+        points: [
+          { de: 'Inventarnummer als eindeutiger Such- und Zuordnungsschlüssel', en: 'Inventory number as the unambiguous search and assignment key', ar: 'رقم الجرد كمفتاح واضح للبحث والتعيين' },
+          { de: 'Getrennte Felder für Standort, Status, Abteilung und Zuweisung', en: 'Separate fields for location, state, department and assignment', ar: 'حقول منفصلة للموقع والحالة والقسم والتعيين' },
+          { de: 'Chronologische Historie statt Überschreiben ohne Kontext', en: 'Chronological history instead of context-free overwrites', ar: 'سجل زمني بدلا من استبدال البيانات دون سياق' },
+        ],
+      },
+      {
+        title: { de: 'REST-API und transaktionssichere Änderungen', en: 'REST API and transaction-safe updates', ar: 'واجهة REST وتحديثات آمنة بالمعاملات' },
+        body: {
+          de: 'Die React-Oberfläche spricht über Axios mit einer Express-REST-API. Mehrteilige Änderungen wie Statuswechsel, Abteilungswechsel, Zuweisung und Historieneintrag werden in MariaDB als zusammengehöriger Vorgang behandelt. Schlägt ein Teil fehl, setzt ein Rollback den Vorgang zurück, damit aktueller Zustand und Historie nicht auseinanderlaufen.',
+          en: 'The React interface communicates with an Express REST API through Axios. Multi-part changes such as a state transition, department transfer, assignment and history entry are treated as one operation in MariaDB. If one part fails, a rollback restores the operation so current state and history cannot diverge.',
+          ar: 'تتواصل واجهة React مع واجهة Express REST عبر Axios. تُعامل التغييرات المكوّنة من عدة أجزاء، مثل تغيير الحالة أو القسم أو التعيين وإضافة سجل تاريخي، كعملية واحدة في MariaDB. إذا فشل جزء منها يعيد التراجع العملية حتى لا تختلف الحالة الحالية عن السجل.',
+        },
+      },
+      {
+        title: { de: 'Teststrategie für den MVP', en: 'MVP test strategy', ar: 'استراتيجية اختبار النموذج الأولي' },
+        body: {
+          de: 'Die Testplanung konzentriert sich auf die fachlich riskanten Übergänge: eindeutige Gerätesuche, Status- und Abteilungswechsel, Mitarbeiterzuweisung, fehlerhafte oder unvollständige Anfragen sowie den Rollback eines abgebrochenen Vorgangs. Zusätzlich wird geprüft, ob der Historieneintrag zum tatsächlich gespeicherten Gerätezustand passt.',
+          en: 'Test planning focuses on the domain transitions with the highest risk: unambiguous device search, state and department changes, staff assignment, invalid or incomplete requests and rollback of an interrupted operation. It also checks that the history entry matches the device state that was actually stored.',
+          ar: 'يركز تخطيط الاختبارات على الانتقالات الأكثر خطورة: البحث الواضح عن الجهاز، وتغيير الحالة والقسم، وتعيين الموظف، والطلبات الخاطئة أو الناقصة، والتراجع عن عملية متوقفة. كما يتم التحقق من تطابق سجل التاريخ مع حالة الجهاز المحفوظة فعليا.',
+        },
+      },
+      {
+        title: { de: 'Öffentlicher Umfang und Datenschutz', en: 'Public scope and privacy', ar: 'النطاق العام والخصوصية' },
+        body: {
+          de: 'Die Fallstudie beschreibt ausschließlich den abgeschlossenen MVP und veröffentlicht weder einen Kundennamen noch Produktivdaten oder interne Sicherheitsdetails. Die interaktive Ansicht auf dieser Seite ist eine lokale Simulation mit erfundenen Gerätedaten. Sie demonstriert den Ablauf, ist aber nicht mit einer produktiven Datenbank verbunden.',
+          en: 'This case study describes only the completed MVP and publishes no client name, production data or internal security details. The interactive view on this page is a local simulation with fictional device data. It demonstrates the workflow but is not connected to a production database.',
+          ar: 'تصف دراسة الحالة النموذج الأولي المكتمل فقط ولا تنشر اسم عميل أو بيانات إنتاج أو تفاصيل أمنية داخلية. العرض التفاعلي في هذه الصفحة محاكاة محلية ببيانات أجهزة افتراضية، ويوضح سير العمل دون اتصال بقاعدة بيانات إنتاج.',
+        },
+      },
+    ],
+    technicalChallenges: [
+      { de: 'Aktuellen Gerätezustand und Historie bei mehrteiligen Änderungen konsistent halten', en: 'Keep current device state and history consistent during multi-part updates', ar: 'الحفاظ على اتساق حالة الجهاز الحالية والسجل أثناء التحديثات متعددة الأجزاء' },
+      { de: 'Fehlgeschlagene Status- oder Abteilungswechsel vollständig zurückrollen', en: 'Fully roll back failed state or department transitions', ar: 'التراجع الكامل عن تغيير حالة أو قسم فاشل' },
+      { de: 'Geräte über eindeutige Inventarnummern finden und Verwechslungen vermeiden', en: 'Find devices by unique inventory numbers and avoid mismatches', ar: 'العثور على الأجهزة بأرقام جرد فريدة وتجنب الالتباس' },
+      { de: 'Fachlichen Ablauf öffentlich erklären, ohne Produktivdaten offenzulegen', en: 'Explain the domain workflow publicly without exposing production data', ar: 'شرح سير العمل علنا دون كشف بيانات الإنتاج' },
+    ],
     image: '/images/projects/device-tracking-preview.svg',
     filters: ['web', 'mvp', 'completed'],
   },

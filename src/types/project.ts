@@ -4,6 +4,12 @@ export interface LocalizedText {
   ar: string;
 }
 
+export interface ProjectCaseStudySection {
+  title: LocalizedText;
+  body: LocalizedText;
+  points?: LocalizedText[];
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -34,6 +40,7 @@ export interface Project {
   architectureNotes: LocalizedText;
   developmentStatus: LocalizedText;
   technicalChallenges?: LocalizedText[];
+  caseStudySections?: ProjectCaseStudySection[];
   relatedSlugs?: string[];
   disclaimer?: LocalizedText;
   visualTheme?: 'infrastructure' | 'privacy' | 'trading' | 'scanner' | 'studio';

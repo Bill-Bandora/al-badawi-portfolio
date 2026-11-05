@@ -1,0 +1,5 @@
+Segment,Land,Suchtyp,Zeitraum,Query,Zielseite,Impressionen,Klicks,CTR,Durchschnittliche Position,Einordnung
+Gesamt,Deutschland,Web,2026-10-22 bis 2026-11-04,Alle verfügbaren Queries,Alle Seiten,100,0,0%,10.93,Messbasis vor diesem Sprint; geringe und datenschutzbedingt unvollständige Datenmenge
+Experiment Geräte-Nachverfolgung,Deutschland,Web,2026-10-22 bis 2026-11-04,gerätenachverfolgung,https://bandora-dev.de/de/projekte,15,0,0%,34.00,Google wählte die Übersicht statt der gewünschten Detailseite
+Kommerzielle Long-Tails,Deutschland,Web,2026-10-22 bis 2026-11-04,Keyword-Set aus keyword-mapping-2026-11-05.csv,Keine gemeldete Zielseite,0,0,nicht berechenbar,nicht berechenbar,In den verfügbaren Query-Zeilen nicht gemeldet; nicht gleichbedeutend mit garantiert null Suchvolumen
+Markenquery,Deutschland,Web,2026-10-22 bis 2026-11-04,bandora,Verschiedene Bandora-Seiten,nicht separat belastbar,nicht separat belastbar,nicht separat belastbar,nicht separat belastbar,Manuell als Marke klassifizieren; Connector-Klassifizierung ist nicht maßgeblich

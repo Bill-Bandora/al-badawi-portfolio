@@ -229,6 +229,9 @@ describe('portfolio app', () => {
 
   it('runs the device-tracking mock demo without external data', async () => {
     renderWithProviders(<App />, '/de/projekte/geraete-nachverfolgung');
+    expect(screen.getByRole('heading', { name: 'Wie Daten, Zustände und Historie konsistent bleiben' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'REST-API und transaktionssichere Änderungen' })).toBeInTheDocument();
+    expect(screen.getByText(/ist aber nicht mit einer produktiven Datenbank verbunden/)).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Nachvollziehbarer Ablauf im MVP' })).toBeInTheDocument();
     expect(screen.getByText('Jede Änderung in der Historie festhalten; fehlerhafte Vorgänge werden zurückgerollt.')).toBeInTheDocument();
     await userEvent.type(screen.getByLabelText('Inventarnummer, z. B. INV-1042'), 'INV-1042');

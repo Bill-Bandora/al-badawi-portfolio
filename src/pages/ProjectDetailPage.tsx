@@ -153,6 +153,36 @@ export function ProjectDetailPage() {
           <div className="lg:col-span-2"><ArchitectureFlow projectId={project.id} /></div>
         </div>
       </section>
+      {project.caseStudySections && project.caseStudySections.length > 0 && (
+        <section id="technical-case-study" className="bg-white px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8 lg:py-24" aria-labelledby="technical-case-study-title">
+          <div className="mx-auto max-w-6xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan">
+              {lang === 'de' ? 'Technische Fallstudie' : lang === 'ar' ? 'دراسة حالة تقنية' : 'Technical case study'}
+            </p>
+            <h2 id="technical-case-study-title" className="mt-3 max-w-3xl text-3xl font-semibold text-ink md:text-4xl">
+              {lang === 'de' ? 'Wie Daten, Zustände und Historie konsistent bleiben' : lang === 'ar' ? 'كيف تبقى البيانات والحالات والسجل متسقة' : 'How data, state and history remain consistent'}
+            </h2>
+            <div className="mt-8 grid gap-5 md:grid-cols-2">
+              {project.caseStudySections.map((section) => (
+                <article key={section.title.en} className="rounded-card border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8">
+                  <h3 className="text-xl font-semibold text-ink">{localized(section.title, lang)}</h3>
+                  <p className="mt-4 leading-8 text-slate-700">{localized(section.body, lang)}</p>
+                  {section.points && (
+                    <ul className="mt-5 space-y-3">
+                      {section.points.map((point) => (
+                        <li key={point.en} className="flex gap-3 leading-7 text-slate-700">
+                          <span className="mt-2 size-2 shrink-0 rounded-full bg-cyan" aria-hidden="true" />
+                          <span>{localized(point, lang)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       {project.id === 'device-tracking' && <DeviceTrackingDemo lang={lang} />}
       <ProjectInteractiveDemo projectId={project.id} lang={lang} />
       <section className="border-y border-slate-200 bg-slate-50 px-4 py-12 sm:px-6 min-[769px]:py-20 lg:px-8">
