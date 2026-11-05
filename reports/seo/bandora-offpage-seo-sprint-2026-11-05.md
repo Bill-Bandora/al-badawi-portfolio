@@ -161,6 +161,23 @@ Die abgefragten kommerziellen Long-Tails erschienen in den verfügbaren Query-Ze
 
 ## 11. Veröffentlichungs- und Prüfstatus
 
+### Produktiver Release
+
+| Merkmal | Verifizierter Wert |
+| --- | --- |
+| Produktiver Commit | `054cb8c5adbe34be419bbd1afb7d48a1890bf58b` |
+| Branch | `main` |
+| Docker-Image | `portfolio-blog:054cb8c-rc` |
+| Image-Digest | `sha256:d49eca82cb3e9ac1731e1e08bb89ab08d1f7ab07c74650f2b563a749a58001eb` |
+| Container-ID | `90a104dca1bb7ba2b53d0d0947d71ed75584f84d932ebee92cb57b780f8da269` |
+| Container gestartet | 05.11.2026, 14:07:24 Uhr MEZ |
+| Release abgeschlossen | 05.11.2026, 14:07:46 Uhr MEZ |
+| Deployment-Journal | `/var/lib/bandora-deployments/bandora-20261105T130700Z-054cb8c.jsonl` |
+
+Der Push auf `origin/main` löste kein zusätzliches automatisches Deployment aus. Der kontrollierte Release-Runner wurde nach bestandenem Dry-Run genau einmal ausgeführt. Er übernahm die bestehende Produktionskonfiguration ohne Abweichung und bestätigte das Routing nach 6,909 Sekunden mit zwei aufeinanderfolgenden erfolgreichen Prüfungen. Es trat keine öffentliche 404-Antwort auf; die erste interne Traefik-Prüfung lief in ein Timeout und war bei der folgenden Prüfung erreichbar.
+
+Die vorherige Version bleibt als gestoppter Rollback-Container `vsbzm6hi85elyqonjswadd9f-190325106707-rollback-bandora-20261105` mit dem Image `portfolio-blog:59c9ffd-rc` und dem Digest `sha256:03dd139d7769dd13db942385c9fe6c408fb63ff5404e209767e0861221c5dbb9` verfügbar.
+
 ### Lokale Release-Prüfung
 
 - TypeScript: bestanden (`npm run typecheck`).
@@ -172,7 +189,21 @@ Die abgefragten kommerziellen Long-Tails erschienen in den verfügbaren Query-Ze
 - Mobile Sichtprüfung bei 390 × 844: keine horizontale Überbreite; alle vier Fallstudienkarten innerhalb des Viewports.
 - Arabische Sichtprüfung: `lang="ar"`, `dir="rtl"`, Fallstudie vorhanden, keine horizontale Überbreite.
 
-Der kontrollierte Produktions-Cutover steht zu diesem Zeitpunkt noch aus. Produktive Commit-, Image- und Live-Werte werden erst nach erfolgreicher Verifikation ergänzt; bis dahin gilt die Änderung dieses Sprints nicht als live.
+### Produktive Live-Prüfung
+
+- Root-Weiterleitung: `https://bandora-dev.de/` antwortet direkt mit HTTP 301 auf `https://bandora-dev.de/de/`; kein zusätzlicher HTTP-Zwischenschritt und keine Schleife.
+- Sitemap und Seiten: 78/78 Sitemap-URLs erreichbar und technisch indexierbar.
+- Canonicals: 78/78 korrekt.
+- hreflang: 0 fehlerhafte oder nicht reziproke Verweise.
+- Historische Weiterleitungen: 144/144 bestanden.
+- Vorgerenderter Hauptinhalt, JSON-LD und interne Links: auf allen 78 Seiten bestanden.
+- Sprachvarianten: deutsche, englische und arabische Fallstudie produktiv vorhanden; HTML-Metadaten `de/ltr`, `en/ltr` und `ar/rtl` korrekt.
+- Kontakt: Konfiguration meldet den vorgesehenen `mailto`-Fallback; GET wird mit 405, ungültiges JSON mit 400, Honeypot ohne Mailversand mit 200 und ein zu schneller Submit mit 429 behandelt. Es wurde keine Testmail versendet.
+- Container: nach mehr als 180 Sekunden weiterhin `running`, `healthy`, 0 Neustarts und exakt der freigegebene Digest.
+- Repräsentative Performance-Prüfung: 18 HTTPS-Aufrufe auf Start-, Leistungs-, Projekt-, Blog- und Sprachseiten antworteten sämtlich mit HTTP 200; Gesamtzeit 0,090–0,247 Sekunden, im Mittel rund 0,112 Sekunden. Keine kritische Regression festgestellt.
+- `al-badawi.de` blieb eigenständig; es wurde keine globale Weiterleitung eingerichtet.
+
+Die in diesem Sprint umgesetzte technische Fallstudie ist damit produktiv. Eine Rankingwirkung ist unmittelbar nach dem Deployment weder messbar noch wird sie behauptet. Die unveränderte GSC-Baseline aus Abschnitt 10 bleibt die Vergleichsgrundlage für die Kontrolltermine.
 
 ## 12. Noch erforderliche Freigaben
 
