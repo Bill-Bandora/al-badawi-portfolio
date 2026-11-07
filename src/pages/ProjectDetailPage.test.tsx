@@ -30,7 +30,8 @@ describe('project landing pages', () => {
     renderWithProviders(<App />, '/de/projekte/bandora-quiz');
     const icon = screen.getByAltText('Offizielles App-Icon von Bandora Quiz mit grün beleuchteter Quizshow-Bühne');
     expect(icon).toHaveAttribute('src', '/images/projects/bandora-quiz-icon-1024.png');
-    expect(icon).toHaveClass('object-contain');
+    expect(icon).toHaveClass('object-cover');
+    expect(icon).not.toHaveClass('p-3');
     expect(screen.getAllByRole('link', { name: 'Quiz im Browser starten' })[0]).toHaveAttribute('href', 'https://quiz.bandora-dev.de/');
     expect(screen.getByText('Version 1.0 · Build 10')).toBeInTheDocument();
     expect(screen.queryByText(/noch keine öffentliche App-Store-Verfügbarkeit/)).not.toBeInTheDocument();

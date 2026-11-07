@@ -58,7 +58,7 @@ export const bandoraProjects: Project[] = [
       en: 'Official Bandora Quiz app icon showing a green-lit quiz-show stage',
       ar: 'أيقونة تطبيق Bandora Quiz الرسمية وتظهر منصة مسابقات بإضاءة خضراء',
     },
-    imageFit: 'contain',
+    imageFit: 'cover',
     primaryLink: {
       url: 'https://quiz.bandora-dev.de/',
       label: {
