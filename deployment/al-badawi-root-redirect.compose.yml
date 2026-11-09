@@ -1,0 +1,30 @@
+services:
+  legacy-root-redirect:
+    image: nginx@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de
+    container_name: bandora-legacy-root-redirect
+    restart: unless-stopped
+    networks:
+      - coolify
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: coolify
+      traefik.http.routers.portfolio-legacy-root.entrypoints: http
+      traefik.http.routers.portfolio-legacy-root.rule: "(Host(`al-badawi.de`) || Host(`www.al-badawi.de`)) && Path(`/`)"
+      traefik.http.routers.portfolio-legacy-root.priority: "400"
+      traefik.http.routers.portfolio-legacy-root.middlewares: portfolio-legacy-root
+      traefik.http.routers.portfolio-legacy-root.service: portfolio-legacy-root
+      traefik.http.middlewares.portfolio-legacy-root.redirectregex.regex: "^https?://(www\\.)?al-badawi\\.de/?$"
+      traefik.http.middlewares.portfolio-legacy-root.redirectregex.replacement: "https://bandora-dev.de/de/"
+      traefik.http.middlewares.portfolio-legacy-root.redirectregex.permanent: "true"
+      traefik.http.services.portfolio-legacy-root.loadbalancer.server.port: "80"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  coolify:
+    external: true
+

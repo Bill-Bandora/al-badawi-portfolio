@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:seo": "npm run build && node scripts/validate-seo-build.mjs",
     "audit:live": "node scripts/audit-live-seo.mjs",
+    "audit:migration": "node scripts/audit-domain-migration.mjs",
     "format": "prettier --write .",
     "preview": "vite preview"
   },
