@@ -13,6 +13,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { SmallBusinessWebsitePage } from './pages/SmallBusinessWebsitePage';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { defaultLanguage, languages, routeMap } from './config/site';
 import { languageFromBrowser } from './utils/language';
@@ -56,6 +57,7 @@ export default function App() {
         <Route path="/" element={<RootRedirect />} />
         <Route path="/:lang" element={<LanguageGate />}>
           <Route index element={<HomePage />} />
+          <Route path="website-fuer-kleine-unternehmen" element={<SmallBusinessWebsitePage />} />
           {[...new Set(Object.values(routeMap.services.paths))].map((path) => (
             <Route key={path} path={path} element={<ServicesPage />} />
           ))}

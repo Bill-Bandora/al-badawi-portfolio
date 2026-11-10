@@ -89,6 +89,12 @@ export function HomePage() {
               </Link>
             ))}
           </div>
+          {lang === 'de' && (
+            <Link to="/de/website-fuer-kleine-unternehmen" className="mt-4 flex items-center justify-between gap-4 rounded-card border border-cyan/30 bg-cyan/[0.08] p-5 font-semibold text-white transition hover:border-cyan hover:bg-cyan/[0.14]">
+              <span>Professionelle Website für kleine Unternehmen – individuelles Festpreisangebot anfragen</span>
+              <span className="shrink-0 text-cyan" aria-hidden="true">→</span>
+            </Link>
+          )}
         </div>
       </section>
 

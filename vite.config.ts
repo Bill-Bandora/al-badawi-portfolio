@@ -37,12 +37,13 @@ export default defineConfig({
         `RewriteRule ^(en|ar)/kontakt$ https://bandora-dev.de/$1/contact [R=301,END,NE]\n` +
         `RewriteRule ^(en|ar)/impressum$ https://bandora-dev.de/$1/imprint [R=301,END,NE]\n` +
         `RewriteRule ^(en|ar)/datenschutz$ https://bandora-dev.de/$1/privacy [R=301,END,NE]\n` +
+        `RewriteRule ^(?:en|ar)/website-fuer-kleine-unternehmen/?$ - [R=404,END]\n` +
         `# Unknown detail URLs return a real 404.\n` +
         `RewriteRule ^(?:de|en|ar)/(?:projekte|projects)/(?!(?:${slugs.join('|')})/?$).+ - [R=404,END]\n` +
         `RewriteRule ^de/blogs/(?!(?:${blogSlugs.join('|')})/?$).+ - [R=404,END]\n` +
         `RewriteRule ^(?:en|ar)/blogs/(?!(?:${multilingualBlogSlugs.join('|')})/?$).+ - [R=404,END]\n` +
         `RewriteRule ^(?:de|en|ar)/(?:leistungen|services)/(?!(?:${serviceSlugs.join('|')})/?$).+ - [R=404,END]\n` +
-        `RewriteRule ^(?:de|en|ar)/(?!(?:leistungen|services|projekte|projects|blogs|ueber-mich|about|kontakt|contact|impressum|imprint|datenschutz|privacy)(?:/|$)).+ - [R=404,END]\n` });
+        `RewriteRule ^(?:de|en|ar)/(?!(?:leistungen|services|projekte|projects|blogs|ueber-mich|about|kontakt|contact|impressum|imprint|datenschutz|privacy|website-fuer-kleine-unternehmen)(?:/|$)).+ - [R=404,END]\n` });
       const paths = {
         de: ['', 'leistungen', 'projekte', 'blogs', 'ueber-mich', 'kontakt', 'impressum', 'datenschutz'],
         en: ['', 'services', 'projects', 'blogs', 'about', 'contact', 'imprint', 'privacy'],
@@ -53,11 +54,13 @@ export default defineConfig({
         ...slugs.map((slug) => `${productionDomain}/${lang}/${lang === 'de' ? 'projekte' : 'projects'}/${slug}`),
         ...blogs.filter((blog) => blog.languages.includes(lang as 'de' | 'en' | 'ar')).map((blog) => `${productionDomain}/${lang}/blogs/${blog.slug}`),
         ...serviceSlugs.map((slug) => `${productionDomain}/${lang}/${lang === 'de' ? 'leistungen' : 'services'}/${slug}`),
+        ...(lang === 'de' ? [`${productionDomain}/de/website-fuer-kleine-unternehmen`] : []),
       ]);
       const lastModified = (url: string) => {
         const blog = blogs.find((item) => url.endsWith(`/blogs/${item.slug}`));
         if (blog) return blog.modifiedAt ?? blog.publishedAt;
         const service = services.find((item) => url.endsWith(`/${item.slug}`));
+        if (url.endsWith('/de/website-fuer-kleine-unternehmen')) return '2026-11-10';
         return service?.modifiedAt ?? '2026-09-30';
       };
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source:

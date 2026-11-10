@@ -12,6 +12,19 @@ import { MouseGlow, TiltSurface } from '../common/InteractiveSurface';
 export function ProjectCard({ project }: { project: Project }) {
   const { lang = 'de' } = useParams();
   const { t } = useTranslation();
+  const accessType = project.id === 'bandora-quiz'
+    ? (lang === 'de' ? 'Live-Anwendung & App Store' : lang === 'ar' ? 'تطبيق مباشر ومتجر التطبيقات' : 'Live app & App Store')
+    : project.id === 'bandora-studio'
+      ? (lang === 'de' ? 'Sichere öffentliche Vorschau' : lang === 'ar' ? 'معاينة عامة آمنة' : 'Safe public preview')
+      : ['roommate', 'buynot', 'bandora-mt5-trader', 'bandora-crypto-scanner'].includes(project.id)
+        ? (lang === 'de' ? 'Entwicklungs- oder Forschungsprojekt' : lang === 'ar' ? 'مشروع تطوير أو بحث' : 'Development or research project')
+        : (lang === 'de' ? 'Fallstudie' : lang === 'ar' ? 'دراسة حالة' : 'Case study');
+  const detailLabel = project.id === 'bandora-studio'
+    ? 'Bandora Studio öffnen'
+    : project.id === 'bandora-quiz'
+      ? t('common.viewProject')
+      : lang === 'de' ? 'Projekt ansehen' : t('common.viewProject');
+  const detailTarget = `/${lang}/${routePath('projects', lang)}/${project.slug}${project.id === 'bandora-studio' ? '#interactive-demo-title' : ''}`;
   return (
     <TiltSurface className="group overflow-hidden rounded-[1.4rem] shadow-deep">
     <MouseGlow className="glow-border grid overflow-hidden rounded-[1.4rem] md:grid-cols-[1.08fr_0.92fr]">
@@ -29,7 +42,7 @@ export function ProjectCard({ project }: { project: Project }) {
           loading="lazy"
           decoding="async"
         />
-        <span className="absolute bottom-5 left-5 rounded-full border border-white/15 bg-night/75 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-cyan backdrop-blur">Case Study</span>
+        <span className="absolute bottom-5 left-5 rounded-full border border-white/15 bg-night/75 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-cyan backdrop-blur">{accessType}</span>
       </div>
       <div className="grid content-center gap-5 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-2">
@@ -47,8 +60,9 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
         <div className="flex flex-wrap gap-3 pt-2">
           {project.release?.appStoreUrl && <AppStoreLink url={project.release.appStoreUrl} lang={lang} />}
-          <Link to={`/${lang}/${routePath('projects', lang)}/${project.slug}`} className="inline-flex min-h-11 items-center rounded-card bg-gradient-to-r from-cyan to-blue px-4 py-2 font-semibold text-white shadow-[0_12px_30px_rgba(8,145,178,0.2)] transition hover:-translate-y-0.5">
-            {t('common.viewProject')} <ArrowUpRight className="ms-2 size-4 rtl:rotate-180" />
+          {project.primaryLink && <a href={project.primaryLink.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-card border border-cyan/40 bg-cyan/10 px-4 py-2 font-semibold text-cyan transition hover:border-cyan hover:text-white">{lang === 'de' ? 'Projekt öffnen' : localized(project.primaryLink.label, lang)} <ArrowUpRight className="ms-2 size-4" /></a>}
+          <Link to={detailTarget} className="inline-flex min-h-11 items-center rounded-card bg-gradient-to-r from-cyan to-blue px-4 py-2 font-semibold text-white shadow-[0_12px_30px_rgba(8,145,178,0.2)] transition hover:-translate-y-0.5">
+            {detailLabel} <ArrowUpRight className="ms-2 size-4 rtl:rotate-180" />
           </Link>
 
         </div>

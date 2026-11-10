@@ -86,6 +86,14 @@ export function BlogArticlePage() {
     : labels.service;
   const articleUrl = `${siteConfig.domain}/${lang}/blogs/${blog.slug}`;
   const related = visibleBlogs(lang).filter((item) => blog.relatedSlugs.includes(item.slug));
+  const smallBusinessLandingSlugs = new Set([
+    'warum-kleine-unternehmen-eine-website-brauchen',
+    'website-erstellen-lassen-kosten-2026',
+    'website-erstellen-lassen-ablauf',
+    'webdesign-angebote-vergleichen',
+    'wordpress-baukasten-oder-individuelle-website',
+  ]);
+  const showSmallBusinessLanding = lang === 'de' && smallBusinessLandingSlugs.has(blog.slug);
   const articleSchema: Record<string, unknown> = {
     '@type': 'Article',
     headline: blog.title,
@@ -229,6 +237,7 @@ export function BlogArticlePage() {
             <h2 className="mt-3 text-2xl font-semibold">{blog.cta.title}</h2>
             <p className="mt-3 leading-7 text-slate-300">{blog.cta.text}</p>
             <div className="mt-6 flex flex-wrap gap-3">
+              {showSmallBusinessLanding && <ButtonLink to="/de/website-fuer-kleine-unternehmen">Website für kleine Unternehmen</ButtonLink>}
               <ButtonLink to={serviceTarget} variant="dark" data-event="blog_to_service_click" onClick={() => emitBlogEvent('blog_to_service_click', blog, serviceTarget)}>{serviceLabel}</ButtonLink>
               <ButtonLink to={localizedUrl('contact', lang)} variant="dark" data-event="blog_cta_click" onClick={() => { emitBlogEvent('blog_cta_click', blog, localizedUrl('contact', lang)); emitBlogEvent('blog_to_contact_click', blog, localizedUrl('contact', lang)); }}>{blog.cta.label}</ButtonLink>
             </div>

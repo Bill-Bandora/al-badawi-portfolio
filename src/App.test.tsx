@@ -6,6 +6,22 @@ import { renderWithProviders } from './test/render';
 import { buildMailto } from './utils/contact';
 
 describe('portfolio app', () => {
+  it('renders the small-business landing page with truthful offers and classified project access', async () => {
+    renderWithProviders(<App />, '/de/website-fuer-kleine-unternehmen');
+    expect(screen.getByRole('heading', { name: 'Professionelle Website für kleine Unternehmen erstellen lassen', level: 1 })).toBeInTheDocument();
+    expect(screen.getByText('Modernes Webdesign, schnelle Ladezeiten und individuelle Umsetzung – zu besonders attraktiven Konditionen. Fordern Sie Ihr persönliches Festpreisangebot an.')).toBeInTheDocument();
+    expect(screen.getByText('Professionelle Websites zu besonders attraktiven Konditionen – individuelles Festpreisangebot auf Anfrage.')).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Festpreisangebot anfordern|Festpreisangebot erhalten/ })).toHaveLength(3);
+    expect(screen.getByRole('link', { name: /Live-App öffnen/ })).toHaveAttribute('href', 'https://quiz.bandora-dev.de/');
+    expect(screen.getByRole('link', { name: /Bandora Studio öffnen/ })).toHaveAttribute('href', '/de/projekte/bandora-studio#interactive-demo-title');
+    expect(screen.getByText('Live-App & App Store')).toBeInTheDocument();
+    expect(screen.getByText('Sichere Produktvorschau')).toBeInTheDocument();
+    expect(screen.getByText('Forschungsprojekt')).toBeInTheDocument();
+    expect(document.body.textContent).not.toMatch(/\b\d{2,}[,.]?\d*\s*(?:€|Euro)\b/i);
+    await waitFor(() => expect(document.title).toBe('Website für kleine Unternehmen erstellen lassen | Bandora'));
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://bandora-dev.de/de/website-fuer-kleine-unternehmen');
+  });
+
   it('presents the German homepage with consistent brand and organization data', async () => {
     renderWithProviders(<App />, '/de/');
     expect(screen.getByRole('heading', { name: 'Softwareentwicklung von der Idee bis zum funktionierenden Produkt.', level: 1 })).toBeInTheDocument();
@@ -68,9 +84,10 @@ describe('portfolio app', () => {
     expect(screen.getByRole('heading', { name: 'Bandora Org' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'IT-Geräte-Nachverfolgung mit Standort- und Statushistorie' })).toHaveAttribute('href', '/de/projekte/geraete-nachverfolgung');
     const links = screen.getAllByRole('link', { name: /Projekt ansehen/ });
-    expect(links).toHaveLength(10);
-    expect(links[0]).toHaveAttribute('href', '/de/projekte/bandora-quiz');
+    expect(links).toHaveLength(9);
     for (const link of links) expect(link.getAttribute('href')).toMatch(/^\/de\/projekte\//);
+    expect(screen.getByRole('link', { name: 'Bandora Studio öffnen' })).toHaveAttribute('href', '/de/projekte/bandora-studio#interactive-demo-title');
+    expect(screen.getByRole('link', { name: /Projekt öffnen/ })).toHaveAttribute('href', 'https://quiz.bandora-dev.de/');
     expect(screen.queryByText(/Landingpage in Vorbereitung/)).not.toBeInTheDocument();
   });
 

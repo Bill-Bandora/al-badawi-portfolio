@@ -75,6 +75,12 @@ export function ServiceDetailPage() {
             <h1 className="mt-3 break-words text-balance text-[clamp(2.1rem,9vw,4rem)] font-semibold min-[769px]:mt-4 md:text-6xl">{localized(service.title, lang)}</h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300 min-[769px]:mt-6 min-[769px]:text-lg min-[769px]:leading-8">{localized(service.summary, lang)}</p>
             <ButtonLink to={localizedUrl('contact', lang)} className="mt-6 min-[769px]:mt-8">{t('common.discussProject')}</ButtonLink>
+            {lang === 'de' && service.slug === 'webdesign' && (
+              <Link to="/de/website-fuer-kleine-unternehmen" className="ms-0 mt-4 inline-flex min-h-11 items-center font-semibold text-cyan underline decoration-cyan/40 underline-offset-4 sm:ms-5">
+                Website für kleine Unternehmen mit Festpreisangebot
+                <ArrowRight className="ms-2 size-4" aria-hidden="true" />
+              </Link>
+            )}
           </div>
         </header>
 

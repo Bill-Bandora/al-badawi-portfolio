@@ -40,6 +40,7 @@ export function ProjectDetailPage() {
   const theme = themes[project.id] ?? themes['bandora-org'];
   const relatedServices = services.filter((service) => service.projectSlugs.includes(project.slug));
   const relatedProjects = (project.relatedSlugs ?? []).map((item) => projects.find((candidate) => candidate.slug === item)).filter(Boolean) as typeof projects;
+  const supportsSmallBusinessWebsite = ['bandora-studio', 'bandora-quiz', 'digital-footprint-os'].includes(project.id);
   const localLabels = {
     technicalChallenges: lang === 'de' ? 'Technische Herausforderungen' : lang === 'ar' ? 'تحديات تقنية' : 'Technical challenges',
     relatedProjects: lang === 'de' ? 'Ähnliche Projekte' : lang === 'ar' ? 'مشاريع مشابهة' : 'Related projects',
@@ -210,6 +211,7 @@ export function ProjectDetailPage() {
             {relatedServices.map((service) => <ButtonLink key={service.slug} to={`/${lang}/${routePath('services', lang)}/${service.slug}`} variant="dark">{localized(service.title, lang)}</ButtonLink>)}
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
+            {lang === 'de' && supportsSmallBusinessWebsite && <ButtonLink to="/de/website-fuer-kleine-unternehmen">Website für kleine Unternehmen</ButtonLink>}
             {project.release?.appStoreUrl && <AppStoreLink url={project.release.appStoreUrl} lang={lang} />}
             {project.primaryLink && <a href={project.primaryLink.url} className="inline-flex min-h-11 items-center justify-center rounded-card bg-gradient-to-r from-cyan to-blue px-5 py-2.5 font-semibold text-white" target="_blank" rel="noreferrer">{localized(project.primaryLink.label, lang)}</a>}
             <ButtonLink to={localizedUrl('contact', lang)} variant="dark">{t('nav.contact')}</ButtonLink>
